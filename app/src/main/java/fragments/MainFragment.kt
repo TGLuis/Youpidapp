@@ -24,9 +24,9 @@ class MainFragment: MyFragment() {
         super.onActivityCreated(savedInstanceState)
         context.title = context.getString(R.string.app_name)
         val youpidou = MediaPlayer.create(context, R.raw.youpidou)
-        val piyouyou = MediaPlayer.create(context, R.raw.piyouyou)
-        val extremement_long = MediaPlayer.create(context, R.raw.extremement_long)
-        val youtube_com = MediaPlayer.create(context, R.raw.youtube_com)
+        val piyouyou = MediaPlayer.create(context, R.raw.pilou)
+        val extremement_long = MediaPlayer.create(context, R.raw.monstrueusement_long)
+        val youtube_com = MediaPlayer.create(context, R.raw.youtubepointcom)
         val all = arrayOf<MediaPlayer>(youpidou, piyouyou, extremement_long, youtube_com)
 
         context.findViewById<Button>(R.id.button1)
