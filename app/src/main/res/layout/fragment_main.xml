@@ -15,23 +15,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:text="@string/piyouyou"
-        app:layout_constraintTop_toBottomOf="@id/button1"
+        android:text="@string/pilou"
         app:layout_constraintBottom_toTopOf="@id/button3"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:text="@string/extremement_long"
+        android:text="@string/monstrueusement_long"
         app:layout_constraintTop_toBottomOf="@id/button2"
         app:layout_constraintBottom_toTopOf="@id/button4"
         app:layout_constraintStart_toStartOf="parent"

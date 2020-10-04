@@ -24,19 +24,19 @@ class MainFragment: MyFragment() {
         super.onActivityCreated(savedInstanceState)
         context.title = context.getString(R.string.app_name)
         val youpidou = MediaPlayer.create(context, R.raw.youpidou)
-        val piyouyou = MediaPlayer.create(context, R.raw.pilou)
-        val extremement_long = MediaPlayer.create(context, R.raw.monstrueusement_long)
+        val pilou = MediaPlayer.create(context, R.raw.pilou)
+        val monstrueusement_long = MediaPlayer.create(context, R.raw.monstrueusement_long)
         val youtube_com = MediaPlayer.create(context, R.raw.youtubepointcom)
-        val all = arrayOf<MediaPlayer>(youpidou, piyouyou, extremement_long, youtube_com)
+        val all = arrayOf<MediaPlayer>(youpidou, pilou, monstrueusement_long, youtube_com)
 
         context.findViewById<Button>(R.id.button1)
             .setOnClickListener {youpidou.start()}
 
         context.findViewById<Button>(R.id.button2)
-            .setOnClickListener {piyouyou.start()}
+            .setOnClickListener {pilou.start()}
 
         context.findViewById<Button>(R.id.button3)
-            .setOnClickListener {extremement_long.start()}
+            .setOnClickListener {monstrueusement_long.start()}
 
         context.findViewById<Button>(R.id.button4)
             .setOnClickListener {youtube_com.start()}

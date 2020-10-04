@@ -5,7 +5,8 @@
     <string name="app_name">Youpidapp</string>
     <string name="youpidou">Youpidou</string>
     <string name="piyouyou">Piyouyou</string>
-    <string name="extremement_long">Extrêmement long</string>
+    <string name="monstrueusement_long">Monstrueusement long</string>
     <string name="youtube_com">Youtube.com</string>
     <string name="random">Random</string>
+    <string name="pilou">Pilou</string>
 </resources>
