@@ -1,15 +1,15 @@
 package lufra.youpidapp
 
 import android.os.Bundle
+import android.view.Menu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import fragments.*
-import java.util.*
-import android.view.*
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import fragments.MainFragment
+import fragments.MyFragment
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "==== MAINACTIVITY ===="
@@ -46,18 +46,18 @@ class MainActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.app_name)
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
         return true
-    }*/
+    }
 
     /**
      * Contextual menu, create dynamically the menu in function of the parameter 'which'
      * If 'which' is "home" then it will create the menu for the home.
      * If 'which' is "project" it will create the menu for every screen with a project.
      */
-    /*fun setMenu(which: String, force: Boolean = false) {
+    fun setMenu(which: String, force: Boolean = false) {
         val context = this
         val myMenu = toolbar.menu
         if (!force && lastMenu != null && lastMenu == which)
@@ -67,17 +67,20 @@ class MainActivity : AppCompatActivity() {
         lastMenu = which
         when (which) {
             "home" -> {
-                myMenu.clear()
-            }
-            "project" -> {
-                myMenu.add("test").apply {
+                myMenu.add("youtube").apply {
+//                    icon = ContextCompat.getDrawable(context, R.drawable.ic_icons8_youtube)
+//                    setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
                     setOnMenuItemClickListener {
+                        Toast.makeText(context, "YOUTUBE", Toast.LENGTH_SHORT).show()
                         true
                     }
                 }
             }
+            "project" -> {
+                myMenu.clear()
+            }
         }
-    }*/
+    }
 
     /*private fun setDrawer() {
         val context = this
