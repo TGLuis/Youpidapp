@@ -43,7 +43,7 @@ class MainFragment: MyFragment() {
 
         context.findViewById<Button>(R.id.button5)
             .setOnClickListener {
-                val x = Random.nextInt() % all.size
+                val x = Math.abs(Random.nextInt() % all.size)
                 all[x].start()
             }
     }

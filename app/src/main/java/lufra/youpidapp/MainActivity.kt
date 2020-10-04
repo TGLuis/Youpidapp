@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         // Fragments
         frags = Stack()
-        openFragment(MyFragment())
+        openFragment(MainFragment())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
