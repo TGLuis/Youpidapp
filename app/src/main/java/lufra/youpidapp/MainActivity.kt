@@ -2,11 +2,11 @@ package lufra.youpidapp
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.core.content.ContextCompat
 import fragments.MainFragment
 import fragments.MyFragment
 import java.util.*
@@ -14,13 +14,10 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private val TAG = "==== MAINACTIVITY ===="
 
-    var screenOn: Boolean = false
-    var volumeOn: Boolean = true
-
     private lateinit var frags: Stack<MyFragment>
     private lateinit var toolbar: Toolbar
     //private lateinit var navView: NavigationView
-    private lateinit var drawerLayout: DrawerLayout
+    //private lateinit var drawerLayout: DrawerLayout
     private var lastMenu: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,11 +26,18 @@ class MainActivity : AppCompatActivity() {
 
         // Toolbar
         toolbar = this.findViewById(R.id.my_toolbar)
-        setSupportActionBar(toolbar)
-        //drawerLayout = this.findViewById(R.id.drawer_layout)
-        //val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        //drawerLayout.addDrawerListener(toggle)
-        //toggle.syncState()
+        /*drawerLayout = this.findViewById(R.id.drawer_layout)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()*/
+
+        toolbar.setTitle(R.string.app_name)
 
         //NavigationView
         //navView = this.findViewById(R.id.nav_view)
@@ -42,8 +46,6 @@ class MainActivity : AppCompatActivity() {
         // Fragments
         frags = Stack()
         openFragment(MainFragment())
-
-        toolbar.setTitle(R.string.app_name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -67,9 +69,9 @@ class MainActivity : AppCompatActivity() {
         lastMenu = which
         when (which) {
             "home" -> {
-                myMenu.add("youtube").apply {
-//                    icon = ContextCompat.getDrawable(context, R.drawable.ic_icons8_youtube)
-//                    setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+                myMenu.add(R.string.app_name).apply {
+                    icon = ContextCompat.getDrawable(context, R.drawable.ic_icons8_youtube)
+                    setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
                     setOnMenuItemClickListener {
                         Toast.makeText(context, "YOUTUBE", Toast.LENGTH_SHORT).show()
                         true
@@ -103,40 +105,16 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onBackPressed() {
         when {
-            drawerLayout.isDrawerOpen(GravityCompat.START) -> {
+            /*drawerLayout.isDrawerOpen(GravityCompat.START) -> {
                 drawerLayout.closeDrawer(GravityCompat.START)
-            }
+            }*/
             frags.size >= 2 -> {
                 frags.pop()
                 openFragment(frags.peek(), true)
             }
             else -> {
-                saveState()
                 super.onBackPressed()
             }
         }
-    }
-
-    override fun onDestroy() {
-        saveState()
-        super.onDestroy()
-    }
-
-    override fun onPause() {
-        saveState()
-        super.onPause()
-    }
-
-    override fun onStop() {
-        saveState()
-        super.onStop()
-    }
-
-    /***********************************************************************************************
-     * Some more functions
-     */
-    private fun saveState() {
-        // nothing
-        return
     }
 }
