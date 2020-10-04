@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/whole_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/youpidou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:text="@string/youpidou"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button2"
+        app:layout_constraintBottom_toTopOf="@id/pilou"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/pilou"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:text="@string/pilou"
-        app:layout_constraintBottom_toTopOf="@id/button3"
+        app:layout_constraintBottom_toTopOf="@id/monstrueusement_long"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button1" />
+        app:layout_constraintTop_toBottomOf="@id/youpidou" />
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/monstrueusement_long"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:text="@string/monstrueusement_long"
-        app:layout_constraintTop_toBottomOf="@id/button2"
-        app:layout_constraintBottom_toTopOf="@id/button4"
+        app:layout_constraintTop_toBottomOf="@id/pilou"
+        app:layout_constraintBottom_toTopOf="@id/youtubepointcom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/youtubepointcom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:text="@string/youtube_com"
-        app:layout_constraintTop_toBottomOf="@id/button3"
-        app:layout_constraintBottom_toTopOf="@id/button5"
+        android:text="@string/youtubepointcom"
+        app:layout_constraintTop_toBottomOf="@id/monstrueusement_long"
+        app:layout_constraintBottom_toTopOf="@id/random"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/random"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:text="@string/random"
-        app:layout_constraintTop_toBottomOf="@id/button4"
+        app:layout_constraintTop_toBottomOf="@id/youtubepointcom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

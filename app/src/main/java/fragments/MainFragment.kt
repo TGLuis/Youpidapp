@@ -1,14 +1,14 @@
 package fragments;
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
+import lufra.youpidapp.Discotheque
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
-import kotlin.random.Random
 
 class MainFragment: MyFragment() {
     private lateinit var context: MainActivity
@@ -22,29 +22,16 @@ class MainFragment: MyFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        context.title = context.getString(R.string.app_name)
-        val youpidou = MediaPlayer.create(context, R.raw.youpidou)
-        val pilou = MediaPlayer.create(context, R.raw.pilou)
-        val monstrueusement_long = MediaPlayer.create(context, R.raw.monstrueusement_long)
-        val youtube_com = MediaPlayer.create(context, R.raw.youtubepointcom)
-        val all = arrayOf<MediaPlayer>(youpidou, pilou, monstrueusement_long, youtube_com)
+        val discotheque = Discotheque(context)
 
-        context.findViewById<Button>(R.id.button1)
-            .setOnClickListener {youpidou.start()}
-
-        context.findViewById<Button>(R.id.button2)
-            .setOnClickListener {pilou.start()}
-
-        context.findViewById<Button>(R.id.button3)
-            .setOnClickListener {monstrueusement_long.start()}
-
-        context.findViewById<Button>(R.id.button4)
-            .setOnClickListener {youtube_com.start()}
-
-        context.findViewById<Button>(R.id.button5)
-            .setOnClickListener {
-                val x = Math.abs(Random.nextInt() % all.size)
-                all[x].start()
+        val parent = context.findViewById<ConstraintLayout>(R.id.whole_screen)
+        parent.children.forEach {
+            val idName = resources.getResourceEntryName(it.id)
+            if (idName != "random"){
+                it.setOnClickListener {discotheque.play(idName)}
+            } else {
+                it.setOnClickListener {discotheque.play_random()}
             }
+        }
     }
 }
