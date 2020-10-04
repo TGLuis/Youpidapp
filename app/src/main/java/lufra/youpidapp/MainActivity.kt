@@ -1,4 +1,4 @@
-package tgl.templateapp
+package lufra.youpidapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,9 +11,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.AdRequest
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "==== MAINACTIVITY ===="
@@ -26,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var db: MyDatabase
-    private lateinit var mAdView: AdView
     private var lastMenu: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,12 +58,6 @@ class MainActivity : AppCompatActivity() {
         // Fragments
         frags = Stack()
         openFragment(MyFragment())
-
-        // pub
-        MobileAds.initialize(this) {}
-        mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

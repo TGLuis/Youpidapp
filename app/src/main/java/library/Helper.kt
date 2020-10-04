@@ -3,7 +3,7 @@ package library
 import android.content.Context
 import android.content.res.Resources
 import android.util.Log
-import tgl.templateapp.MainActivity
+import lufra.youpidapp.MainActivity
 import java.io.File
 import java.io.FileOutputStream
 import java.io.FileReader

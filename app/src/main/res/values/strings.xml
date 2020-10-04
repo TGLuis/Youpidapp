@@ -1,8 +1,11 @@
 <resources>
     <!-- Non translatable -->
-    <string name="navigation_drawer_open" translatable="false">Open</string>
-    <string name="navigation_drawer_close" translatable="false">Close</string>
 
     <!-- Translatable -->
-    <string name="app_name">TemplateApp</string>
+    <string name="app_name">Youpidapp</string>
+    <string name="youpidou">Youpidou</string>
+    <string name="piyouyou">Piyouyou</string>
+    <string name="extremement_long">Extrêmement long</string>
+    <string name="youtube_com">Youtube.com</string>
+    <string name="random">Random</string>
 </resources>

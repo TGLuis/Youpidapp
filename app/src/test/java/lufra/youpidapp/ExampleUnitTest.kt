@@ -1,4 +1,4 @@
-package tgl.templateapp
+package lufra.youpidapp
 
 import org.junit.Test
 
