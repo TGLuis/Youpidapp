@@ -1,0 +1,8 @@
+<resources>
+    <!-- Non translatable -->
+    <string name="navigation_drawer_open" translatable="false">Open</string>
+    <string name="navigation_drawer_close" translatable="false">Close</string>
+
+    <!-- Translatable -->
+    <string name="app_name">TemplateApp</string>
+</resources>
