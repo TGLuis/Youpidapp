@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- TEXTE -->
-    <dimen name="text_size_title">24sp</dimen>
+    <dimen name="text_size_title_big">36sp</dimen>
+    <dimen name="text_size_title_normal">24sp</dimen>
+    <dimen name="text_size_title_small">20sp</dimen>
+    <dimen name="text_size_big">20sp</dimen>
     <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_small">11sp</dimen>
     <!-- MARGES -->
     <dimen name="margin_hor_normal">16dp</dimen>
+    <dimen name="margin_ver_normal">16dp</dimen>
+    <dimen name="margin_fab_normal">16dp</dimen>
+    <!-- TAILLE IMAGES -->
+    <dimen name="covid_size_big">123dp</dimen>
+    <dimen name="covid_size_normal">82dp</dimen>
+    <dimen name="covid_size_small">54dp</dimen>
 </resources>
