@@ -56,6 +56,13 @@
     <string name="youtubehein">Youtube hein</string>
     <string name="youtubepointcom">Youtube.com</string>
     <string name="youtubepointcomhein">Youtube.com hein</string>
+    <string name="do_not_worry">Do not Worry</string>
+    <string name="mettez_vos_masques">Mettez vos masques</string>
+    <string name="ohoui">Oh oui</string>
+    <string name="podcast">Podcast</string>
+    <string name="singular_matrix">Singular matrix</string>
+    <string name="t10_minutes">10 minutes</string>
+    <string name="voila_voila">Voila voila</string>
 
     <!-- AboutFragment -->
     <string name="about_title">À propos</string>

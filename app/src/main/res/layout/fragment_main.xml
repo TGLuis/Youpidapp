@@ -61,6 +61,13 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="20dp" />
         <Button
+            android:id="@+id/do_not_worry"
+            android:text="@string/do_not_worry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
             android:id="@+id/doyen_verleyzen"
             android:text="@string/doyen_verleyzen"
             android:layout_width="match_parent"
@@ -117,6 +124,13 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="20dp" />
         <Button
+            android:id="@+id/mettez_vos_masques"
+            android:text="@string/mettez_vos_masques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
             android:id="@+id/minipub"
             android:text="@string/minipub"
             android:layout_width="match_parent"
@@ -133,6 +147,13 @@
         <Button
             android:id="@+id/monstrueusement_long"
             android:text="@string/monstrueusement_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
+            android:id="@+id/ohoui"
+            android:text="@string/ohoui"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
@@ -187,6 +208,13 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="20dp" />
         <Button
+            android:id="@+id/podcast"
+            android:text="@string/podcast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
             android:id="@+id/premiere_ministre"
             android:text="@string/premiere_ministre"
             android:layout_width="match_parent"
@@ -203,6 +231,20 @@
         <Button
             android:id="@+id/regarder_nouvelles"
             android:text="@string/regarder_nouvelles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
+            android:id="@+id/singular_matrix"
+            android:text="@string/singular_matrix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
+            android:id="@+id/t10_minutes"
+            android:text="@string/t10_minutes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
@@ -245,6 +287,13 @@
         <Button
             android:id="@+id/vilain_vilain"
             android:text="@string/vilain_vilain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp" />
+        <Button
+            android:id="@+id/voila_voila"
+            android:text="@string/voila_voila"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
