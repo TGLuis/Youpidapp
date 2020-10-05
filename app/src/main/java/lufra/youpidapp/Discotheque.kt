@@ -49,7 +49,7 @@ class Discotheque(private val context: Context) {
                 }
             }
         } catch (e: java.lang.IllegalStateException) {
-            stopAll()
+            //stopAll()
             reading.clear()
             playlist.clear()
         }
