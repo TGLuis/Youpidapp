@@ -31,6 +31,6 @@ class MainFragment: MyFragment() {
                 it.setOnClickListener {context.discotheque.playRandom()}
             }
         }
-        context.setMenu("home", true)
+        context.setMenu("home")
     }
 }

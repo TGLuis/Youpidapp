@@ -53,16 +53,16 @@
     <string name="about_title">À propos</string>
     <string name="about_corps_1">
         Pilou pilou bonjour ! On a juste deux mots à vous causer, vous qui avez téléchargé cette app.
-        Si vous ne savez pas qui est monsieur Vincent Legat ou ce qu\'est l\'EPL, c\'est que cette application ne vous est certainement pas destinée !
+        Si vous ne savez pas qui est monsieur Vincent Legat ou ce qu\'est l\'EPL, c\'est que cette application ne vous est peut-être pas destinée !
     </string>
 
     <string name="about_corps_2">
         Dans le cas contraire, bienvenue !
-        Tous les extraits audio que vous entendez proviennent de vidéos Youtube postées par monsieur Legat (non on n\'a pas non plus osé aller l\'enregistrer en cours),
+        Tous les extraits audio disponibles proviennent de vidéos Youtube postées par le Professeur Vincent Legat (non nous ne l\'avons pas enregistré à son insu),
         le lien vers sa chaîne est disponible sur la page d\'accueil.
         Nous tenons également à dire que cette application est à but purement humoristique, nous ne gagnons pas d\'argent grâce à celle-ci.
         Elle n\'a pas non plus été réalisée dans un but de se moquer, bien au contraire ! L\'un d\'entre nous a même été son étudiant pendant plusieurs années.
-        Nous aimons beaucoup les cours fait par monsieur Legat qui sont toujours très vivants et dynamique, en partie grâce à l\'humour qu\'il apporte.
+        Nous aimons beaucoup les cours fait par monsieur Legat qui sont toujours très vivants et dynamiques, en partie grâce à l\'humour qu\'il apporte.
     </string>
 
     <string name="about_corps_3">
@@ -72,15 +72,15 @@
     <string name="about_corps_4">
         Si vous nous lisez monsieur, nous espérons que cette app vous ait plu, nous sommes vraiment deux grands fans.
         Nous serions attristés si vous le décidez, mais si vous voulez qu\'on retire l\'application ou certains extraits audio, n\'hésitez pas à nous contacter par mail.
-        Si au contraire vous avez des suggestions à faire, n\'hésitez pas non plus à nous en faire part
+        Si au contraire vous avez des suggestions à faire, n\'hésitez pas non plus à nous en faire part.
     </string>
 
     <string name="about_corps_5">
-        L\'app est complètement open-source sous license MIT à part les extraits audio qui restent la propriété de monsieur Vincent Legat.
-        Vous pouvez contribuer en vous rendant sur le github associé (lien plus bas)
+        L\'app est complètement open-source sous license MIT à part les extraits audio qui restent la propriété du Professeur Vincent Legat.
+        Vous pouvez contribuer en vous rendant sur le github associé (lien plus bas).
     </string>
 
     <string name="about_corps_6">
-        Des bisous
+        Des bisous et Youpidou!
     </string>
 </resources>
