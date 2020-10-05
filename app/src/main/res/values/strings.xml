@@ -2,13 +2,49 @@
     <!-- Non translatable -->
     <string name="navigation_drawer_open" translatable="false">Open</string>
     <string name="navigation_drawer_close" translatable="false">Close</string>
+    <string name="stop" translatable="false">Stop</string>
 
     <!-- Translatable -->
     <string name="app_name">Youpidapp</string>
-    <string name="youpidou">Youpidou</string>
-    <string name="piyouyou">Piyouyou</string>
-    <string name="monstrueusement_long">Monstrueusement long</string>
-    <string name="youtubepointcom">Youtube.com</string>
+
+    <!-- Buttons -->
     <string name="random">Random</string>
     <string name="pilou">Pilou</string>
+    <string name="aucune_chance">Aucune chance</string>
+    <string name="biiiiiiiyoup">Biiiyoup</string>
+    <string name="ca_va_prendre_du_temps">ça va prendre du temps</string>
+    <string name="charles_pecheur">Charles Pecheur</string>
+    <string name="complique">Complique</string>
+    <string name="doyen_verleyzen">Doyen Verleyzen</string>
+    <string name="elimination">Elimination</string>
+    <string name="eliodirupo">Elio di Rupo</string>
+    <string name="ikea">Ikea</string>
+    <string name="il_est_mort">Il est mort</string>
+    <string name="it_must_work">It must work</string>
+    <string name="jean_didou">Jean Didou</string>
+    <string name="le_prof_est_con">Le prof est con</string>
+    <string name="minipub">Auto-pub</string>
+    <string name="monstre_terrifiant">Monstre terrifiant</string>
+    <string name="monstrueusement_long">Monstrueusement long</string>
+    <string name="on_va_manger">On va manger</string>
+    <string name="pilou_calme">Pilou (calme)</string>
+    <string name="pilou_grandiloquent">Pilou (fort)</string>
+    <string name="piou_piou">Piou piou</string>
+    <string name="piou_piou_triste">Piou piou (triste)</string>
+    <string name="plein_plein_plein">Plein plein</string>
+    <string name="premiere_ministre">Premier ministre</string>
+    <string name="puree">Purée</string>
+    <string name="regarder_nouvelles">Regarder les nouvelles</string>
+    <string name="t11_minutes">11 minutes</string>
+    <string name="t1_minute">1 minute</string>
+    <string name="t8_minutes">8 minutes</string>
+    <string name="temps_dingue">Temps dingue</string>
+    <string name="tintin">Tintin</string>
+    <string name="vilain_vilain">Vilain</string>
+    <string name="youpidou">Youpidou</string>
+    <string name="youpidou_calme">Youpidou (calme)</string>
+    <string name="youtube">Youtube</string>
+    <string name="youtubehein">Youtube hein</string>
+    <string name="youtubepointcom">Youtube.com</string>
+    <string name="youtubepointcomhein">Youtube.com hein</string>
 </resources>

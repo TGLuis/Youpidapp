@@ -1,5 +1,7 @@
 package lufra.youpidapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +13,7 @@ import fragments.MainFragment
 import fragments.MyFragment
 import java.util.*
 
+
 class MainActivity : AppCompatActivity() {
     private val TAG = "==== MAINACTIVITY ===="
 
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     //private lateinit var navView: NavigationView
     //private lateinit var drawerLayout: DrawerLayout
     private var lastMenu: String? = null
+    lateinit var discotheque: Discotheque
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()*/
 
         toolbar.setTitle(R.string.app_name)
+        discotheque = Discotheque(this)
 
         //NavigationView
         //navView = this.findViewById(R.id.nav_view)
@@ -69,11 +74,20 @@ class MainActivity : AppCompatActivity() {
         lastMenu = which
         when (which) {
             "home" -> {
-                myMenu.add(R.string.app_name).apply {
+                myMenu.add(R.string.stop).apply {
+                    icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
+                    setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+                    setOnMenuItemClickListener {
+                        discotheque.stopIt()
+                        true
+                    }
+                }
+                myMenu.add(R.string.youtube).apply {
                     icon = ContextCompat.getDrawable(context, R.drawable.ic_icons8_youtube)
                     setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
                     setOnMenuItemClickListener {
-                        Toast.makeText(context, "YOUTUBE", Toast.LENGTH_SHORT).show()
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-QAurzK1czAlnMFOqkfxfw"))
+                        startActivity(browserIntent)
                         true
                     }
                 }

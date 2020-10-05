@@ -2,6 +2,7 @@ package lufra.youpidapp
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.provider.MediaStore
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -10,6 +11,7 @@ class Discotheque(private val context: Context) {
     private val all = HashMap<String, Int>()
     private val random = Random()
     private fun <T,U> Map<T,U>.random(): Map.Entry<T,U> = entries.elementAt(random.nextInt(size))
+    private var player: MediaPlayer = MediaPlayer.create(context, R.raw.pilou)
 
     init {
         all["pilou"] = R.raw.pilou
@@ -54,10 +56,18 @@ class Discotheque(private val context: Context) {
 
 
     fun play(name: String) {
-        MediaPlayer.create(context, all[name]!!).start()
+        stopIt()
+        player.release()
+        player = MediaPlayer.create(context, all[name]!!)
+        player.start()
     }
 
-    fun play_random() {
-        MediaPlayer.create(context, all.random().value).start()
+    fun playRandom() {
+        play(all.random().key)
+    }
+
+    fun stopIt() {
+        if (player.isPlaying)
+            player.stop()
     }
 }
