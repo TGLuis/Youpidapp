@@ -123,6 +123,11 @@ class Discotheque(private val context: Context) {
     }
 
     fun stopAll() {
-        reading.forEach {stopIt(it)}
+        reading.forEach {
+            try {
+                stopIt(it)
+            } catch (e: java.lang.IllegalStateException) {}
+        }
+        reading.clear()
     }
 }
