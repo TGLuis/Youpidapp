@@ -7,6 +7,14 @@
     <!-- Translatable -->
     <string name="app_name">Youpidapp</string>
     <string name="home">Accueil</string>
+    <string name="type">Type de lecture</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+
+    <!-- Discotheque -->
+    <string name="type1">1 seul à la fois</string>
+    <string name="type2">En même temps</string>
+    <string name="type3">Un après l\'autre</string>
 
     <!-- Buttons -->
     <string name="random">Random</string>
@@ -24,7 +32,7 @@
     <string name="it_must_work">It must work</string>
     <string name="jean_didou">Jean Didou</string>
     <string name="le_prof_est_con">Le prof est con</string>
-    <string name="minipub">Auto-pub</string>
+    <string name="minipub">Mini-pub</string>
     <string name="monstre_terrifiant">Monstre terrifiant</string>
     <string name="monstrueusement_long">Monstrueusement long</string>
     <string name="on_va_manger">On va manger</string>
@@ -76,7 +84,7 @@
     </string>
 
     <string name="about_corps_5">
-        L\'app est complètement open-source sous license GPLv3 à part les extraits audio qui restent la propriété du Professeur Vincent Legat.
+        L\'app est complètement open-source sous license GPLv3 à part les extraits audio (et les dessins) qui restent la propriété du Professeur Vincent Legat.
         Vous pouvez contribuer en vous rendant sur le github associé (lien plus bas).
     </string>
 

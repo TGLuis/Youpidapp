@@ -1,16 +1,17 @@
 package lufra.youpidapp
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import fragments.AboutFragment
 import fragments.MainFragment
@@ -86,12 +87,11 @@ class MainActivity : AppCompatActivity() {
                         true
                     }
                 }
-                myMenu.add(R.string.youtube).apply {
-                    icon = ContextCompat.getDrawable(context, R.drawable.ic_icons8_youtube)
-                    setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
+                myMenu.add(R.string.type).apply {
+                    icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
+                    setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
                     setOnMenuItemClickListener {
-                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-QAurzK1czAlnMFOqkfxfw"))
-                        startActivity(browserIntent)
+                        dialogAndSetType()
                         true
                     }
                 }
@@ -100,6 +100,35 @@ class MainActivity : AppCompatActivity() {
                 myMenu.clear()
             }
         }
+    }
+
+    private fun dialogAndSetType() {
+        val viewInflated = LayoutInflater.from(this).inflate(R.layout.simple_spinner_input, this.navView as ViewGroup, false)
+        val theSpinner = viewInflated.findViewById<Spinner>(R.id.input_spinner)
+        val adaptor = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, discotheque.getTypes())
+        var selectedType = 0
+        adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+        theSpinner.adapter = adaptor
+        theSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long ) {
+                    selectedType = p2 + 1
+                }
+            }
+        MaterialAlertDialogBuilder(this, R.style.AlertDialogPositiveBtnFilled)
+            .setView(viewInflated)
+            .setTitle(R.string.type)
+            .setPositiveButton(R.string.ok) { dialog, _ ->
+                discotheque.setType(selectedType)
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .create()
+            .show()
     }
 
     private fun setDrawer() {
