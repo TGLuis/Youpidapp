@@ -76,7 +76,7 @@
     </string>
 
     <string name="about_corps_5">
-        L\'app est complètement open-source sous license MIT à part les extraits audio qui restent la propriété du Professeur Vincent Legat.
+        L\'app est complètement open-source sous license GPLv3 à part les extraits audio qui restent la propriété du Professeur Vincent Legat.
         Vous pouvez contribuer en vous rendant sur le github associé (lien plus bas).
     </string>
 
