@@ -5,10 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
+import fragments.AboutFragment
 import fragments.MainFragment
 import fragments.MyFragment
 import java.util.*
@@ -19,8 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var frags: Stack<MyFragment>
     private lateinit var toolbar: Toolbar
-    //private lateinit var navView: NavigationView
-    //private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var drawerLayout: DrawerLayout
     private var lastMenu: String? = null
     lateinit var discotheque: Discotheque
 
@@ -30,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         // Toolbar
         toolbar = this.findViewById(R.id.my_toolbar)
-        /*drawerLayout = this.findViewById(R.id.drawer_layout)
+        drawerLayout = this.findViewById(R.id.drawer_layout)
         val toggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
@@ -39,14 +43,14 @@ class MainActivity : AppCompatActivity() {
             R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()*/
+        toggle.syncState()
 
         toolbar.setTitle(R.string.app_name)
         discotheque = Discotheque(this)
 
         //NavigationView
-        //navView = this.findViewById(R.id.nav_view)
-        //setDrawer()
+        navView = this.findViewById(R.id.nav_view)
+        setDrawer()
 
         // Fragments
         frags = Stack()
@@ -98,15 +102,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun setDrawer() {
+    private fun setDrawer() {
         val context = this
         navView.menu.clear()
-        navView.menu.add("test").apply {
+        navView.menu.add(R.string.home).apply {
             setOnMenuItemClickListener {
+                drawerLayout.closeDrawers()
+                context.openFragment(MainFragment())
                 true
             }
         }
-    }*/
+        navView.menu.add(R.string.about_title).apply {
+            setOnMenuItemClickListener {
+                drawerLayout.closeDrawers()
+                context.openFragment(AboutFragment())
+                true
+            }
+        }
+    }
 
     fun openFragment(frag: MyFragment, pop: Boolean = false) {
         if (!pop && (frags.empty() || frag::class != this.frags.peek()::class))
@@ -119,9 +132,9 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onBackPressed() {
         when {
-            /*drawerLayout.isDrawerOpen(GravityCompat.START) -> {
+            drawerLayout.isDrawerOpen(GravityCompat.START) -> {
                 drawerLayout.closeDrawer(GravityCompat.START)
-            }*/
+            }
             frags.size >= 2 -> {
                 frags.pop()
                 openFragment(frags.peek(), true)

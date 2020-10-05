@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TEXTE -->
+    <dimen name="text_size_title">24sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <!-- MARGES -->
+    <dimen name="margin_hor_normal">16dp</dimen>
+</resources>

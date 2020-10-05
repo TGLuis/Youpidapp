@@ -16,11 +16,13 @@
 
         <Button
             android:id="@+id/random"
-            android:text="@string/random"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
-            android:layout_marginVertical="20dp" />
+            android:layout_marginVertical="20dp"
+            android:text="@string/random"
+            app:icon="@drawable/ic_random" />
 
         <Button
             android:id="@+id/aucune_chance"

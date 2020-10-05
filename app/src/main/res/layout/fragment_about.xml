@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_title"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_size_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/corps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/corps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_hor_normal"
+        android:layout_marginEnd="@dimen/margin_hor_normal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/corps_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_corps_1"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/corps_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_corps_2"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/corps_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_corps_3"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/corps_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_corps_4"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/corps_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_corps_5"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/corps_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_corps_6"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_normal" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/github_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_github_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

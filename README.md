@@ -9,3 +9,7 @@ Si t'as des commentaires à faire ou autres, si tu te dis que les devs ils sont 
 et les devs te répondront.
 
 ALLEZ VOUS ABONNER sur [YOUTUBE.COM](https://www.youtube.com/channel/UC-QAurzK1czAlnMFOqkfxfw) 
+
+#### License
+Le code source est fourni sous license MIT, mais attention, cela ne concerne que le code source.
+Les extraits audio provenant de la chaîne youtube de Vincent Legat, ceux-ci sont sa propriété exclusive.
