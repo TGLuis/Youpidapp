@@ -23,14 +23,22 @@ class MainFragment: MyFragment() {
         super.onActivityCreated(savedInstanceState)
 
         val parent = context.findViewById<LinearLayout>(R.id.list_of_buttons)
+        iterateOverChildrenAndSetButtons(parent)
+        context.setMenu("home")
+    }
+
+    private fun iterateOverChildrenAndSetButtons(parent: LinearLayout) {
         parent.children.forEach {
-            val idName = resources.getResourceEntryName(it.id)
-            if (idName == "random"){
-                it.setOnClickListener {context.discotheque.playRandom()}
+            if (it::class == LinearLayout::class) {
+                iterateOverChildrenAndSetButtons(it as LinearLayout)
             } else {
-                it.setOnClickListener {context.discotheque.play(idName)}
+                val idName = resources.getResourceEntryName(it.id)
+                if (idName == "random"){
+                    it.setOnClickListener {context.discotheque.playRandom()}
+                } else {
+                    it.setOnClickListener {context.discotheque.play(idName)}
+                }
             }
         }
-        context.setMenu("home")
     }
 }
