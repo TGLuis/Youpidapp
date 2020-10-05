@@ -25,10 +25,10 @@ class MainFragment: MyFragment() {
         val parent = context.findViewById<LinearLayout>(R.id.list_of_buttons)
         parent.children.forEach {
             val idName = resources.getResourceEntryName(it.id)
-            if (idName != "random"){
-                it.setOnClickListener {context.discotheque.play(idName)}
-            } else {
+            if (idName == "random"){
                 it.setOnClickListener {context.discotheque.playRandom()}
+            } else {
+                it.setOnClickListener {context.discotheque.play(idName)}
             }
         }
         context.setMenu("home")

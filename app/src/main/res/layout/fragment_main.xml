@@ -24,6 +24,7 @@
             android:text="@string/random"
             app:icon="@drawable/ic_random" />
 
+        <!-- To work these buttons must have the id corresponding to the resource they play -->
         <Button
             android:id="@+id/aucune_chance"
             android:text="@string/aucune_chance"

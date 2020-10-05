@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                     icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
                     setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
                     setOnMenuItemClickListener {
-                        discotheque.stopIt()
+                        discotheque.stopAll()
                         true
                     }
                 }
