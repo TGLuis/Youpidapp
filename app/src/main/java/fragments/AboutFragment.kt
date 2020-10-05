@@ -22,9 +22,15 @@ class AboutFragment: MyFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val fab: View = context.findViewById(R.id.github_link)
-        fab.setOnClickListener {
+        val fabGithub: View = context.findViewById(R.id.github_link)
+        fabGithub.setOnClickListener {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/TGLuis/Youpidapp"))
+            startActivity(browserIntent)
+        }
+
+        val fabYtb: View = context.findViewById(R.id.youtube_link)
+        fabYtb.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-QAurzK1czAlnMFOqkfxfw"))
             startActivity(browserIntent)
         }
 
