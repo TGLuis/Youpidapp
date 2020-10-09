@@ -28,6 +28,10 @@ class Discotheque(private val context: Context) {
         type = newType
     }
 
+    fun getType(): Int {
+        return type
+    }
+
     fun getTypes(): Array<String> {
         return arrayOf(
             context.getString(R.string.type1),
@@ -49,7 +53,6 @@ class Discotheque(private val context: Context) {
                 }
             }
         } catch (e: java.lang.IllegalStateException) {
-            //stopAll()
             reading.clear()
             playlist.clear()
         }
@@ -66,15 +69,18 @@ class Discotheque(private val context: Context) {
     }
 
     private fun playOne(name: String) {
-        if (reading.size != 0) {
-            stopIt(reading[0])
-            reading[0].release()
-            reading.clear()
+        if (reading.size == 0) {
+            val mp = getPlayer(all[name]!!)
+            mp.setOnCompletionListener { mp.stop() }
+            reading.add(mp)
+            reading[0].start()
+        } else if (reading.size == 1) {
+            reading[0].stop()
+            changeSongAndStart(reading[0], all[name]!!)
+        } else {
+            stopAll()
+            playOne(name)
         }
-        val mp = getPlayer(all[name]!!)
-        mp.setOnCompletionListener { mp.release() }
-        reading.add(mp)
-        reading[0].start()
     }
 
     private fun playStack(name: String) {

@@ -45,9 +45,12 @@ class MainActivity : AppCompatActivity() {
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
         toolbar.setTitle(R.string.app_name)
+
+        // Helper
+        Helper.init(this)
         discotheque = Discotheque(this)
+        discotheque.setType(Helper.getConfigValue("reading_type")!!.toInt())
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)
@@ -106,9 +109,10 @@ class MainActivity : AppCompatActivity() {
         val viewInflated = LayoutInflater.from(this).inflate(R.layout.simple_spinner_input, this.navView as ViewGroup, false)
         val theSpinner = viewInflated.findViewById<Spinner>(R.id.input_spinner)
         val adaptor = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, discotheque.getTypes())
-        var selectedType = 0
+        var selectedType = 1
         adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         theSpinner.adapter = adaptor
+        theSpinner.setSelection(discotheque.getType()-1)
         theSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -169,8 +173,29 @@ class MainActivity : AppCompatActivity() {
                 openFragment(frags.peek(), true)
             }
             else -> {
+                saveState()
                 super.onBackPressed()
             }
         }
+    }
+
+
+    override fun onDestroy() {
+        saveState()
+        super.onDestroy()
+    }
+
+    override fun onPause() {
+        saveState()
+        super.onPause()
+    }
+
+    override fun onStop() {
+        saveState()
+        super.onStop()
+    }
+
+    private fun saveState() {
+        Helper.setConfigValue("reading_type", discotheque.getType().toString())
     }
 }

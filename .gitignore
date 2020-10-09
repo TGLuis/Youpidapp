@@ -12,6 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+key.jks
 
 # Built application files
 *.apk
