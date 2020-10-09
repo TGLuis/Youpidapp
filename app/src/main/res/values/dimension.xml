@@ -9,8 +9,14 @@
     <dimen name="text_size_small">11sp</dimen>
     <!-- MARGES -->
     <dimen name="margin_hor_normal">16dp</dimen>
+    <dimen name="margin_hor_small">10dp</dimen>
     <dimen name="margin_ver_normal">16dp</dimen>
     <dimen name="margin_fab_normal">16dp</dimen>
+    <!-- - boutons - -->
+    <dimen name="margin_btn_margin_hor_normal">40dp</dimen>
+    <dimen name="margin_btn_margin_hor_small">25dp</dimen>
+    <dimen name="margin_btn_margin_hor_smaller">20dp</dimen>
+    <dimen name="margin_btn_margin_ver_normal">20dp</dimen>
     <!-- TAILLE IMAGES -->
     <dimen name="covid_size_big">123dp</dimen>
     <dimen name="covid_size_normal">82dp</dimen>
