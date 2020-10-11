@@ -39,23 +39,24 @@ class Discotheque(private val context: Context) {
             context.getString(R.string.type3))
     }
 
-    fun play(name: String) {
+    fun play(name: String): Int {
         try {
             when (type) {
                 1 -> {
-                    playOne(name)
+                    return playOne(name)
                 }
                 2 -> {
-                    playStack(name)
+                    return playStack(name)
                 }
                 3 -> {
-                    playList(name)
+                    return playList(name)
                 }
             }
         } catch (e: java.lang.IllegalStateException) {
             reading.clear()
             playlist.clear()
         }
+        return 0
     }
 
     private fun getPlayer(id: Int): MediaPlayer {
@@ -68,22 +69,23 @@ class Discotheque(private val context: Context) {
         return mp
     }
 
-    private fun playOne(name: String) {
+    private fun playOne(name: String): Int {
         if (reading.size == 0) {
             val mp = getPlayer(all[name]!!)
             mp.setOnCompletionListener { mp.stop() }
             reading.add(mp)
             reading[0].start()
+            return reading[0].duration
         } else if (reading.size == 1) {
             reading[0].stop()
-            changeSongAndStart(reading[0], all[name]!!)
+            return changeSongAndStart(reading[0], all[name]!!)
         } else {
             stopAll()
-            playOne(name)
+            return playOne(name)
         }
     }
 
-    private fun playStack(name: String) {
+    private fun playStack(name: String): Int {
         val mp = getPlayer(all[name]!!)
         reading.add(mp)
         mp.setOnCompletionListener {
@@ -91,9 +93,10 @@ class Discotheque(private val context: Context) {
             reading.remove(mp)
         }
         mp.start()
+        return mp.duration
     }
 
-    private fun playList(name: String) {
+    private fun playList(name: String): Int {
         if (reading.size != 1) {
             reading.clear()
             val mp = getPlayer(all[name]!!)
@@ -110,17 +113,19 @@ class Discotheque(private val context: Context) {
         } else {
             playlist.add(all[name]!!)
         }
+        return 0
     }
 
-    private fun changeSongAndStart(mp: MediaPlayer, id: Int) {
+    private fun changeSongAndStart(mp: MediaPlayer, id: Int): Int {
         mp.reset()
         mp.setDataSource(context, Uri.parse("android.resource://lufra.youpidapp/$id"))
         mp.prepare()
         mp.start()
+        return mp.duration
     }
 
-    fun playRandom() {
-        play(all.random().key)
+    fun playRandom(): Int {
+        return play(all.random().key)
     }
 
     private fun stopIt(player: MediaPlayer) {

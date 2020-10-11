@@ -1,5 +1,6 @@
 package fragments;
 
+import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,17 +29,30 @@ class MainFragment: MyFragment() {
     }
 
     private fun iterateOverChildrenAndSetButtons(parent: LinearLayout) {
-        parent.children.forEach {
+        parent.children.forEach { it ->
             if (it::class == LinearLayout::class) {
                 iterateOverChildrenAndSetButtons(it as LinearLayout)
             } else {
                 val idName = resources.getResourceEntryName(it.id)
                 if (idName == "random"){
-                    it.setOnClickListener {context.discotheque.playRandom()}
+                    it.setOnClickListener {button ->
+                        val duration = context.discotheque.playRandom()
+                        addAnimator(button, duration.toLong())
+                    }
                 } else {
-                    it.setOnClickListener {context.discotheque.play(idName)}
+                    it.setOnClickListener {button ->
+                        val duration = context.discotheque.play(idName)
+                        addAnimator(button, duration.toLong())
+                    }
                 }
             }
         }
+    }
+
+    private fun addAnimator(view: View, duration: Long) {
+        val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
+        animator.setTarget(view)
+        animator.duration = duration.toLong()
+        animator.start()
     }
 }
