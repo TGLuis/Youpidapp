@@ -2,11 +2,11 @@
 <resources>
     <!-- TEXTE -->
     <dimen name="text_size_title_big">36sp</dimen>
-    <dimen name="text_size_title_normal">24sp</dimen>
-    <dimen name="text_size_title_small">20sp</dimen>
-    <dimen name="text_size_big">20sp</dimen>
-    <dimen name="text_size_normal">14sp</dimen>
-    <dimen name="text_size_small">11sp</dimen>
+    <dimen name="text_size_title_normal">28sp</dimen>
+    <dimen name="text_size_title_small">24sp</dimen>
+    <dimen name="text_size_big">24sp</dimen>
+    <dimen name="text_size_normal">18sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
     <!-- MARGES -->
     <dimen name="margin_hor_normal">16dp</dimen>
     <dimen name="margin_hor_small">10dp</dimen>
@@ -16,7 +16,7 @@
     <dimen name="margin_btn_margin_hor_normal">40dp</dimen>
     <dimen name="margin_btn_margin_hor_small">25dp</dimen>
     <dimen name="margin_btn_margin_hor_smaller">20dp</dimen>
-    <dimen name="margin_btn_margin_ver_normal">20dp</dimen>
+    <dimen name="margin_btn_margin_ver_normal">15dp</dimen>
     <!-- TAILLE IMAGES -->
     <dimen name="covid_size_big">123dp</dimen>
     <dimen name="covid_size_normal">82dp</dimen>
