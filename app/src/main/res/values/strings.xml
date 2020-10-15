@@ -22,11 +22,13 @@
     <string name="aucune_chance">Aucune chance</string>
     <string name="biiiiiiiyoup">Biiiyoup</string>
     <string name="ca_va_prendre_du_temps">ça va prendre du temps</string>
+    <string name="ca_va_vous_faire_mal">ça va vous faire mal</string>
     <string name="charles_pecheur">Charles Pecheur</string>
     <string name="complique">Complique</string>
     <string name="doyen_verleyzen">Doyen Verleyzen</string>
     <string name="elimination">Elimination</string>
     <string name="eliodirupo">Elio di Rupo</string>
+    <string name="ils_ont_le_visage_frappe_par_la_douleur">Frappés par la douleur</string>
     <string name="ikea">Ikea</string>
     <string name="il_est_mort">Il est mort</string>
     <string name="it_must_work">It must work</string>
@@ -35,6 +37,8 @@
     <string name="minipub">Mini-pub</string>
     <string name="monstre_terrifiant">Monstre terrifiant</string>
     <string name="monstrueusement_long">Monstrueusement long</string>
+    <string name="on_aime_pas">On aime pas</string>
+    <string name="on_aime_pas_bis">On aime pas!</string>
     <string name="on_va_manger">On va manger</string>
     <string name="pilou_calme">Pilou (calme)</string>
     <string name="pilou_grandiloquent">Pilou (fort)</string>
@@ -61,6 +65,7 @@
     <string name="ohoui">Oh oui</string>
     <string name="podcast">Podcast</string>
     <string name="singular_matrix">Singular matrix</string>
+    <string name="sprouuuuuutch">Sprouuutch</string>
     <string name="t10_minutes">10 minutes</string>
     <string name="voila_voila">Voila voila</string>
 
