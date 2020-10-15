@@ -62,7 +62,7 @@
                     android:text="@string/ca_va_vous_faire_mal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
                     android:id="@+id/charles_pecheur"
@@ -111,7 +111,7 @@
                     android:text="@string/ils_ont_le_visage_frappe_par_la_douleur"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
                     android:id="@+id/ikea"
@@ -188,14 +188,14 @@
                     android:text="@string/on_aime_pas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
                     android:id="@+id/on_aime_pas_bis"
                     android:text="@string/on_aime_pas_bis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
                     android:id="@+id/on_va_manger"
@@ -292,7 +292,7 @@
                     android:text="@string/sprouuuuuutch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
                     android:id="@+id/t10_minutes"
