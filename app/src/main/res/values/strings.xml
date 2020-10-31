@@ -47,7 +47,7 @@
     <string name="plein_plein_plein">Plein plein</string>
     <string name="premiere_ministre">Premier ministre</string>
     <string name="puree">Purée</string>
-    <string name="regarder_nouvelles">Regarder les nouvelles</string>
+    <string name="regarder_nouvelles">Regarder</string>
     <string name="t11_minutes">11 minutes</string>
     <string name="t1_minute">1 minute</string>
     <string name="t8_minutes">8 minutes</string>
@@ -68,6 +68,15 @@
     <string name="sprouuuuuutch">Sprouuutch</string>
     <string name="t10_minutes">10 minutes</string>
     <string name="voila_voila">Voila voila</string>
+    <string name="aiou">Aïou !</string>
+    <string name="les_bonnes_series">Bonnes séries</string>
+    <string name="donald">Donald</string>
+    <string name="electeurs">Electeurs</string>
+    <string name="energie_cinetique">Énergie cinétique</string>
+    <string name="piece_of_cake">Piece of cake</string>
+    <string name="pilou_concentre">Pilou (concentré)</string>
+    <string name="pilou_rapide">Pilou (rapide)</string>
+    <string name="virus2">Virus 2</string>
 
     <!-- AboutFragment -->
     <string name="about_title">À propos</string>
