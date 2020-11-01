@@ -93,6 +93,13 @@
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
+                    android:id="@+id/tu_as_compris_michel"
+                    android:text="@string/tu_as_compris_michel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
+                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+                <Button
                     android:id="@+id/donald"
                     android:text="@string/donald"
                     android:layout_width="match_parent"
@@ -142,6 +149,13 @@
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
+                    android:id="@+id/fais_confiance"
+                    android:text="@string/fais_confiance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
+                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+                <Button
                     android:id="@+id/ils_ont_le_visage_frappe_par_la_douleur"
                     android:text="@string/ils_ont_le_visage_frappe_par_la_douleur"
                     android:layout_width="match_parent"
@@ -179,6 +193,13 @@
                 <Button
                     android:id="@+id/le_prof_est_con"
                     android:text="@string/le_prof_est_con"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
+                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+                <Button
+                    android:id="@+id/meme_chose"
+                    android:text="@string/meme_chose"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
@@ -232,6 +253,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/list_of_buttons_ver_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <Button
                     android:id="@+id/on_va_manger"
                     android:text="@string/on_va_manger"
@@ -246,12 +273,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/list_of_buttons_ver_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
                 <Button
                     android:id="@+id/pilou"
                     android:text="@string/pilou"
@@ -332,6 +353,13 @@
                 <Button
                     android:id="@+id/regarder_nouvelles"
                     android:text="@string/regarder_nouvelles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
+                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+                <Button
+                    android:id="@+id/relax_michel"
+                    android:text="@string/relax_michel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"

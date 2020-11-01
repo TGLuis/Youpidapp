@@ -77,6 +77,10 @@
     <string name="pilou_concentre">Pilou (concentré)</string>
     <string name="pilou_rapide">Pilou (rapide)</string>
     <string name="virus2">Virus 2</string>
+    <string name="tu_as_compris_michel">Compris Michel ?</string>
+    <string name="fais_confiance">Fais confiance</string>
+    <string name="meme_chose">Même chose</string>
+    <string name="relax_michel">Relax Michel</string>
 
     <!-- AboutFragment -->
     <string name="about_title">À propos</string>
