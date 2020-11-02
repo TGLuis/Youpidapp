@@ -219,13 +219,6 @@
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
-                    android:id="@+id/on_aime_pas"
-                    android:text="@string/on_aime_pas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
                     android:id="@+id/on_aime_pas_bis"
                     android:text="@string/on_aime_pas_bis"
                     android:layout_width="match_parent"
@@ -260,29 +253,8 @@
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
-                    android:id="@+id/pilou_calme"
-                    android:text="@string/pilou_calme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
-                    android:id="@+id/pilou_concentre"
-                    android:text="@string/pilou_concentre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
                     android:id="@+id/pilou_grandiloquent"
                     android:text="@string/pilou_grandiloquent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
-                    android:id="@+id/pilou_rapide"
-                    android:text="@string/pilou_rapide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"

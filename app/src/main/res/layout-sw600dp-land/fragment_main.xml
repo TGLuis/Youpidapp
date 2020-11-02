@@ -162,6 +162,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/list_of_buttons_ver_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <Button
                     android:id="@+id/it_must_work"
                     android:text="@string/it_must_work"
@@ -169,12 +175,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/list_of_buttons_ver_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
                 <Button
                     android:id="@+id/jean_didou"
                     android:text="@string/jean_didou"
@@ -225,13 +225,6 @@
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
-                    android:id="@+id/on_aime_pas"
-                    android:text="@string/on_aime_pas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
                     android:id="@+id/on_aime_pas_bis"
                     android:text="@string/on_aime_pas_bis"
                     android:layout_width="match_parent"
@@ -260,29 +253,8 @@
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
                 <Button
-                    android:id="@+id/pilou_calme"
-                    android:text="@string/pilou_calme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
-                    android:id="@+id/pilou_concentre"
-                    android:text="@string/pilou_concentre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
                     android:id="@+id/pilou_grandiloquent"
                     android:text="@string/pilou_grandiloquent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
-                    android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-                <Button
-                    android:id="@+id/pilou_rapide"
-                    android:text="@string/pilou_rapide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
@@ -315,12 +287,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/list_of_buttons_ver_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
                 <Button
                     android:id="@+id/premiere_ministre"
                     android:text="@string/premiere_ministre"
@@ -335,6 +301,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_small"
                     android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/list_of_buttons_ver_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <Button
                     android:id="@+id/regarder_nouvelles"
                     android:text="@string/regarder_nouvelles"

@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -121,12 +122,15 @@ class MainActivity : AppCompatActivity() {
                     selectedType = p2 + 1
                 }
             }
+        val that = this
+
         MaterialAlertDialogBuilder(this, R.style.AlertDialogPositiveBtnFilled)
             .setView(viewInflated)
             .setTitle(R.string.type)
             .setPositiveButton(R.string.ok) { dialog, _ ->
                 discotheque.setType(selectedType)
-                discotheque.toastOfType()
+                Toast.makeText(that, "Mode de lecture: " + discotheque.getTypes()[discotheque.getType()-1], Toast.LENGTH_LONG).show()
+
                 dialog.dismiss()
             }
             .setNegativeButton(R.string.cancel) { dialog, _ ->
