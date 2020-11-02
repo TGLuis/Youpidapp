@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import fragments.AboutFragment
+import fragments.BoiteFragment
 import fragments.MainFragment
 import fragments.MyFragment
 import java.util.*
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            "project" -> {
+            "nothing" -> {
                 myMenu.clear()
             }
         }
@@ -125,6 +126,7 @@ class MainActivity : AppCompatActivity() {
             .setTitle(R.string.type)
             .setPositiveButton(R.string.ok) { dialog, _ ->
                 discotheque.setType(selectedType)
+                discotheque.toastOfType()
                 dialog.dismiss()
             }
             .setNegativeButton(R.string.cancel) { dialog, _ ->
@@ -142,6 +144,13 @@ class MainActivity : AppCompatActivity() {
             setOnMenuItemClickListener {
                 drawerLayout.closeDrawers()
                 context.openFragment(MainFragment())
+                true
+            }
+        }
+        navView.menu.add(R.string.boite_title).apply {
+            setOnMenuItemClickListener {
+                drawerLayout.closeDrawers()
+                context.openFragment(BoiteFragment())
                 true
             }
         }

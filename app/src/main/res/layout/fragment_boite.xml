@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/boite_title_text"
+            android:text="@string/boite_title_text"
+            android:textSize="@dimen/text_size_title_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_ver_normal"
+            android:layout_marginBottom="@dimen/margin_ver_normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/buzzer_pilou"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buzzer_pilou"
+            android:text="@string/buzzer_pilou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg_round"
+            android:layout_marginTop="@dimen/margin_btn_margin_ver_normal"
+            android:layout_marginBottom="@dimen/margin_btn_margin_ver_normal"
+            app:layout_constraintTop_toBottomOf="@id/boite_title_text"
+            app:layout_constraintBottom_toTopOf="@id/buzzer_piou"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buzzer_piou"
+            android:text="@string/buzzer_piou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg_round"
+            android:layout_marginTop="@dimen/margin_btn_margin_ver_normal"
+            android:layout_marginBottom="@dimen/margin_btn_margin_ver_normal"
+            app:layout_constraintTop_toBottomOf="@id/buzzer_pilou"
+            app:layout_constraintBottom_toTopOf="@id/buzzer_youpidou"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buzzer_youpidou"
+            android:text="@string/buzzer_youpidou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg_round"
+            android:layout_marginTop="@dimen/margin_btn_margin_ver_normal"
+            android:layout_marginBottom="@dimen/margin_btn_margin_ver_normal"
+            app:layout_constraintTop_toBottomOf="@id/buzzer_piou"
+            app:layout_constraintBottom_toTopOf="@id/buzzer_youtube"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buzzer_youtube"
+            android:text="@string/buzzer_youtube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg_round"
+            android:layout_marginTop="@dimen/margin_btn_margin_ver_normal"
+            android:layout_marginBottom="@dimen/margin_btn_margin_ver_normal"
+            app:layout_constraintTop_toBottomOf="@id/buzzer_youpidou"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

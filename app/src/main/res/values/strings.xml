@@ -117,4 +117,12 @@
         Des bisous et Youpidou!
     </string>
     <string name="covid">covid</string>
+
+    <!-- Boitefragment -->
+    <string name="boite_title">Buzzers</string>
+    <string name="boite_title_text">Boites à son aléatoires</string>
+    <string name="buzzer_pilou">Pilou</string>
+    <string name="buzzer_piou">Piou</string>
+    <string name="buzzer_youpidou">Youpidou</string>
+    <string name="buzzer_youtube">Youtube</string>
 </resources>
