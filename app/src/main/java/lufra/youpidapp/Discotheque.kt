@@ -3,6 +3,7 @@ package lufra.youpidapp
 import android.content.Context
 import android.media.MediaPlayer
 import android.net.Uri
+import android.widget.Toast
 import java.lang.reflect.Field
 import java.util.*
 import kotlin.collections.HashMap
@@ -26,6 +27,10 @@ class Discotheque(private val context: Context) {
 
     fun setType(newType: Int) {
         type = newType
+    }
+
+    fun toastOfType() {
+        Toast.makeText(context, "Mode de lecture: " + getTypes()[getType()-1], Toast.LENGTH_LONG).show()
     }
 
     fun getType(): Int {
@@ -128,6 +133,64 @@ class Discotheque(private val context: Context) {
         return play(all.random().key)
     }
 
+    /**
+     * Play a random pilou sound
+     */
+    fun playRdmPilou(): Int {
+        val n = Math.random()
+        if (n < 0.2) {
+           return play("pilou")
+        } else if(n < 0.4) {
+            return play("pilou_calme")
+        } else if(n < 0.6) {
+            return play("pilou_concentre")
+        } else if(n < 0.8) {
+            return play("pilou_grandiloquent")
+        } else {
+            return play("pilou_rapide")
+        }
+    }
+
+    /**
+     * Play a random piou sound
+     */
+    fun playRdmPiou(): Int {
+        val n = Math.random()
+        if (n < 0.5) {
+            return play("piou_piou")
+        } else {
+            return play("piou_piou_triste")
+        }
+    }
+
+    /**
+     * Play a random youpidou sound
+     */
+    fun playRdmYoupidou(): Int {
+        val n = Math.random()
+        if (n < 0.5) {
+            return play("youpidou")
+        } else {
+            return play("youpidou_calme")
+        }
+    }
+
+    /**
+     * Play a random youtube sound
+     */
+    fun playRdmYoutube(): Int {
+        val n = Math.random()
+        if (n < 0.25) {
+            return play("youtube")
+        } else if (n < 0.5) {
+            return play("youtubehein")
+        } else if (n < 0.75) {
+            return play("youtubepointcom")
+        } else {
+            return play("youtubepointcomhein")
+        }
+    }
+
     private fun stopIt(player: MediaPlayer) {
         if (player.isPlaying)
             player.stop()
@@ -140,5 +203,6 @@ class Discotheque(private val context: Context) {
             } catch (e: java.lang.IllegalStateException) {}
         }
         reading.clear()
+        Toast.makeText(context, "Stop", Toast.LENGTH_SHORT).show()
     }
 }

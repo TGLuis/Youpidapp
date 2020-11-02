@@ -12,9 +12,10 @@ import lufra.youpidapp.R
 
 class MainFragment: MyFragment() {
     private lateinit var context: MainActivity
-    override var TAG: String = "===== MAINFRAGMENT ====="
+    override var TAG: String = "=====MAINFRAGMENT====="
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         context = activity as MainActivity
         return inflater.inflate(R.layout.fragment_main, container, false)

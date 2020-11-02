@@ -11,7 +11,22 @@ import lufra.youpidapp.R
 
 class AboutFragment: MyFragment() {
     private lateinit var context: MainActivity
-    override var TAG: String = "===== ABOUTFRAGMENT ====="
+    override var TAG: String = "=====ABOUTFRAGMENT====="
+    val YTB_URLS: Array<String> =
+        arrayOf(
+            "https://youtu.be/miO-FRvDsfs",
+            "https://youtu.be/AtCStX0RurY",
+            "https://youtu.be/exGxhhHS0UE",
+            "https://youtu.be/gAx8znBVux0",
+            "https://youtu.be/rKFG5XcTaVk",
+            "https://youtu.be/bvv2o4YuAwA",
+            "https://youtu.be/rsvvCrKHSnY",
+            "https://youtu.be/EkybbNppEvE",
+            "https://youtu.be/LkjZFRNK9xo",
+            "https://youtu.be/bxobXTOb6fM",
+            "https://youtu.be/xfGsCLoN4Fg",
+            "https://youtu.be/6EGAeQi474o"
+        )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -34,6 +49,13 @@ class AboutFragment: MyFragment() {
             startActivity(browserIntent)
         }
 
-        context.setMenu("home")
+        val covid: View = context.findViewById(R.id.covid)
+        covid.setOnLongClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(YTB_URLS.random()))
+            startActivity(browserIntent)
+            true
+        }
+
+        context.setMenu("nothing")
     }
 }
