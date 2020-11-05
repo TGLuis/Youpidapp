@@ -1,4 +1,4 @@
-package fragments.adapter
+package data
 
 // Pretty much done
 class Sound(val id: Int, val name: String) {

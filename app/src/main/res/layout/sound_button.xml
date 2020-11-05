@@ -9,7 +9,7 @@
     <!--<data>
         <variable
             name="model"
-            type="fragments.adapter.Sound"/>
+            type="data.Sound"/>
     </data>-->
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

@@ -9,8 +9,9 @@ import android.widget.LinearLayout
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import fragments.adapter.Sound
-import fragments.adapter.SoundAdapter
+import data.Sound
+import adapter.SoundAdapter
+import android.widget.Button
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 
@@ -51,46 +52,12 @@ class MainFragment: MyFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val parent = context.findViewById<LinearLayout>(R.id.list_of_buttons)
-        iterateOverChildrenAndSetButtons2(parent)
+        val randomButton = context.findViewById<Button>(R.id.button_random)
+        randomButton.setOnClickListener { button ->
+            val duration = context.discotheque.playRandom()
+            addAnimator(button, duration.toLong())
+        }
         context.setMenu("home")
-    }
-
-    private fun iterateOverChildrenAndSetButtons2(parent: LinearLayout) {
-        parent.children.forEach { it ->
-            if (it::class == LinearLayout::class) {
-                iterateOverChildrenAndSetButtons2(it as LinearLayout)
-            } else {
-                val idName = resources.getResourceEntryName(it.id)
-                if (idName == "random") {
-                    it.setOnClickListener { button ->
-                        val duration = context.discotheque.playRandom()
-                        addAnimator(button, duration.toLong())
-                    }
-                }
-            }
-        }
-    }
-
-    private fun iterateOverChildrenAndSetButtons(parent: LinearLayout) {
-        parent.children.forEach { it ->
-            if (it::class == LinearLayout::class) {
-                iterateOverChildrenAndSetButtons(it as LinearLayout)
-            } else {
-                val idName = resources.getResourceEntryName(it.id)
-                if (idName == "random"){
-                    it.setOnClickListener {button ->
-                        val duration = context.discotheque.playRandom()
-                        addAnimator(button, duration.toLong())
-                    }
-                } else {
-                    it.setOnClickListener {button ->
-                        val duration = context.discotheque.play(idName)
-                        addAnimator(button, duration.toLong())
-                    }
-                }
-            }
-        }
     }
 
     private fun addAnimator(view: View, duration: Long) {

@@ -1,10 +1,11 @@
-package fragments.adapter
+package adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import data.Sound
 import lufra.youpidapp.R
 // Import used when using data binding
 //import lufra.youpidapp.databinding.SoundButtonBinding
