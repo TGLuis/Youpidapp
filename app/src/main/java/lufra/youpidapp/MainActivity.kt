@@ -1,5 +1,8 @@
 package lufra.youpidapp
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
@@ -33,6 +36,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // widget
+        val intent = Intent(this, PlayRandomWidget::class.java)
+        intent.action = "ACTIVITY_ACTION"
+        AppWidgetManager.getInstance(application).getAppWidgetIds(ComponentName(application, PlayRandomWidget::class.java))
+        sendBroadcast(intent)
 
         // Toolbar
         toolbar = this.findViewById(R.id.my_toolbar)

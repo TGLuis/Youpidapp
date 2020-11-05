@@ -21,4 +21,6 @@
     <dimen name="covid_size_big">123dp</dimen>
     <dimen name="covid_size_normal">82dp</dimen>
     <dimen name="covid_size_small">54dp</dimen>
+    <!-- OTHER -->
+    <dimen name="widget_margin">8dp</dimen>
 </resources>

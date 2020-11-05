@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:id="@+id/name_sound"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:text="@string/random" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:text="@string/random"
+        android:id="@+id/widget_button"
+        android:src="@drawable/ic_baseline_play_circle_outline_24"
+        android:background="@color/trans"
+        android:contentDescription="@string/random" />
+
+</LinearLayout>
