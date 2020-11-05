@@ -24,7 +24,16 @@
             android:text="@string/random"
             app:icon="@drawable/ic_random" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sound_recyclerview"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+            android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal"/>
+
         <!-- To work these buttons must have the id corresponding to the resource they play -->
+        <!--
         <Button
             android:id="@+id/aiou"
             android:text="@string/aiou"
@@ -410,6 +419,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
             android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
+        -->
     </LinearLayout>
 
 </ScrollView>
