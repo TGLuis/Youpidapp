@@ -1,7 +1,15 @@
 package data
 
+import lufra.youpidapp.Helper
+
 // Pretty much done
 class Sound(val id: Int, val name: String) {
+    val displayText: String
+        get() {
+            val id = Helper.context.resources.getIdentifier(name, "string", "lufra.youpidapp")
+            if (id == 0) return "No DisplayText"
+            return Helper.context.resources.getString(id)
+        }
     companion object {
         val ALL_SOUNDS_STR = listOf(
             "aiou", "aucune_chance", "biiiiiiiyoup", "les_bonnes_series", "ca_va_prendre_du_temps",

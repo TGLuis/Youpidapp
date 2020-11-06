@@ -1,5 +1,6 @@
 package adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,9 @@ import lufra.youpidapp.R
 //import lufra.youpidapp.databinding.SoundButtonBinding
 
 class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): RecyclerView.Adapter<SoundAdapter.SoundHolder>() {
+    companion object {
+        val TAG = "Youpidadd::SoundAdapter"
+    }
     private val soundsList: MutableList<Sound> = _SoundsList.toMutableList()
 
     interface Listener {
@@ -43,21 +47,19 @@ class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): Re
     }
 
     override fun onBindViewHolder(holder: SoundHolder, position: Int) {
-        holder.sound = soundsList[position]
-        //holder.button.text = holder.sound!!.displayText
-        holder.button.text = getDisplayText(holder)
+        val sound = soundsList[position]
+        holder.sound = sound
+        holder.button.text = sound.displayText
         // If using data binding, use this instead:
         // holder.bind(sounds[position])
+        Log.i(TAG, "VH bound $holder ${holder.button}")
     }
 
-    private fun getDisplayText(soundHolder: SoundHolder): String {
-        val sound = soundHolder.sound!!
-        val name = sound.name
-        val context = soundHolder.button.context
-        val id = context.resources.getIdentifier(name, "string", "lufra.youpidapp")
-        if (id == 0) return "No DisplayText"
-        val str = context.resources.getString(id)
-        return str
+    override fun onViewRecycled(holder: SoundHolder) {
+        super.onViewRecycled(holder)
+        Log.i(TAG, "VH recycled $holder")
+        val anim = holder.button.animation
+        Log.i(TAG, "$anim")
     }
 
     fun add(sound: Sound) {
