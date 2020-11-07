@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import data.Sound
@@ -34,37 +32,32 @@ class MainFragment: MyFragment() {
         viewAdapter = SoundAdapter(Sound.ALL_SOUNDS_STR.mapIndexed { index, s ->
             Sound(index, s)
         }, object: SoundAdapter.Listener {
-            override fun onSoundClicked(soundHolder: SoundAdapter.SoundHolder) {
-                soundHolder.setIsRecyclable(false)
-                val button = soundHolder.button
-                val soundName = soundHolder.sound!!.name
+            override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
+                viewAdapter.notifyItemChanged(soundViewHolder.adapterPosition, SoundAdapter.SoundItemAnimation.SOUND_CLIKED)
+                /*val soundName = soundViewHolder.sound!!.name
                 val duration = context.discotheque.play(soundName)
-                val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
-                animator.setTarget(button)
-                animator.duration = duration.toLong()
-                animator.addListener(object: Animator.AnimatorListener {
-                    val TAG = "MainFragment::onCreateView::AnimatorListener"
-                    override fun onAnimationEnd(animation: Animator?) {
-                        Log.i(TAG, "animation for $soundHolder ${soundHolder.button} end $animation")
-                    }
-                    override fun onAnimationStart(animation: Animator?) {
-                        Log.i(TAG, "animation for $soundHolder ${soundHolder.button} start $animation")
-                    }
-                    override fun onAnimationCancel(animation: Animator?) {
-                        Log.i(TAG, "animation for $soundHolder cancel $animation")
-                    }
-                    override fun onAnimationRepeat(animation: Animator?) {
-                        Log.i(TAG, "animation for $soundHolder repeat $animation")
-                    }
-                })
-                animator.start()
-                Log.i(TAG, "Clicked, $animator")
+                val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)*/
+                //val soundHolderAnimation = SoundHolderAnimation(animator)
+                //soundViewHolder.addAnimation(soundHolderAnimation)  // That way, the animation will be paused/resumed
+                /*animator.setTarget(soundViewHolder.button)
+                animator.duration = duration.toLong()*/
+                Log.i(TAG, "Clicked")
             }
         })
+        fun f(soundViewHolder: SoundAdapter.SoundViewHolder): Animator {
+            val soundName = soundViewHolder.sound!!.name
+            val duration = context.discotheque.play(soundName)
+            val animator: Animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
+            animator.duration = duration.toLong()
+            return animator
+        }
+        val itemAnim = SoundAdapter.SoundItemAnimation(::f)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
+            itemAnimator = itemAnim
         }
+        Log.i(TAG, "RecyclerView ItemAnimator: ${recyclerView.itemAnimator}")
 
         // TODO need to add onCreateOptionsMenu handler + the SearchView, and onQueryTextChange + onQueryTextSubmit handlers
 
@@ -89,4 +82,24 @@ class MainFragment: MyFragment() {
         animator.start()
         Log.i(TAG, "$view, $animator")
     }
+
+    /*class SoundHolderAnimation(val animator: Animator): SoundAdapter.Animation {
+        val TAG = "MainFragment::SoundHolderAnimation"
+        init {
+            //
+        }
+
+        override fun pause(soundViewHolder: SoundAdapter.SoundViewHolder) {
+            animator.pause()  // If it fails, it may be because it is not running on the same thread ¯\_(ツ)_/¯
+            animator.setTarget(null)
+            Log.i(TAG, "anim pause, $animator")
+        }
+
+        override fun resume(soundViewHolder: SoundAdapter.SoundViewHolder) {
+            val button = soundViewHolder.button
+            animator.setTarget(button)
+            animator.resume()
+            Log.i(TAG, "anim resumed, $animator")
+        }
+    }*/
 }
