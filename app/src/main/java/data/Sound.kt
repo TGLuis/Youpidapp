@@ -43,4 +43,8 @@ class Sound(val id: Int, val name: String) {
         result = 31 * result + name.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return "Sound(id=$id, name='$name')"
+    }
 }

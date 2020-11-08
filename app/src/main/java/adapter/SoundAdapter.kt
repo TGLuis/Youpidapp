@@ -11,6 +11,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import data.Sound
+import lufra.youpidapp.Helper
 import lufra.youpidapp.R
 // Import used when using data binding
 //import lufra.youpidapp.databinding.SoundButtonBinding
@@ -45,6 +46,7 @@ class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): Re
     }
 
     private val soundsList: MutableList<Sound> = _SoundsList.toMutableList()
+    private val activeViewForSound = HashMap<Sound, View>()
 
     interface Listener {
         fun onSoundClicked(soundViewHolder: SoundViewHolder)
@@ -81,17 +83,20 @@ class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): Re
             val holder = newHolder as SoundViewHolder
             if (preInfo is SoundItemHolderInfo) {
                 assert(oldHolder == newHolder) { "Different holders, not good" }
+                Log.d(TAG, "$preInfo, $postInfo, $oldHolder")
                 if (preInfo.clicked) {  // TODO check below, the meaning of this is ill-defined
                     val animator = animatorGenerator(holder)
                     animator.addListener(object: AnimatorListenerAdapter() {
                         val TAG = SoundItemAnimation.TAG + "::animateChange::AnimatorListenerAdapter"
                         override fun onAnimationEnd(animation: Animator?) {
                             Log.i(TAG, "onAnimEnd, $animation, $holder")
+                            //holder.button.setHasTransientState(false)
                             dispatchAnimationFinished(holder)
                         }
                     })
                     animator.setTarget(holder.button)
                     animator.start()
+                    Log.d(TAG, "Start anim $animator")
                 }
                 return true
             }
@@ -112,13 +117,23 @@ class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): Re
         }
     }
 
-    class SoundViewHolder(itemView: View, listener: Listener) : RecyclerView.ViewHolder(itemView) {
+    inner class SoundViewHolder(itemView: View, listener: Listener) : RecyclerView.ViewHolder(itemView) {
 
         val button: Button = itemView.findViewById(R.id.sound_button_id)
         var sound: Sound? = null
+        private var attached = false
+
+        val activeView: View?
+            get() {
+                return when {
+                    attached -> button
+                    else -> null
+                }
+            }
 
         init {
             button.setOnClickListener {
+                //button.setHasTransientState(true)
                 listener.onSoundClicked(this)
             }
         }
@@ -126,10 +141,17 @@ class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): Re
         fun bind(sound: Sound) {
             this.sound = sound
             button.text = sound.displayText
+            button.setBackgroundColor(Helper.context.resources.getColor(R.color.colorPrimary, null))
             //soundHolder?.animation?.resume(this)
+            attached = true
+            activeViewForSound[sound] = button
+            Log.i(TAG, "VH $this bind called ")
         }
 
         fun unbind() {
+            attached = false
+            activeViewForSound.remove(sound)
+            Log.i(TAG, "VH $this unbind called")
             //soundHolder?.animation?.pause(this)
         }
 
@@ -178,6 +200,15 @@ class SoundAdapter(_SoundsList: List<Sound>, private val listener: Listener): Re
     override fun onViewDetachedFromWindow(holder: SoundViewHolder) {
         super.onViewDetachedFromWindow(holder)
         Log.i(TAG, "VH detached $holder")
+    }
+
+    override fun onFailedToRecycleView(holder: SoundViewHolder): Boolean {
+        Log.i(TAG, "VH failed to recycle: $holder")
+        return super.onFailedToRecycleView(holder)
+    }
+
+    fun getActiveView(sound: Sound): View? {
+        return activeViewForSound[sound]
     }
 
     fun add(sound: Sound) {

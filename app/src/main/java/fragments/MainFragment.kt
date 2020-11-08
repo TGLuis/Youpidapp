@@ -1,6 +1,5 @@
 package fragments
 
-import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import data.Sound
 import adapter.SoundAdapter
-import android.animation.Animator
+import android.animation.*
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
@@ -33,29 +33,52 @@ class MainFragment: MyFragment() {
             Sound(index, s)
         }, object: SoundAdapter.Listener {
             override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
-                viewAdapter.notifyItemChanged(soundViewHolder.adapterPosition, SoundAdapter.SoundItemAnimation.SOUND_CLIKED)
-                /*val soundName = soundViewHolder.sound!!.name
+                //viewAdapter.notifyItemChanged(soundViewHolder.adapterPosition, SoundAdapter.SoundItemAnimation.SOUND_CLIKED)
+                //soundViewHolder.button.setHasTransientState(true)
+                val sound = soundViewHolder.sound!!
+                val soundName = sound.name
                 val duration = context.discotheque.play(soundName)
-                val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)*/
+                val animator = AnimatorInflater.loadAnimator(context, R.animator.fade) as ValueAnimator
+                animator.addUpdateListener(object: ValueAnimator.AnimatorUpdateListener {
+                    var cnt = 0
+                    override fun onAnimationUpdate(va: ValueAnimator?) {
+                        /*cnt = (cnt + 1) % 50
+                        if (cnt != 0) {
+                            return
+                        }*/
+                        val animVal = va?.animatedValue as Int
+                        val button = viewAdapter.getActiveView(sound)
+                        //Log.i(TAG, "Animated $cnt sound $sound and button $button")
+                        button?.setBackgroundColor(animVal)
+                    }
+                })
+                animator.addListener(object: AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator?) {
+                        //soundViewHolder.button.setHasTransientState(false)
+                    }
+                })
+                //val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
                 //val soundHolderAnimation = SoundHolderAnimation(animator)
                 //soundViewHolder.addAnimation(soundHolderAnimation)  // That way, the animation will be paused/resumed
-                /*animator.setTarget(soundViewHolder.button)
-                animator.duration = duration.toLong()*/
-                Log.i(TAG, "Clicked")
+                //animator.setTarget(soundViewHolder.button)
+                animator.duration = duration.toLong()
+                animator.start()
+                Log.i(TAG, "Clicked, $soundViewHolder")
             }
         })
-        fun f(soundViewHolder: SoundAdapter.SoundViewHolder): Animator {
+        // FIXME it is disgusting that this method
+        /*fun f(soundViewHolder: SoundAdapter.SoundViewHolder): Animator {
             val soundName = soundViewHolder.sound!!.name
             val duration = context.discotheque.play(soundName)
             val animator: Animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
             animator.duration = duration.toLong()
             return animator
-        }
-        val itemAnim = SoundAdapter.SoundItemAnimation(::f)
+        }*/
+        //val itemAnim = SoundAdapter.SoundItemAnimation(::f)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
-            itemAnimator = itemAnim
+            //itemAnimator = itemAnim
         }
         Log.i(TAG, "RecyclerView ItemAnimator: ${recyclerView.itemAnimator}")
 
