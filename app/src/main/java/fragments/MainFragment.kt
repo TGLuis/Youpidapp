@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import data.Sound
 import adapter.SoundAdapter
 import android.animation.*
+import android.content.res.Configuration
 import android.util.Log
 import android.widget.Button
+import androidx.recyclerview.widget.GridLayoutManager
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 
@@ -18,8 +19,10 @@ class MainFragment: MyFragment() {
     private lateinit var context: MainActivity
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: SoundAdapter
-    private lateinit var viewLayoutManager: RecyclerView.LayoutManager
+    private lateinit var viewLayoutManager: GridLayoutManager
+    private var viewColumnCount = 1
     override var TAG: String = "=====MAINFRAGMENT====="
+
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
             soundViewHolder.button.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
@@ -32,7 +35,8 @@ class MainFragment: MyFragment() {
         context = activity as MainActivity
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         // Not sure if the following should be put in onCreateView or in onActivityCreated
-        viewLayoutManager = LinearLayoutManager(view.context)
+        viewColumnCount = resources.getInteger(R.integer.grid_column_count)
+        viewLayoutManager = GridLayoutManager(view.context, viewColumnCount)
         viewAdapter = SoundAdapter(Sound.ALL_SOUNDS_STR.mapIndexed { index, s ->
             Sound(index, s)
         }, object: SoundAdapter.SoundClickedListener {
@@ -63,6 +67,13 @@ class MainFragment: MyFragment() {
             playTargetedAnimator(button, duration.toLong())
         }
         context.setMenu("home")
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d(TAG, "config changed: $newConfig")
+        viewColumnCount = resources.getInteger(R.integer.grid_column_count)
+        viewLayoutManager.spanCount = viewColumnCount
     }
 
     private fun playWtfAnimator(sound: Sound, duration: Long) {
