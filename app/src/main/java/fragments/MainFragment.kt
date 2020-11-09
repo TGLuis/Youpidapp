@@ -10,7 +10,6 @@ import data.Sound
 import adapter.SoundAdapter
 import android.animation.*
 import android.util.Log
-import android.view.animation.AnimationUtils
 import android.widget.Button
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
@@ -21,6 +20,11 @@ class MainFragment: MyFragment() {
     private lateinit var viewAdapter: SoundAdapter
     private lateinit var viewLayoutManager: RecyclerView.LayoutManager
     override var TAG: String = "=====MAINFRAGMENT====="
+    private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
+        override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
+            soundViewHolder.button.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -31,56 +35,19 @@ class MainFragment: MyFragment() {
         viewLayoutManager = LinearLayoutManager(view.context)
         viewAdapter = SoundAdapter(Sound.ALL_SOUNDS_STR.mapIndexed { index, s ->
             Sound(index, s)
-        }, object: SoundAdapter.Listener {
+        }, object: SoundAdapter.SoundClickedListener {
             override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
-                //viewAdapter.notifyItemChanged(soundViewHolder.adapterPosition, SoundAdapter.SoundItemAnimation.SOUND_CLIKED)
-                //soundViewHolder.button.setHasTransientState(true)
                 val sound = soundViewHolder.sound!!
                 val soundName = sound.name
                 val duration = context.discotheque.play(soundName)
-                val animator = AnimatorInflater.loadAnimator(context, R.animator.fade) as ValueAnimator
-                animator.addUpdateListener(object: ValueAnimator.AnimatorUpdateListener {
-                    var cnt = 0
-                    override fun onAnimationUpdate(va: ValueAnimator?) {
-                        /*cnt = (cnt + 1) % 50
-                        if (cnt != 0) {
-                            return
-                        }*/
-                        val animVal = va?.animatedValue as Int
-                        val button = viewAdapter.getActiveView(sound)
-                        //Log.i(TAG, "Animated $cnt sound $sound and button $button")
-                        button?.setBackgroundColor(animVal)
-                    }
-                })
-                animator.addListener(object: AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
-                        //soundViewHolder.button.setHasTransientState(false)
-                    }
-                })
-                //val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
-                //val soundHolderAnimation = SoundHolderAnimation(animator)
-                //soundViewHolder.addAnimation(soundHolderAnimation)  // That way, the animation will be paused/resumed
-                //animator.setTarget(soundViewHolder.button)
-                animator.duration = duration.toLong()
-                animator.start()
-                Log.i(TAG, "Clicked, $soundViewHolder")
+                playWtfAnimator(sound, duration.toLong())
+                Log.d(TAG, "Clicked, $soundViewHolder")
             }
         })
-        // FIXME it is disgusting that this method
-        /*fun f(soundViewHolder: SoundAdapter.SoundViewHolder): Animator {
-            val soundName = soundViewHolder.sound!!.name
-            val duration = context.discotheque.play(soundName)
-            val animator: Animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
-            animator.duration = duration.toLong()
-            return animator
-        }*/
-        //val itemAnim = SoundAdapter.SoundItemAnimation(::f)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
-            //itemAnimator = itemAnim
         }
-        Log.i(TAG, "RecyclerView ItemAnimator: ${recyclerView.itemAnimator}")
 
         // TODO need to add onCreateOptionsMenu handler + the SearchView, and onQueryTextChange + onQueryTextSubmit handlers
 
@@ -93,36 +60,29 @@ class MainFragment: MyFragment() {
         val randomButton = context.findViewById<Button>(R.id.button_random)
         randomButton.setOnClickListener { button ->
             val duration = context.discotheque.playRandom()
-            addAnimator(button, duration.toLong())
+            playTargetedAnimator(button, duration.toLong())
         }
         context.setMenu("home")
     }
 
-    private fun addAnimator(view: View, duration: Long) {
-        val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
-        animator.setTarget(view)
-        animator.duration = duration.toLong()
+    private fun playWtfAnimator(sound: Sound, duration: Long) {
+        // Actually it is an ObjectAnimator, but we will not specify its target
+        val animator = AnimatorInflater.loadAnimator(context, R.animator.fade) as ValueAnimator
+        animator.addUpdateListener { va ->
+            val animVal = va?.animatedValue as Int
+            val viewHolder = viewAdapter.getActiveViewHolder(sound)
+            viewHolder?.button?.setBackgroundColor(animVal)
+            viewHolder?.cleanupAnimationListener = animCleanup
+        }
+        animator.duration = duration
         animator.start()
-        Log.i(TAG, "$view, $animator")
     }
 
-    /*class SoundHolderAnimation(val animator: Animator): SoundAdapter.Animation {
-        val TAG = "MainFragment::SoundHolderAnimation"
-        init {
-            //
-        }
-
-        override fun pause(soundViewHolder: SoundAdapter.SoundViewHolder) {
-            animator.pause()  // If it fails, it may be because it is not running on the same thread ¯\_(ツ)_/¯
-            animator.setTarget(null)
-            Log.i(TAG, "anim pause, $animator")
-        }
-
-        override fun resume(soundViewHolder: SoundAdapter.SoundViewHolder) {
-            val button = soundViewHolder.button
-            animator.setTarget(button)
-            animator.resume()
-            Log.i(TAG, "anim resumed, $animator")
-        }
-    }*/
+    private fun playTargetedAnimator(view: View, duration: Long) {
+        val animator = AnimatorInflater.loadAnimator(context, R.animator.fade)
+        animator.setTarget(view)
+        animator.duration = duration
+        animator.start()
+        Log.d(TAG, "$view, $animator")
+    }
 }
