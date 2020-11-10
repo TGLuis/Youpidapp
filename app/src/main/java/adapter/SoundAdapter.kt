@@ -1,23 +1,44 @@
 package adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SortedList
+import androidx.recyclerview.widget.SortedListAdapterCallback
 import data.Sound
 import lufra.youpidapp.R
-// Import used when using data binding
-//import lufra.youpidapp.databinding.SoundButtonBinding
 
-class SoundAdapter(_SoundsList: List<Sound>, private val soundClickedListener: SoundClickedListener): RecyclerView.Adapter<SoundAdapter.SoundViewHolder>() {
+class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: SoundClickedListener): RecyclerView.Adapter<SoundAdapter.SoundViewHolder>() {
 
-    companion object {
-        const val TAG = "Youpidapp::SoundAdapter"
+    private var mComparator: Comparator<Sound> = Comparator { o1, o2 ->
+        /**
+         * If any of the sound has a negative or zero id, then compare using the id: they are compared in inverse order
+         * (i.e., id -2 > id -1). If both have a positive id, then compare using the name.
+         */
+        val s1 = o1!!
+        val s2 = o2!!
+        if (s1.id <= 0 || s2.id <= 0)
+            s2.id - s1.id
+        else
+            s1.name.compareTo(s2.name)
     }
+    private val mSortedList = SortedList(Sound::class.java, object: SortedListAdapterCallback<Sound>(this) {
+        override fun compare(o1: Sound?, o2: Sound?): Int {
+            return mComparator.compare(o1, o2)
+        }
 
-    private val soundsList: MutableList<Sound> = _SoundsList.toMutableList()
+        override fun areContentsTheSame(oldItem: Sound?, newItem: Sound?): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areItemsTheSame(item1: Sound?, item2: Sound?): Boolean {
+            return item1 === item2
+        }
+    }).apply {
+        addAll(_soundsList)
+    }
     private val activeViewHolderForSound = HashMap<Sound, SoundViewHolder>()
 
     interface SoundClickedListener {
@@ -32,12 +53,7 @@ class SoundAdapter(_SoundsList: List<Sound>, private val soundClickedListener: S
     class SoundViewHolder(itemView: View, soundClickedListener: SoundClickedListener) : RecyclerView.ViewHolder(itemView) {
 
         val button: Button = itemView.findViewById(R.id.sound_button_id)
-        var sound: Sound? = null  // TODO replace by a call to the adapter, like the following; may fail because I don't know what is the correct position to use: adapter or layout
-        /*lateinit var adapter: SoundAdapter
-        val sound: Sound?
-            get() {
-                return adapter.soundsList[adapterPosition]
-            }*/
+        var sound: Sound? = null
         var cleanupAnimationListener: CleanupAnimationListener? = null
 
         init {
@@ -50,13 +66,11 @@ class SoundAdapter(_SoundsList: List<Sound>, private val soundClickedListener: S
             this.sound = sound
             button.text = sound.displayText
             adapter.activeViewHolderForSound[sound] = this
-            Log.d(TAG, "VH $this bind called ")
         }
 
         fun unbind(adapter: SoundAdapter) {
             adapter.activeViewHolderForSound.remove(sound)
             cleanupAnimationListener?.onUnbind(this)
-            Log.d(TAG, "VH $this unbind called")
         }
     }
 
@@ -66,14 +80,12 @@ class SoundAdapter(_SoundsList: List<Sound>, private val soundClickedListener: S
     }
 
     override fun onBindViewHolder(holder: SoundViewHolder, position: Int) {
-        holder.bind(soundsList[position], this)
-        Log.d(TAG, "VH bound $holder ${holder.button}")
+        holder.bind(mSortedList[position], this)
     }
 
     override fun onViewRecycled(holder: SoundViewHolder) {
         super.onViewRecycled(holder)
         holder.unbind(this)
-        Log.d(TAG, "VH recycled $holder")
     }
 
     fun getActiveViewHolder(sound: Sound): SoundViewHolder? {
@@ -81,6 +93,6 @@ class SoundAdapter(_SoundsList: List<Sound>, private val soundClickedListener: S
     }
 
     override fun getItemCount(): Int {
-        return soundsList.size
+        return mSortedList.size()
     }
 }

@@ -47,7 +47,7 @@ class MainFragment: MyFragment() {
         viewColumnCount = resources.getInteger(R.integer.grid_column_count)
         viewLayoutManager = GridLayoutManager(view.context, viewColumnCount)
         viewAdapter = SoundAdapter(Sound.ALL_SOUNDS_STR.mapIndexed { index, s ->
-            Sound(index, s)
+            Sound(index+1, s)
         }, soundClickedListener)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
@@ -93,6 +93,5 @@ class MainFragment: MyFragment() {
         animator.setTarget(view)
         animator.duration = duration
         animator.start()
-        Log.d(TAG, "$view, $animator")
     }
 }
