@@ -32,19 +32,10 @@ class Sound(val id: Int, val name: String) {
 
         other as Sound
 
-        if (id != other.id) return false
-        if (name != other.name) return false
-
-        return true
+        return id == other.id && name == other.name
     }
 
-    override fun hashCode(): Int {
-        var result = id
-        result = 31 * result + name.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = 31 * id + name.hashCode()
 
-    override fun toString(): String {
-        return "Sound(id=$id, name='$name')"
-    }
+    override fun toString(): String = "Sound(id=$id, name='$name')"
 }

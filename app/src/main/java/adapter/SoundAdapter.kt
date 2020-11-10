@@ -80,22 +80,6 @@ class SoundAdapter(_SoundsList: List<Sound>, private val soundClickedListener: S
         return activeViewHolderForSound[sound]
     }
 
-    fun add(sound: Sound) {
-        soundsList.add(sound)
-    }
-
-    fun add(sounds: List<Sound>) {
-        soundsList.addAll(sounds)
-    }
-
-    fun remove(sound: Sound) {
-        soundsList.remove(sound)
-    }
-
-    fun remove(sounds: List<Sound>) {
-        soundsList.removeAll(sounds)  // Maybe needs to use another method
-    }
-
     override fun getItemCount(): Int {
         return soundsList.size
     }

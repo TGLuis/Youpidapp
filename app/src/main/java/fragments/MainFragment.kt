@@ -23,6 +23,15 @@ class MainFragment: MyFragment() {
     private var viewColumnCount = 1
     override var TAG: String = "=====MAINFRAGMENT====="
 
+    private val soundClickedListener = object: SoundAdapter.SoundClickedListener {
+        override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
+            val sound = soundViewHolder.sound!!
+            val soundName = sound.name
+            val duration = context.discotheque.play(soundName)
+            playWtfAnimator(sound, duration.toLong())
+            Log.d(TAG, "Clicked, $soundViewHolder")
+        }
+    }
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
             soundViewHolder.button.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
@@ -39,21 +48,11 @@ class MainFragment: MyFragment() {
         viewLayoutManager = GridLayoutManager(view.context, viewColumnCount)
         viewAdapter = SoundAdapter(Sound.ALL_SOUNDS_STR.mapIndexed { index, s ->
             Sound(index, s)
-        }, object: SoundAdapter.SoundClickedListener {
-            override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
-                val sound = soundViewHolder.sound!!
-                val soundName = sound.name
-                val duration = context.discotheque.play(soundName)
-                playWtfAnimator(sound, duration.toLong())
-                Log.d(TAG, "Clicked, $soundViewHolder")
-            }
-        })
+        }, soundClickedListener)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
         }
-
-        // TODO need to add onCreateOptionsMenu handler + the SearchView, and onQueryTextChange + onQueryTextSubmit handlers
 
         return view
     }

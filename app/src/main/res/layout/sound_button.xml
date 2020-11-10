@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This will be used for data binding, but it works also without -->
-<!--
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
--->
-    <!-- This will be used for data binding -->
-    <!--<data>
-        <variable
-            name="model"
-            type="data.Sound"/>
-    </data>-->
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -19,10 +7,8 @@
     <!-- TODO: change the default string to something else -->
     <Button
             android:id="@+id/sound_button_id"
-            android:text="@string/aiou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
             android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal" />
 </LinearLayout>
-<!--</layout>-->
