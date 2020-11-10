@@ -25,6 +25,17 @@ class Discotheque(private val context: Context) {
         }
     }
 
+    private fun getAllSoundIds(): List<String> {
+        return all.keys.toList()
+    }
+
+    fun getAllSound(): List<List<String>> {
+        return getAllSoundIds().map { id ->
+            val string_id = context.resources.getIdentifier(id, "string", context.packageName)
+            listOf(context.getString(string_id), id)
+        }
+    }
+
     fun setType(newType: Int) {
         type = newType
     }

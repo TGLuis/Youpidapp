@@ -4,6 +4,9 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -37,12 +40,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // widget
-        val intent = Intent(this, PlayRandomWidget::class.java)
-        intent.action = "ACTIVITY_ACTION"
-        AppWidgetManager.getInstance(application).getAppWidgetIds(ComponentName(application, PlayRandomWidget::class.java))
-        sendBroadcast(intent)
-
         // Toolbar
         toolbar = this.findViewById(R.id.my_toolbar)
         drawerLayout = this.findViewById(R.id.drawer_layout)
@@ -60,7 +57,14 @@ class MainActivity : AppCompatActivity() {
         // Helper
         Helper.init(this)
         discotheque = Discotheque(this)
-        discotheque.setType(Helper.getConfigValue("reading_type")!!.toInt())
+        var type = Helper.getConfigValue("reading_type")
+        while (type == null) {
+            Helper.restart(this)
+            Thread.sleep(50)
+            type = Helper.getConfigValue("reading_type")
+            Log.e("MainActivity", "restart reading type")
+        }
+        discotheque.setType(type!!.toInt())
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)

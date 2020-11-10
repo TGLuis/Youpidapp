@@ -11,6 +11,7 @@ import java.util.*
 
 object Helper {
     private const val TAG = "==== HELPER ===="
+    private const val fileName = "config.properties"
     lateinit var context: MainActivity
     private lateinit var resources: Resources
     private lateinit var properties: Properties
@@ -21,7 +22,6 @@ object Helper {
         resources = context.resources
         properties = Properties()
         try {
-            val fileName = "config.properties"
             f = File(context.filesDir.path + "/" + fileName)
             if (f.exists()) {
                 properties.load(FileReader(f))
@@ -38,6 +38,18 @@ object Helper {
             Log.e(TAG, "Failed to open config file. " + e.message)
             //e.printStackTrace()
         }
+    }
+
+    fun restart(c: Context) {
+        try {
+            f = File(context.filesDir.path + "/" + fileName)
+            if (f.exists()) {
+                f.delete()
+            }
+        } catch (e: Resources.NotFoundException) {
+            Log.e(TAG, "Unable to find the config file: " + e.message)
+        }
+        this.init(c)
     }
 
     private fun initElements() {
