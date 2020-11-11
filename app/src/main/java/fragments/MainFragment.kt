@@ -12,6 +12,7 @@ import android.content.res.Configuration
 import android.util.Log
 import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
+import lufra.youpidapp.Helper
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 
@@ -46,9 +47,7 @@ class MainFragment: MyFragment() {
         // Not sure if the following should be put in onCreateView or in onActivityCreated
         viewColumnCount = resources.getInteger(R.integer.grid_column_count)
         viewLayoutManager = GridLayoutManager(view.context, viewColumnCount)
-        viewAdapter = SoundAdapter(Sound.ALL_SOUNDS_STR.mapIndexed { index, s ->
-            Sound(index+1, s)
-        }, soundClickedListener)
+        viewAdapter = SoundAdapter(Helper.getSounds(), soundClickedListener)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
