@@ -2,223 +2,278 @@
   "sounds": [
     {
       "id": 1,
-      "name": "aiou"
+      "name": "aiou",
+      "displaytext": "Aïou !"
     },
     {
       "id": 2,
-      "name": "aucune_chance"
+      "name": "aucune_chance",
+      "displaytext": "Aucune chance"
     },
     {
       "id": 3,
-      "name": "biiiiiiiyoup"
+      "name": "biiiiiiiyoup",
+      "displaytext": "Biiiyoup"
     },
     {
       "id": 4,
-      "name": "les_bonnes_series"
+      "name": "les_bonnes_series",
+      "displaytext": "Bonnes séries"
     },
     {
       "id": 5,
-      "name": "ca_va_prendre_du_temps"
+      "name": "ca_va_prendre_du_temps",
+      "displaytext": "Ça va prendre du temps"
     },
     {
       "id": 6,
-      "name": "ca_va_vous_faire_mal"
+      "name": "ca_va_vous_faire_mal",
+      "displaytext": "Ça va vous faire mal"
     },
     {
       "id": 7,
-      "name": "charles_pecheur"
+      "name": "charles_pecheur",
+      "displaytext": "Charles Pecheur"
     },
     {
       "id": 8,
-      "name": "complique"
+      "name": "complique",
+      "displaytext": "Compliqué"
     },
     {
       "id": 9,
-      "name": "donald"
+      "name": "donald",
+      "displaytext": "Donald"
     },
     {
       "id": 10,
-      "name": "do_not_worry"
+      "name": "do_not_worry",
+      "displaytext": "Do not worry"
     },
     {
       "id": 11,
-      "name": "doyen_verleysen"
+      "name": "doyen_verleysen",
+      "displaytext": "Doyen Verleyzen"
     },
     {
       "id": 12,
-      "name": "electeurs"
+      "name": "electeurs",
+      "displaytext": "Électeurs"
     },
     {
       "id": 13,
-      "name": "elimination"
+      "name": "elimination",
+      "displaytext": "Élimination"
     },
     {
       "id": 14,
-      "name": "eliodirupo"
+      "name": "eliodirupo",
+      "displaytext": "Elio di Rupo"
     },
     {
       "id": 15,
-      "name": "energie_cinetique"
+      "name": "energie_cinetique",
+      "displaytext": "Énergie cinétique"
     },
     {
       "id": 16,
-      "name": "ils_ont_le_visage_frappe_par_la_douleur"
+      "name": "ils_ont_le_visage_frappe_par_la_douleur",
+      "displaytext": "Frappé par la douleur"
     },
     {
       "id": 17,
-      "name": "ikea"
+      "name": "ikea",
+      "displaytext": "Ikea"
     },
     {
       "id": 18,
-      "name": "il_est_mort"
+      "name": "il_est_mort",
+      "displaytext": "Il est mort"
     },
     {
       "id": 19,
-      "name": "it_must_work"
+      "name": "it_must_work",
+      "displaytext": "It must work"
     },
     {
       "id": 20,
-      "name": "jean_didou"
+      "name": "jean_didou",
+      "displaytext": "Jean-Didou"
     },
     {
       "id": 21,
-      "name": "le_prof_est_con"
+      "name": "le_prof_est_con",
+      "displaytext": "Le prof est con"
     },
     {
       "id": 22,
-      "name": "mettez_vos_masques"
+      "name": "mettez_vos_masques",
+      "displaytext": "Mettez vos masques"
     },
     {
       "id": 23,
-      "name": "minipub"
+      "name": "minipub",
+      "displaytext": "Mini-pub"
     },
     {
       "id": 24,
-      "name": "monstre_terrifiant"
+      "name": "monstre_terrifiant",
+      "displaytext": "Monstre terrifiant"
     },
     {
       "id": 25,
-      "name": "monstrueusement_long"
+      "name": "monstrueusement_long",
+      "displaytext": "Monstrueusement long"
     },
     {
       "id": 26,
-      "name": "ohoui"
+      "name": "ohoui",
+      "displaytext": "Oh oui"
     },
     {
       "id": 27,
-      "name": "on_aime_pas_bis"
+      "name": "on_aime_pas_bis",
+      "displaytext": "On aime pas!"
     },
     {
       "id": 28,
-      "name": "on_va_manger"
+      "name": "on_va_manger",
+      "displaytext": "On va manger"
     },
     {
       "id": 29,
-      "name": "piece_of_cake"
+      "name": "piece_of_cake",
+      "displaytext": "Piece of cake"
     },
     {
       "id": 30,
-      "name": "pilou_calme"
+      "name": "pilou_calme",
+      "displaytext": "Pilou (calme)"
     },
     {
       "id": 31,
-      "name": "pilou_grandiloquent"
+      "name": "pilou_grandiloquent",
+      "displaytext": "Pilou (fort)"
     },
     {
       "id": 32,
-      "name": "piou_piou"
+      "name": "piou_piou",
+      "displaytext": "Piou piou"
     },
     {
       "id": 33,
-      "name": "piou_piou_triste"
+      "name": "piou_piou_triste",
+      "displaytext": "Piou piou (triste)"
     },
     {
       "id": 34,
-      "name": "plein_plein_plein"
+      "name": "plein_plein_plein",
+      "displaytext": "Plein plein"
     },
     {
       "id": 35,
-      "name": "podcast"
+      "name": "podcast",
+      "displaytext": "Podcast"
     },
     {
       "id": 36,
-      "name": "premiere_ministre"
+      "name": "premiere_ministre",
+      "displaytext": "Première ministre"
     },
     {
       "id": 37,
-      "name": "puree"
+      "name": "puree",
+      "displaytext": "Purée"
     },
     {
       "id": 38,
-      "name": "regarder_nouvelles"
+      "name": "regarder_nouvelles",
+      "displaytext": "Regarder les nouvelles"
     },
     {
       "id": 39,
-      "name": "singular_matrix"
+      "name": "singular_matrix",
+      "displaytext": "Singular matrix"
     },
     {
       "id": 40,
-      "name": "sprouuuuuutch"
+      "name": "sprouuuuuutch",
+      "displaytext": "Sprouuutch"
     },
     {
       "id": 41,
-      "name": "t10_minutes"
+      "name": "t10_minutes",
+      "displaytext": "10 minutes"
     },
     {
       "id": 42,
-      "name": "t11_minutes"
+      "name": "t11_minutes",
+      "displaytext": "11 minutes"
     },
     {
       "id": 43,
-      "name": "t1_minute"
+      "name": "t1_minute",
+      "displaytext": "1 minute"
     },
     {
       "id": 44,
-      "name": "t8_minutes"
+      "name": "t8_minutes",
+      "displaytext": "8 minutes"
     },
     {
       "id": 45,
-      "name": "temps_dingue"
+      "name": "temps_dingue",
+      "displaytext": "Temps dingue"
     },
     {
       "id": 46,
-      "name": "tintin"
+      "name": "tintin",
+      "displaytext": "Tintin"
     },
     {
       "id": 47,
-      "name": "vilain_vilain"
+      "name": "vilain_vilain",
+      "displaytext": "Vilain"
     },
     {
       "id": 48,
-      "name": "virus2"
+      "name": "virus2",
+      "displaytext": "Virus 2"
     },
     {
       "id": 49,
-      "name": "voila_voila"
+      "name": "voila_voila",
+      "displaytext": "Voilà voilà"
     },
     {
       "id": 50,
-      "name": "youpidou"
+      "name": "youpidou",
+      "displaytext": "Youpidou"
     },
     {
       "id": 51,
-      "name": "youpidou_calme"
+      "name": "youpidou_calme",
+      "displaytext": "Youpidou (calme)"
     },
     {
       "id": 52,
-      "name": "youtube"
+      "name": "youtube",
+      "displaytext": "YouTube"
     },
     {
       "id": 53,
-      "name": "youtubehein"
+      "name": "youtubehein",
+      "displaytext": "YouTube hein"
     },
     {
       "id": 54,
-      "name": "youtubepointcom"
+      "name": "youtubepointcom",
+      "displaytext": "YouTube.com"
     },
     {
       "id": 55,
-      "name": "youtubepointcomhein"
+      "name": "youtubepointcomhein",
+      "displaytext": "YouTube.com hein"
     }
   ]
 }

@@ -57,24 +57,6 @@ object Helper {
     }
 
     private fun initSoundDB() {
-        /*val inputStream = resources.openRawResource(R.raw.aaaadb)
-        val builder = StringWriter()
-        try {
-            val reader = BufferedReader(InputStreamReader(inputStream))
-            var n: Int
-            val buffer = CharArray(1024)
-            n = reader.read(buffer)
-            while (n != -1) {
-                builder.write(buffer, 0, n)
-                n = reader.read(buffer)
-            }
-        } catch (e: IOException) {
-            // We are in a mess
-            Log.d(TAG, "Failed to read sounds, the app will crash, exception $e")
-        } finally {
-            inputStream.close()
-        }
-        jsonStr = builder.toString()*/
         jsonStr = resources.openRawResource(R.raw.aaaadb).bufferedReader().use { it.readText() }
         jsonObj = JSONObject(jsonStr)
     }
@@ -82,7 +64,11 @@ object Helper {
     fun getSounds(): List<Sound> {
         val jsonSoundsArray = jsonObj.getJSONArray("sounds")
         return (0 until jsonSoundsArray.length()).map { jsonSoundsArray[it] as JSONObject }.map {
-            Sound(it.getInt("id"), it.getString("name"))
+            Sound(
+                it.getInt("id"),
+                it.getString("name"),
+                it.getString("displaytext"),
+            )
         }
     }
 }

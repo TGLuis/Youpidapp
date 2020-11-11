@@ -1,15 +1,10 @@
 package data
 
-import lufra.youpidapp.Helper
-
-// Pretty much done
-class Sound(val id: Int, val name: String) {
+class Sound(
+    val id: Int,
+    val name: String,
     val displayText: String
-        get() {
-            val id = Helper.context.resources.getIdentifier(name, "string", "lufra.youpidapp")
-            if (id == 0) return "No DisplayText"
-            return Helper.context.resources.getString(id)
-        }
+) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
