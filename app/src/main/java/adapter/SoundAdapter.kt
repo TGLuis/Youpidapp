@@ -24,6 +24,7 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
         else
             s1.name.compareTo(s2.name)
     }
+    private val mSoundsList = _soundsList.toMutableList()
     private val mSortedList = SortedList(Sound::class.java, object: SortedListAdapterCallback<Sound>(this) {
         override fun compare(o1: Sound?, o2: Sound?): Int {
             return mComparator.compare(o1, o2)
@@ -48,6 +49,15 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
     /** Used for informing the front-end that the button was unbound, and thus, its properties should be restored to the initial state. */
     interface CleanupAnimationListener {
         fun onUnbind(soundViewHolder: SoundViewHolder)
+    }
+
+    // Kotlin evil machinery for lazyness ^^
+    operator fun <T> SortedList<T>.iterator(): Iterator<T> {
+        return object : Iterator<T> {
+            private var i = 0
+            override fun hasNext(): Boolean = i < this@iterator.size()
+            override fun next(): T = this@iterator[i++]
+        }
     }
 
     class SoundViewHolder(itemView: View, soundClickedListener: SoundClickedListener) : RecyclerView.ViewHolder(itemView) {
@@ -94,5 +104,28 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
 
     override fun getItemCount(): Int {
         return mSortedList.size()
+    }
+
+    fun filter(query: String?) {
+        if (query == null)
+            return
+        val queryLowercase = query.toLowerCase()
+        val filteredList = mutableListOf<Sound>()
+        for (sound in mSoundsList)
+            if (sound.displayText.toLowerCase().contains(queryLowercase))
+                filteredList.add(sound)
+        replaceAll(filteredList)
+    }
+
+    fun remove(sounds: List<Sound>) {
+        // I keep this one because it is complicated to rewrite
+        mSortedList.beginBatchedUpdates()
+        for (sound in sounds)
+            mSortedList.remove(sound)
+        mSortedList.endBatchedUpdates()
+    }
+
+    fun replaceAll(sounds: List<Sound>) {
+        mSortedList.replaceAll(sounds)
     }
 }

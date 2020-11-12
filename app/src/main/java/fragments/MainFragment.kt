@@ -11,6 +11,7 @@ import android.animation.*
 import android.content.res.Configuration
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import lufra.youpidapp.Helper
 import lufra.youpidapp.MainActivity
@@ -36,6 +37,16 @@ class MainFragment: MyFragment() {
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
             soundViewHolder.button.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+        }
+    }
+    private val soundFilterListener = object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            return false
+        }
+        override fun onQueryTextChange(newText: String?): Boolean {
+            viewAdapter.filter(newText)
+            recyclerView.scrollToPosition(0)
+            return true
         }
     }
 
@@ -64,7 +75,9 @@ class MainFragment: MyFragment() {
             val duration = context.discotheque.playRandom()
             playTargetedAnimator(button, duration.toLong())
         }
-        context.setMenu("home")
+        context.setMenu("soundbox")
+        // Mandatory to do this now...
+        context.setFilterQueryTextListener(soundFilterListener)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

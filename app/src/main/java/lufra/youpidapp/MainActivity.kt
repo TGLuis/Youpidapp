@@ -8,6 +8,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
+    private var searchMenuItem: MenuItem? = null
     private var lastMenu: String? = null
     lateinit var discotheque: Discotheque
 
@@ -71,19 +73,30 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Contextual menu, create dynamically the menu in function of the parameter 'which'
-     * If 'which' is "home" then it will create the menu for the home.
-     * If 'which' is "project" it will create the menu for every screen with a project.
+     * There are three recognized menu configurations:
+     * - "soundbox" for the soundbox; contains a search widget, a button to stop
+     *   the playlist and a button to select the playing type;
+     * - "buzzbox" for the buzzer box; contains the same items as the soundbox but without the search widget;
+     * - "none" for fragments that don't need a toolbar.
      */
-    fun setMenu(which: String, force: Boolean = false) {
+    fun setMenu(which: String) {
         val context = this
         val myMenu = toolbar.menu
-        if (!force && lastMenu != null && lastMenu == which)
+        if (which == lastMenu)
             return
-        if (force)
-            myMenu.clear()
+        myMenu.clear()
         lastMenu = which
+        if (which == "soundbox") {
+            searchMenuItem = myMenu.add(R.string.search).apply {
+                icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_search_24)
+                actionView = SearchView(context)
+                setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
+            }
+        } else {
+            searchMenuItem = null
+        }
         when (which) {
-            "home" -> {
+            "soundbox", "buzzbox" -> {
                 myMenu.add(R.string.stop).apply {
                     icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
                     setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
@@ -178,6 +191,7 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onBackPressed() {
         when {
+            isSearchOpened() -> closesearchIfOpen()
             drawerLayout.isDrawerOpen(GravityCompat.START) -> {
                 drawerLayout.closeDrawer(GravityCompat.START)
             }
@@ -190,6 +204,16 @@ class MainActivity : AppCompatActivity() {
                 super.onBackPressed()
             }
         }
+    }
+
+    private fun isSearchOpened(): Boolean = searchMenuItem?.isActionViewExpanded == true
+
+    private fun closesearchIfOpen() {
+        searchMenuItem?.collapseActionView()
+    }
+
+    fun setFilterQueryTextListener(listener: SearchView.OnQueryTextListener) {
+        (searchMenuItem?.actionView as SearchView?)?.setOnQueryTextListener(listener)
     }
 
 

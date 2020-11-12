@@ -41,7 +41,7 @@ class BoiteFragment: MyFragment() {
             context.discotheque.playRdmYoutube()
         }
 
-        context.setMenu("home")
+        context.setMenu("buzzbox")
         context.setTitle(R.string.boite_title)
     }
 }

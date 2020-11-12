@@ -10,6 +10,7 @@
     <string name="type">Type de lecture</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+    <string name="search">Rechercher</string>
 
     <!-- Discotheque -->
     <string name="type1">1 seul à la fois</string>
