@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.SortedList
 import androidx.recyclerview.widget.SortedListAdapterCallback
 import data.Sound
 import lufra.youpidapp.R
+import java.text.Normalizer
 
 class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: SoundClickedListener): RecyclerView.Adapter<SoundAdapter.SoundViewHolder>() {
 
@@ -106,13 +107,15 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
         return mSortedList.size()
     }
 
+    private fun normalizeString(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replace("\\p{Mn}+".toRegex(), "").toLowerCase()
+
     fun filter(query: String?) {
         if (query == null)
             return
-        val queryLowercase = query.toLowerCase()
+        val queryNormalized = normalizeString(query)
         val filteredList = mutableListOf<Sound>()
         for (sound in mSoundsList)
-            if (sound.displayText.toLowerCase().contains(queryLowercase))
+            if (normalizeString(sound.displayText).contains(queryNormalized))
                 filteredList.add(sound)
         replaceAll(filteredList)
     }
