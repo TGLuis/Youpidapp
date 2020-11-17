@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android">
-    <objectAnimator
-        android:propertyName="backgroundColor"
-        android:duration="1000"
-        android:valueFrom="@color/colorPrimaryDark"
-        android:valueTo="@color/colorPrimary"
-        android:startOffset="0"
-        android:repeatCount="0" />
-</set>
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:propertyName="backgroundColor"
+    android:duration="1000"
+    android:valueFrom="@color/colorPrimaryDark"
+    android:valueTo="@color/colorPrimary"
+    android:startOffset="0"
+    android:repeatCount="0" />
