@@ -121,8 +121,8 @@
     <!-- Boitefragment -->
     <string name="boite_title">Buzzers</string>
     <string name="boite_title_text">Boites à son aléatoires</string>
-    <string name="buzzer_pilou">Pilou</string>
-    <string name="buzzer_piou">Piou</string>
-    <string name="buzzer_youpidou">Youpidou</string>
-    <string name="buzzer_youtube">Youtube</string>
+    <string name="buzzer_pilou">Pilou\n\n</string>
+    <string name="buzzer_piou">Piou\n\n</string>
+    <string name="buzzer_youpidou">Youpidou\n\n</string>
+    <string name="buzzer_youtube">Youtube\n\n</string>
 </resources>
