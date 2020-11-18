@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                 icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_search_24)
                 actionView = SearchView(context)
                 setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
+                (actionView as SearchView).maxWidth = Integer.MAX_VALUE
             }
         } else {
             searchMenuItem = null

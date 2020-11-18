@@ -3,277 +3,332 @@
     {
       "id": 1,
       "name": "aiou",
-      "displaytext": "Aïou !"
+      "displaytext": "Aïou !",
+      "transcript": "Aïou !"
     },
     {
       "id": 2,
       "name": "aucune_chance",
-      "displaytext": "Aucune chance"
+      "displaytext": "Aucune chance",
+      "transcript": "Y'a absolument aucune chance que tu puisses réussir ton examen de fin d'année hein"
     },
     {
       "id": 3,
       "name": "biiiiiiiyoup",
-      "displaytext": "Biiiyoup"
+      "displaytext": "Biiiyoup",
+      "transcript": "Biiiiiiiiyoup biyoupiyoupiyoupiyou"
     },
     {
       "id": 4,
-      "name": "les_bonnes_series",
-      "displaytext": "Bonnes séries"
+      "name": "bonnes_series",
+      "displaytext": "Bonnes séries",
+      "transcript": "Les bonnes séries, on ne les arrête pas si vite"
     },
     {
       "id": 5,
       "name": "ca_va_prendre_du_temps",
-      "displaytext": "Ça va prendre du temps"
+      "displaytext": "Ça va prendre du temps",
+      "transcript": "Alors là tu vas voir, ça va prendre du temps"
     },
     {
       "id": 6,
       "name": "ca_va_vous_faire_mal",
-      "displaytext": "Ça va vous faire mal"
+      "displaytext": "Ça va vous faire mal",
+      "transcript": "Ça va vous faire mal"
     },
     {
       "id": 7,
       "name": "charles_pecheur",
-      "displaytext": "Charles Pecheur"
+      "displaytext": "Charles Pecheur",
+      "transcript": "Charles Pecheur"
     },
     {
       "id": 8,
       "name": "complique",
-      "displaytext": "Compliqué"
+      "displaytext": "Compliqué",
+      "transcript": "C'est compliqué compliqué compliqué compliqué compliquéhein"
     },
     {
       "id": 9,
       "name": "donald",
-      "displaytext": "Donald"
+      "displaytext": "Donald",
+      "transcript": "Ouh, il va pas être content Donald"
     },
     {
       "id": 10,
       "name": "do_not_worry",
-      "displaytext": "Do not worry"
+      "displaytext": "Do not worry",
+      "transcript": "Do not worry, tu t'en fais pas, tu t'énerves pas"
     },
     {
       "id": 11,
       "name": "doyen_verleysen",
-      "displaytext": "Doyen Verleyzen"
+      "displaytext": "Doyen Verleysen",
+      "transcript": "Doyen hein, Verleysen hein"
     },
     {
       "id": 12,
       "name": "electeurs",
-      "displaytext": "Électeurs"
+      "displaytext": "Électeurs",
+      "transcript": "Quand Donald Trump perd des votes, Joe Biden les récupère. Quand Joe Biden perd des votes, Donald Trump les récupère. Puis, quand tu perds des électeurs un peu partout, ça c'est les forces dissipatives, on perd des électeurs"
     },
     {
       "id": 13,
       "name": "elimination",
-      "displaytext": "Élimination"
+      "displaytext": "Élimination",
+      "transcript": "Il y a l'élimination"
     },
     {
       "id": 14,
       "name": "eliodirupo",
-      "displaytext": "Elio di Rupo"
+      "displaytext": "Elio di Rupo",
+      "transcript": "D'Elio di Rupo hein"
     },
     {
       "id": 15,
       "name": "energie_cinetique",
-      "displaytext": "Énergie cinétique"
+      "displaytext": "Énergie cinétique",
+      "transcript": "Moi je suis l'énergie cinétique"
     },
     {
       "id": 16,
-      "name": "ils_ont_le_visage_frappe_par_la_douleur",
-      "displaytext": "Frappé par la douleur"
+      "name": "frappe_par_la_douleur",
+      "displaytext": "Frappé par la douleur",
+      "transcript": "Ils ont le visage frappé par la douleur"
     },
     {
       "id": 17,
       "name": "ikea",
-      "displaytext": "Ikea"
+      "displaytext": "Ikea",
+      "transcript": "Oui donc vous pouvez aller acheter vos meubles chez Ikea ou autre"
     },
     {
       "id": 18,
       "name": "il_est_mort",
-      "displaytext": "Il est mort"
+      "displaytext": "Il est mort",
+      "transcript": "Voilà, il est mort"
     },
     {
       "id": 19,
       "name": "it_must_work",
-      "displaytext": "It must work"
+      "displaytext": "It must work",
+      "transcript": "Bon, normalement, it must work"
     },
     {
       "id": 20,
       "name": "jean_didou",
-      "displaytext": "Jean-Didou"
+      "displaytext": "Jean-Didou",
+      "transcript": "Jean-Didou aussi hein"
     },
     {
       "id": 21,
       "name": "le_prof_est_con",
-      "displaytext": "Le prof est con"
+      "displaytext": "Le prof est con",
+      "transcript": "Le prof est con"
     },
     {
       "id": 22,
       "name": "mettez_vos_masques",
-      "displaytext": "Mettez vos masques"
+      "displaytext": "Mettez vos masques",
+      "transcript": "Si vous portez pas votre masque, inévitablement notre gentille première ministre Wilmès sera au courant, et elle verra que vous ne respectez pas bien les condition sanitaires en cours"
     },
     {
       "id": 23,
       "name": "minipub",
-      "displaytext": "Mini-pub"
+      "displaytext": "Mini-pub",
+      "transcript": "Tu n'oublies pas, tu vas sur la chaine Vincent Legat. Bon là il y a des trucs de mécanique des fluides, mais, tu n'oublies pas, il faut aller les voir hein. Donc, tu regardes, tu t'inscris à la chaine, tu vas voir la chaine, tu vas regarder les podcasts de Vincent Legat. Pasque, si tu regardes suffisamment... Alors je signale aussi que le nombre d'abonnés n'est pas encore suffisant. Si tu n'es pas abonné à la chaine Vincent Legat, YouTube, y'a absolument aucune chance que tu puisses réussir ton examen de fin d'année hein. Pasque c'est un prérequis indispensable de voir tous les podcasts et d'être inscrit à la chaine"
     },
     {
       "id": 24,
       "name": "monstre_terrifiant",
-      "displaytext": "Monstre terrifiant"
+      "displaytext": "Monstre terrifiant",
+      "transcript": "C'est un monstre terrifiant"
     },
     {
       "id": 25,
       "name": "monstrueusement_long",
-      "displaytext": "Monstrueusement long"
+      "displaytext": "Monstrueusement long",
+      "transcript": "Monstrueusement long"
     },
     {
       "id": 26,
       "name": "ohoui",
-      "displaytext": "Oh oui"
+      "displaytext": "Oh oui",
+      "transcript": "Oh oui"
     },
     {
       "id": 27,
       "name": "on_aime_pas_bis",
-      "displaytext": "On aime pas!"
+      "displaytext": "On aime pas!",
+      "transcript": "On aime pas!"
     },
     {
       "id": 28,
       "name": "on_va_manger",
-      "displaytext": "On va manger"
+      "displaytext": "On va manger",
+      "transcript": "Ben je vais ptet aller manger, on va prendre une petite bière, ou je sais pas, bah oui vous pouvez prendre votre café"
     },
     {
       "id": 29,
       "name": "piece_of_cake",
-      "displaytext": "Piece of cake"
+      "displaytext": "Piece of cake",
+      "transcript": "Ben piece of cake ce cours in fine, on s'demande pourquoi c'est compliqué"
     },
     {
       "id": 30,
       "name": "pilou_calme",
-      "displaytext": "Pilou (calme)"
+      "displaytext": "Pilou (calme)",
+      "transcript": "Pilou pilou pilou"
     },
     {
       "id": 31,
       "name": "pilou_grandiloquent",
-      "displaytext": "Pilou (fort)"
+      "displaytext": "Pilou (fort)",
+      "transcript": "PILOU PILOU PILOU PILOU PILOU"
     },
     {
       "id": 32,
       "name": "piou_piou",
-      "displaytext": "Piou piou"
+      "displaytext": "Piou piou",
+      "transcript": "Piou piou"
     },
     {
       "id": 33,
       "name": "piou_piou_triste",
-      "displaytext": "Piou piou (triste)"
+      "displaytext": "Piou piou (triste)",
+      "transcript": "Piou piou piou piou"
     },
     {
       "id": 34,
       "name": "plein_plein_plein",
-      "displaytext": "Plein plein"
+      "displaytext": "Plein plein",
+      "transcript": "Elle est pleine pleine pleine"
     },
     {
       "id": 35,
       "name": "podcast",
-      "displaytext": "Podcast"
+      "displaytext": "Podcast",
+      "transcript": "Donc ici, tu as un podcast, qui est l'enregistrement d'un autre podcast ! T'imagines maintenant que tu es en train de visualiser ce podcast dans un podcast que tu es en train de faire ! Ca c'est dingue à mort hein ! T'y as vi ?"
     },
     {
       "id": 36,
       "name": "premiere_ministre",
-      "displaytext": "Première ministre"
+      "displaytext": "Première ministre",
+      "transcript": "Et et..et et notre gentille première ministre hein pourquoi pas"
     },
     {
       "id": 37,
       "name": "puree",
-      "displaytext": "Purée"
+      "displaytext": "Purée",
+      "transcript": "Purée !"
     },
     {
       "id": 38,
       "name": "regarder_nouvelles",
-      "displaytext": "Regarder les nouvelles"
+      "displaytext": "Regarder les nouvelles",
+      "transcript": "On va regarder les nouvelles courantes, euh oui qu'est-ce qu'il s'y passe, euh, voilà la presse nationale, on va regarder peut-être les informations"
     },
     {
       "id": 39,
       "name": "singular_matrix",
-      "displaytext": "Singular matrix"
+      "displaytext": "Singular matrix",
+      "transcript": "BHA ! GLAA ! PBRUT ! Ouh ça ça a l'air chaud ! TRACEBACK MOST RECENT CALL LAST ! My nice program laïni-cromcrum ! Krich kroush brash wram ! RHAAAHH SINGULAR MATRIX ! Hhaaa singular matrix ! Ho hum qu'est-ce que c'est singular matrix ?"
     },
     {
       "id": 40,
       "name": "sprouuuuuutch",
-      "displaytext": "Sprouuutch"
+      "displaytext": "Sprouuutch",
+      "transcript": "Elle fait SPROUUUTCH !"
     },
     {
       "id": 41,
       "name": "t10_minutes",
-      "displaytext": "10 minutes"
+      "displaytext": "10 minutes",
+      "transcript": "Il est toujours en train de tourner, nous en sommes à 10 minutes au lieu de 6 secondes ! Ha ! Purée ! Mais ça prend vachement plus de temps ! Mais oui !"
     },
     {
       "id": 42,
       "name": "t11_minutes",
-      "displaytext": "11 minutes"
+      "displaytext": "11 minutes",
+      "transcript": "Hhaaa ! 11 minutes ! Damnation !"
     },
     {
       "id": 43,
       "name": "t1_minute",
-      "displaytext": "1 minute"
+      "displaytext": "1 minute",
+      "transcript": "1 minute ! Oohhh damnation !"
     },
     {
       "id": 44,
       "name": "t8_minutes",
-      "displaytext": "8 minutes"
+      "displaytext": "8 minutes",
+      "transcript": "Ca fait 8 minutes qu'il tourne ! Purée !"
     },
     {
       "id": 45,
       "name": "temps_dingue",
-      "displaytext": "Temps dingue"
+      "displaytext": "Temps dingue",
+      "transcript": "MAis ça prend un temps dingue ce truc-là ! On y arrivera jamais !"
     },
     {
       "id": 46,
       "name": "tintin",
-      "displaytext": "Tintin"
+      "displaytext": "Tintin",
+      "transcript": "Tintin"
     },
     {
       "id": 47,
       "name": "vilain_vilain",
-      "displaytext": "Vilain"
+      "displaytext": "Vilain",
+      "transcript": "Il est vilain vilain vilain !"
     },
     {
       "id": 48,
       "name": "virus2",
-      "displaytext": "Virus 2"
+      "displaytext": "Virus 2",
+      "transcript": "Vous avez raté Virus 1 ? Vous êtes déçu ? J'ai une bonne nouvelle pour vous. On vient de sortir Virus DEUX ! Encore mieux, encore plus grand, encore plus effrayant, encore PLUS GRAND ! Virus 2, la nouvelle super-production de l'Ecole Polytechnique de Louvain ! Et vous savez quoi ? J'ai même entendu parler qu'on était en train de préparer Virus 3 pour octobre, non ! mars 2021. Les bonnes séries, on n'les arrête pas si vite."
     },
     {
       "id": 49,
       "name": "voila_voila",
-      "displaytext": "Voilà voilà"
+      "displaytext": "Voilà voilà",
+      "transcript": "Voilà voilà voilà voilà voilà voilà"
     },
     {
       "id": 50,
       "name": "youpidou",
-      "displaytext": "Youpidou"
+      "displaytext": "Youpidou",
+      "transcript": "Youpidou-pidou-pidou"
     },
     {
       "id": 51,
       "name": "youpidou_calme",
-      "displaytext": "Youpidou (calme)"
+      "displaytext": "Youpidou (calme)",
+      "transcript": "Youpidoupidou"
     },
     {
       "id": 52,
       "name": "youtube",
-      "displaytext": "YouTube"
+      "displaytext": "YouTube",
+      "transcript": "YouTube"
     },
     {
       "id": 53,
       "name": "youtubehein",
-      "displaytext": "YouTube hein"
+      "displaytext": "YouTube hein",
+      "transcript": "YouTube hein !"
     },
     {
       "id": 54,
       "name": "youtubepointcom",
-      "displaytext": "YouTube.com"
+      "displaytext": "YouTube.com",
+      "transcript": "YouTube point com"
     },
     {
       "id": 55,
       "name": "youtubepointcomhein",
-      "displaytext": "YouTube.com hein"
+      "displaytext": "YouTube.com hein",
+      "transcript": "YouTube point com hein !"
     }
   ]
 }
