@@ -3,6 +3,8 @@ package lufra.youpidapp
 import android.app.Activity
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Context
 import android.os.Bundle
 import android.content.Intent
 import android.util.Log
@@ -11,7 +13,6 @@ import android.widget.*
 
 class ConfigActivity : Activity() {
     private var appWidgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
-    //var selectedType: Int = 0
     var selectedSong: String = "youpidou"
     private lateinit var widgetManager: AppWidgetManager
     private lateinit var views: RemoteViews
@@ -34,6 +35,16 @@ class ConfigActivity : Activity() {
             return
         }
 
+        makeSpinner()
+
+        val button = findViewById<Button>(R.id.create_widget)
+        button.setOnClickListener {
+            showAppWidget()
+        }
+
+    }
+
+    private fun makeSpinner() {
         val setupWidget = findViewById<Spinner>(R.id.spinner_sounds)
         val discotheque = Discotheque(this)
         val sounds = discotheque.getAllSound().toMutableList()
@@ -52,29 +63,60 @@ class ConfigActivity : Activity() {
                     Log.e("SELECTED", selectedSong)
                 }
             }
-
-        val button = findViewById<Button>(R.id.create_widget)
-        button.setOnClickListener {
-            showAppWidget()
-        }
-
     }
 
     private fun showAppWidget() {
-        val intentOne = Intent(this, PlayRandomWidget::class.java)
-        intentOne.putExtra("sound_to_play", selectedSong)
-        intentOne.action = ACTION_SIMPLEAPPWIDGET
-        val pendingIntentOne = PendingIntent.getActivity(this, appWidgetId, intentOne, PendingIntent.FLAG_UPDATE_CURRENT)
+        saveSound(this, appWidgetId, selectedSong)
+        // We need to broadcast an APPWIDGET_UPDATE to our appWidget so it will update the user name TextView.
+        /*val appWidgetManager = AppWidgetManager.getInstance(this)
+        val updateIntent = Intent(this, PlayRandomWidget::class.java)
+        val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(this.packageName, PlayRandomWidget::class.simpleName!!))
+        updateIntent.action = "android.appwidget.action.APPWIDGET_UPDATE"
+        updateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
+        this.sendBroadcast(updateIntent);
+
+
+        // Done with Configure, finish Activity.
+        val resultValue = Intent()
+        resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+        setResult(RESULT_OK, resultValue)
+        finish();*/
+
+        val views = RemoteViews(packageName, R.layout.sample_widget)
+
+        // Construct an Intent which is pointing this class.
+        val intentOne = Intent(this, BackgroundSoundService::class.java)
+        intentOne.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+        val pendingIntentOne = PendingIntent.getService(this, appWidgetId, intentOne, 0)
         views.setOnClickPendingIntent(R.id.widget_button, pendingIntentOne)
 
-        views.setTextViewText(R.id.name_sound, this.getText(resources.getIdentifier(selectedSong, "string", packageName)))
+        val intentTwo = Intent(this, ConfigActivity::class.java)
+        intentTwo.action = ACTION_CHANGESOUNDWIDGET
+        intentTwo.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+        val pendingIntentTwo = PendingIntent.getActivity(this, appWidgetId, intentTwo, PendingIntent.FLAG_UPDATE_CURRENT)
+        views.setOnClickPendingIntent(R.id.name_sound, pendingIntentTwo)
 
-        widgetManager.updateAppWidget(appWidgetId, views)
+        val identifierSound = resources.getIdentifier(selectedSong, "string", packageName)
+        views.setTextViewText(R.id.name_sound, getText(identifierSound))
 
+        widgetManager.partiallyUpdateAppWidget(appWidgetId, views)
 
         val resultValue = Intent()
         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
         setResult(RESULT_OK, resultValue)
         finish()
+    }
+
+    private fun saveSound(context: Context, appWidgetId: Int, sound: String) {
+        context.getSharedPreferences(PREFS_NAME, 0).edit()
+            .putString(appWidgetId.toString(), sound)
+            .apply()
+    }
+
+    companion object {
+        private const val PREFS_NAME = "lufra.youpidapp.ConfigActivity"
+        fun loadSound(context: Context, appWidgetId: Int): String? {
+            return context.getSharedPreferences(PREFS_NAME, 0).getString(appWidgetId.toString(), "random")
+        }
     }
 }

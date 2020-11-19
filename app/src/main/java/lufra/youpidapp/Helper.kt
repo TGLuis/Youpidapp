@@ -24,7 +24,9 @@ object Helper {
         try {
             f = File(context.filesDir.path + "/" + fileName)
             if (f.exists()) {
-                properties.load(FileReader(f))
+                val freader = FileReader(f)
+                properties.load(freader)
+                freader.close()
             } else {
                 f.setReadable(true)
                 f.setWritable(true)
@@ -36,7 +38,6 @@ object Helper {
             Log.e(TAG, "Unable to find the config file: " + e.message)
         } catch (e: IOException) {
             Log.e(TAG, "Failed to open config file. " + e.message)
-            //e.printStackTrace()
         }
     }
 
@@ -62,6 +63,8 @@ object Helper {
 
     fun setConfigValue(name: String, value: String) {
         properties.setProperty(name, value)
-        properties.store(FileOutputStream(f), "This is an optional comment.")
+        val outputStream = FileOutputStream(f)
+        properties.store(outputStream, "This is an optional comment.")
+        outputStream.close()
     }
 }
