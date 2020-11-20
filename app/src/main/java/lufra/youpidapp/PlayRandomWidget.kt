@@ -3,31 +3,20 @@ package lufra.youpidapp
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
-import android.util.Log
 import android.widget.RemoteViews
 import android.app.PendingIntent
 import android.content.Intent
-import android.os.Bundle
 
-const val ACTION_SIMPLEAPPWIDGET = "ACTION_BROADCASTWIDGETSAMPLE"
-const val ACTION_CHANGESOUNDWIDGET = "ACTION_CHANGESOUNDWIDGET"
-const val WIDGET_TAG = "SAMPLE_WIDGET_TAG"
 
 class PlayRandomWidget : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager,
                           appWidgetIds: IntArray) {
+        super.onUpdate(context, appWidgetManager, appWidgetIds)
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
-        super.onUpdate(context, appWidgetManager, appWidgetIds)
-    }
-
-    override fun onAppWidgetOptionsChanged(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetId: Int, newOptions: Bundle? ) {
-        super.onAppWidgetOptionsChanged(context, appWidgetManager, appWidgetId, newOptions)
-        if (context != null && appWidgetManager != null)
-            updateAppWidget(context, appWidgetManager, appWidgetId)
     }
 
 
@@ -42,7 +31,6 @@ class PlayRandomWidget : AppWidgetProvider() {
         views.setOnClickPendingIntent(R.id.widget_button, pendingIntentOne)
 
         val intentTwo = Intent(context, ConfigActivity::class.java)
-        intentTwo.action = ACTION_CHANGESOUNDWIDGET
         intentTwo.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
         val pendingIntentTwo = PendingIntent.getActivity(context, appWidgetId, intentTwo, PendingIntent.FLAG_UPDATE_CURRENT)
         views.setOnClickPendingIntent(R.id.name_sound, pendingIntentTwo)
