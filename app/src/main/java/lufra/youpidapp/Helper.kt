@@ -65,7 +65,6 @@ object Helper {
         val jsonSoundsArray = jsonObj.getJSONArray("sounds")
         return (0 until jsonSoundsArray.length()).map { jsonSoundsArray[it] as JSONObject }.map {
             Sound(
-                it.getInt("id"),
                 it.getString("name"),
                 it.getString("displaytext"),
             )

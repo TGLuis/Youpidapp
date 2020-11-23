@@ -1,7 +1,6 @@
 package data
 
 class Sound(
-    val id: Int,
     val name: String,
     val displayText: String
 ) {
@@ -12,10 +11,10 @@ class Sound(
 
         other as Sound
 
-        return id == other.id && name == other.name
+        return name == other.name
     }
 
-    override fun hashCode(): Int = 31 * id + name.hashCode()
+    override fun hashCode(): Int = name.hashCode()
 
-    override fun toString(): String = "Sound(id=$id, name='$name')"
+    override fun toString(): String = "Sound(name='$name', displayText='$displayText')"
 }

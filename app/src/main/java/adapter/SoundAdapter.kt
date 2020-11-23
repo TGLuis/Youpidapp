@@ -14,16 +14,9 @@ import java.text.Normalizer
 class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: SoundClickedListener): RecyclerView.Adapter<SoundAdapter.SoundViewHolder>() {
 
     private var mComparator: Comparator<Sound> = Comparator { o1, o2 ->
-        /**
-         * If any of the sound has a negative or zero id, then compare using the id: they are compared in inverse order
-         * (i.e., id -2 > id -1). If both have a positive id, then compare using the name.
-         */
         val s1 = o1!!
         val s2 = o2!!
-        if (s1.id <= 0 || s2.id <= 0)
-            s2.id - s1.id
-        else
-            s1.name.compareTo(s2.name)
+        s1.name.compareTo(s2.name)
     }
     private val mSoundsList = _soundsList.toMutableList()
     private val mSortedList = SortedList(Sound::class.java, object: SortedListAdapterCallback<Sound>(this) {
