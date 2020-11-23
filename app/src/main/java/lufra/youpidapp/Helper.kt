@@ -3,10 +3,9 @@ package lufra.youpidapp
 import android.content.Context
 import android.content.res.Resources
 import android.util.Log
-import java.io.File
-import java.io.FileOutputStream
-import java.io.FileReader
-import java.io.IOException
+import data.Sound
+import org.json.JSONObject
+import java.io.*
 import java.util.*
 
 object Helper {
@@ -15,6 +14,9 @@ object Helper {
     private lateinit var resources: Resources
     private lateinit var properties: Properties
     private lateinit var f: File
+
+    private lateinit var jsonStr: String
+    private lateinit var jsonObj: JSONObject
 
     fun init(c: Context) {
         context = c as MainActivity
@@ -38,6 +40,7 @@ object Helper {
             Log.e(TAG, "Failed to open config file. " + e.message)
             //e.printStackTrace()
         }
+        initSoundDB()
     }
 
     private fun initElements() {
@@ -51,5 +54,20 @@ object Helper {
     fun setConfigValue(name: String, value: String) {
         properties.setProperty(name, value)
         properties.store(FileOutputStream(f), "This is an optional comment.")
+    }
+
+    private fun initSoundDB() {
+        jsonStr = resources.openRawResource(R.raw.aaaadb).bufferedReader().use { it.readText() }
+        jsonObj = JSONObject(jsonStr)
+    }
+
+    fun getSounds(): List<Sound> {
+        val jsonSoundsArray = jsonObj.getJSONArray("sounds")
+        return (0 until jsonSoundsArray.length()).map { jsonSoundsArray[it] as JSONObject }.map {
+            Sound(
+                it.getString("name"),
+                it.getString("displaytext"),
+            )
+        }
     }
 }
