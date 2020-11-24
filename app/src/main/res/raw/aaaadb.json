@@ -274,6 +274,41 @@
       "name": "youtubepointcomhein",
       "displaytext": "YouTube.com hein",
       "transcript": "YouTube point com hein !"
+    },
+    {
+      "name": "pilote",
+      "displaytext": "Le piloote",
+      "transcript": "Le pilote"
+    },
+    {
+      "name": "pas_pour_faire_joli",
+      "displaytext": "Faire joli",
+      "transcript": "C'est pas pour faire joli hein !"
+    },
+    {
+      "name": "embetant",
+      "displaytext": "Embêtant",
+      "transcript": "Ah mais c'est embêtant ça"
+    }, 
+    {
+      "name": "help",
+      "displaytext": "Au secours !",
+      "transcript": "Au secours HELP"
+    },
+    {
+      "name": "epl",
+      "displaytext": "Supérieur",
+      "transcript": "La caste des êtres supérieurs"
+    },
+    {
+      "name": "comu",
+      "displaytext": "Inférieur",
+      "transcript": "Une caste inférieure"
+    },
+    {
+      "name": "vaches_cochons_enfants",
+      "displaytext": "Animaux de la ferme",
+      "transcript": "Des vaches, des cochons, des enfants"
     }
   ]
 }
