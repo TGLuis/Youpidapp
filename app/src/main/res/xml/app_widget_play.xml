@@ -11,6 +11,3 @@
     android:configure="lufra.youpidapp.ConfigActivity"
     >
 </appwidget-provider>
-<!-- What has been removed
-
--->

@@ -6,9 +6,9 @@ import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.os.Bundle
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.*
+import data.Sound
 
 class ConfigActivity : Activity() {
     private var appWidgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
@@ -18,7 +18,6 @@ class ConfigActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("CONFIG", "onCreate")
 
         setContentView(R.layout.activity_config)
         setResult(RESULT_CANCELED)
@@ -35,26 +34,22 @@ class ConfigActivity : Activity() {
             return
         }
 
-        makeSpinner()
+        makeSpinnerSound()
 
         val button = findViewById<Button>(R.id.create_widget)
-        button.setOnClickListener {
-            showAppWidget()
-        }
-
+        button.setOnClickListener { showAppWidget() }
     }
 
-    private fun makeSpinner() {
+    private fun makeSpinnerSound() {
         val setupWidget = findViewById<Spinner>(R.id.spinner_sounds)
-        val discotheque = Discotheque(this)
-        val sounds = discotheque.getAllSound().toMutableList()
-        sounds.add(0, listOf("random", "random"))
-        val soundName = sounds.map { tuple -> tuple[0] }
-        val soundIdentifiers = sounds.map { tuple -> tuple[1] }
-        val adaptor = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, soundName)
+        val sounds = Helper.getSounds().sortedBy { sound -> sound.displayText }.toMutableList()
+        sounds.add(0, Sound("random", "Random"))
+        val soundName = sounds.map { tuple -> tuple.name }
+        val soundDisplay = sounds.map { tuple -> tuple.displayText }
+        val adaptor = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, soundDisplay)
         adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         setupWidget.adapter = adaptor
-        val toSelect: Int = soundIdentifiers.indexOf(loadSound(this, appWidgetId))
+        val toSelect: Int = soundName.indexOf(loadSound(this, appWidgetId))
         if (toSelect == -1)
             setupWidget.setSelection(0)
         else
@@ -65,10 +60,9 @@ class ConfigActivity : Activity() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     if (p2 != 0) {
                         selectedSong = resources.getResourceName(
-                            resources.getIdentifier(sounds[p2][1], "raw", packageName)
+                            resources.getIdentifier(sounds[p2].name, "raw", packageName)
                         )
                         selectedSong = selectedSong.split("/")[1]
-                        Log.e("SELECTED", selectedSong)
                     } else
                         selectedSong = "random"
                 }

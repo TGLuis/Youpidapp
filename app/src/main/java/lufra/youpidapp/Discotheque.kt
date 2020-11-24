@@ -11,6 +11,13 @@ import kotlin.collections.HashMap
 
 class Discotheque(private val context: Context) {
 
+    private val PILOU_ARRAY: Array<String> = arrayOf("pilou", "pilou_calme", "pilou_concentre",
+        "pilou_grandiloquent", "pilou_rapide")
+    private val PIOU_ARRAY: Array<String> = arrayOf("piou_piou", "piou_piou_triste")
+    private val YOUPIDOU_ARRAY: Array<String> = arrayOf("youpidou", "youpidou_calme")
+    private val YOUTUBE_ARRAY: Array<String> = arrayOf("youtube", "youtubehein", "youtubepointcom",
+        "youtubepointcomhein")
+
     private val all = HashMap<String, Int>()
     private val random = Random()
     private fun <T, U> Map<T, U>.random(): Map.Entry<T, U> = entries.elementAt(random.nextInt(size))
@@ -25,23 +32,8 @@ class Discotheque(private val context: Context) {
         }
     }
 
-    private fun getAllSoundIds(): List<String> {
-        return all.keys.toList()
-    }
-
-    fun getAllSound(): List<List<String>> {
-        return getAllSoundIds().map { id ->
-            val string_id = context.resources.getIdentifier(id, "string", context.packageName)
-            listOf(context.getString(string_id), id)
-        }
-    }
-
     fun setType(newType: Int) {
         type = newType
-    }
-
-    fun toastOfType() {
-        Toast.makeText(context, "Mode de lecture: " + getTypes()[getType()-1], Toast.LENGTH_LONG).show()
     }
 
     fun getType(): Int {
@@ -144,62 +136,20 @@ class Discotheque(private val context: Context) {
         return play(all.random().key)
     }
 
-    /**
-     * Play a random pilou sound
-     */
     fun playRdmPilou(): Int {
-        val n = Math.random()
-        if (n < 0.2) {
-           return play("pilou")
-        } else if(n < 0.4) {
-            return play("pilou_calme")
-        } else if(n < 0.6) {
-            return play("pilou_concentre")
-        } else if(n < 0.8) {
-            return play("pilou_grandiloquent")
-        } else {
-            return play("pilou_rapide")
-        }
+        return play(PILOU_ARRAY.random())
     }
 
-    /**
-     * Play a random piou sound
-     */
     fun playRdmPiou(): Int {
-        val n = Math.random()
-        if (n < 0.5) {
-            return play("piou_piou")
-        } else {
-            return play("piou_piou_triste")
-        }
+        return play(PIOU_ARRAY.random())
     }
 
-    /**
-     * Play a random youpidou sound
-     */
     fun playRdmYoupidou(): Int {
-        val n = Math.random()
-        if (n < 0.5) {
-            return play("youpidou")
-        } else {
-            return play("youpidou_calme")
-        }
+        return play(YOUPIDOU_ARRAY.random())
     }
 
-    /**
-     * Play a random youtube sound
-     */
     fun playRdmYoutube(): Int {
-        val n = Math.random()
-        if (n < 0.25) {
-            return play("youtube")
-        } else if (n < 0.5) {
-            return play("youtubehein")
-        } else if (n < 0.75) {
-            return play("youtubepointcom")
-        } else {
-            return play("youtubepointcomhein")
-        }
+        return play(YOUTUBE_ARRAY.random())
     }
 
     private fun stopIt(player: MediaPlayer) {
