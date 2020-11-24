@@ -12,11 +12,13 @@ import kotlin.collections.HashMap
 class Discotheque(private val context: Context) {
 
     private val PILOU_ARRAY: Array<String> = arrayOf("pilou", "pilou_calme", "pilou_concentre",
-        "pilou_grandiloquent", "pilou_rapide")
+        "pilou_grandiloquent", "pilou_rapide", "pilou_long", "pilou_attentif", "pilou_explicatif")
     private val PIOU_ARRAY: Array<String> = arrayOf("piou_piou", "piou_piou_triste")
     private val YOUPIDOU_ARRAY: Array<String> = arrayOf("youpidou", "youpidou_calme")
     private val YOUTUBE_ARRAY: Array<String> = arrayOf("youtube", "youtubehein", "youtubepointcom",
         "youtubepointcomhein")
+    private val CASTE_SUPERIEURE: String = "epl"
+    private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
 
     private val all = HashMap<String, Int>()
     private val random = Random()
@@ -150,6 +152,18 @@ class Discotheque(private val context: Context) {
 
     fun playRdmYoutube(): Int {
         return play(YOUTUBE_ARRAY.random())
+    }
+
+    fun playCasteSuperieure(): Int {
+        return play(CASTE_SUPERIEURE)
+    }
+
+    fun playCasteInferieure(): Int {
+        val rdm = Math.random()
+        if (rdm < 0.2) {
+            return play((CASTE_INFERIEURE[1]))
+        }
+        return play(CASTE_INFERIEURE[0])
     }
 
     private fun stopIt(player: MediaPlayer) {

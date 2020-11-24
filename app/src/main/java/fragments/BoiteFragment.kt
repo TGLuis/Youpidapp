@@ -43,6 +43,16 @@ class BoiteFragment: MyFragment() {
             context.discotheque.playRdmYoutube()
         }
 
+        val eplBtn: View = context.findViewById(R.id.buzzer_epl)
+        eplBtn.setOnClickListener {
+            context.discotheque.playCasteSuperieure()
+        }
+
+        val comuBtn: View = context.findViewById(R.id.buzzer_comu)
+        comuBtn.setOnClickListener {
+            context.discotheque.playCasteInferieure()
+        }
+
         context.setMenu("buzzbox")
         context.setTitle(R.string.boite_title)
     }

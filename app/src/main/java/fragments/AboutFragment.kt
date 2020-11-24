@@ -25,7 +25,9 @@ class AboutFragment: MyFragment() {
             "https://youtu.be/LkjZFRNK9xo",
             "https://youtu.be/bxobXTOb6fM",
             "https://youtu.be/xfGsCLoN4Fg",
-            "https://youtu.be/6EGAeQi474o"
+            "https://youtu.be/6EGAeQi474o",
+            "https://youtu.be/oDJ6pZn7Y-g",
+            "https://youtu.be/qVdh3T8ffIY"
         )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
