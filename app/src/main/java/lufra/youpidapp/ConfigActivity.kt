@@ -1,5 +1,6 @@
 package lufra.youpidapp
 
+import adapter.SoundAdapter
 import android.app.Activity
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -12,9 +13,11 @@ import data.Sound
 
 class ConfigActivity : Activity() {
     private var appWidgetId: Int = AppWidgetManager.INVALID_APPWIDGET_ID
-    var selectedSong: String = "youpidou"
+    var selectedSong: String = "random"
+    var selectedDisplay: String = "Random"
     private lateinit var widgetManager: AppWidgetManager
     private lateinit var views: RemoteViews
+    private lateinit var sounds: MutableList<Sound>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,11 @@ class ConfigActivity : Activity() {
             return
         }
 
+        Helper.init(this)
+
+        sounds = Helper.getSounds().sortedWith(SoundAdapter.mComparator).toMutableList()
+        sounds.add(0, Sound("random", "Random"))
+
         makeSpinnerSound()
 
         val button = findViewById<Button>(R.id.create_widget)
@@ -42,35 +50,33 @@ class ConfigActivity : Activity() {
 
     private fun makeSpinnerSound() {
         val setupWidget = findViewById<Spinner>(R.id.spinner_sounds)
-        val sounds = Helper.getSounds().sortedBy { sound -> sound.displayText }.toMutableList()
-        sounds.add(0, Sound("random", "Random"))
         val soundName = sounds.map { tuple -> tuple.name }
         val soundDisplay = sounds.map { tuple -> tuple.displayText }
         val adaptor = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, soundDisplay)
         adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         setupWidget.adapter = adaptor
-        val toSelect: Int = soundName.indexOf(loadSound(this, appWidgetId))
-        if (toSelect == -1)
+        val theSound = loadSound(this, appWidgetId)
+        if (theSound == null) {
             setupWidget.setSelection(0)
-        else
-            setupWidget.setSelection(toSelect)
+        } else {
+            val toSelect: Int = soundName.indexOf(theSound[0])
+            if (toSelect == -1)
+                setupWidget.setSelection(0)
+            else
+                setupWidget.setSelection(toSelect)
+        }
         setupWidget.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    if (p2 != 0) {
-                        selectedSong = resources.getResourceName(
-                            resources.getIdentifier(sounds[p2].name, "raw", packageName)
-                        )
-                        selectedSong = selectedSong.split("/")[1]
-                    } else
-                        selectedSong = "random"
+                    selectedSong = sounds[p2].name
+                    selectedDisplay = sounds[p2].displayText
                 }
             }
     }
 
     private fun showAppWidget() {
-        saveSound(this, appWidgetId, selectedSong)
+        saveSound(this, appWidgetId, selectedSong, selectedDisplay)
 
         val views = RemoteViews(packageName, R.layout.sample_widget)
 
@@ -87,8 +93,7 @@ class ConfigActivity : Activity() {
         )
         views.setOnClickPendingIntent(R.id.name_sound, pendingIntentTwo)
 
-        val identifierSound = resources.getIdentifier(selectedSong, "string", packageName)
-        views.setTextViewText(R.id.name_sound, getText(identifierSound))
+        views.setTextViewText(R.id.name_sound, selectedDisplay)
 
         widgetManager.partiallyUpdateAppWidget(appWidgetId, views)
 
@@ -98,17 +103,18 @@ class ConfigActivity : Activity() {
         finish()
     }
 
-    private fun saveSound(context: Context, appWidgetId: Int, sound: String) {
+    private fun saveSound(context: Context, appWidgetId: Int, soundId: String, soundDisplay: String) {
         context.getSharedPreferences(PREFS_NAME, 0).edit()
-            .putString(appWidgetId.toString(), sound)
+            .putString(appWidgetId.toString(), "$soundId:::$soundDisplay")
             .apply()
     }
 
     companion object {
         private const val PREFS_NAME = "lufra.youpidapp.ConfigActivity"
-        fun loadSound(context: Context, appWidgetId: Int): String? {
-            return context.getSharedPreferences(PREFS_NAME, 0)
-                .getString(appWidgetId.toString(), "random")
+        fun loadSound(context: Context, appWidgetId: Int): List<String>? {
+            val soundIdAndDisplay = context.getSharedPreferences(PREFS_NAME, 0)
+                .getString(appWidgetId.toString(), "random:::Random") ?: return null
+            return soundIdAndDisplay.split(":::")
         }
     }
 }

@@ -17,11 +17,11 @@ class BackgroundSoundService: Service() {
     override fun onStart(intent: Intent, startId: Int) {
         if (discotheque == null) discotheque = Discotheque(this)
         val appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 0)
-        val sound = ConfigActivity.loadSound(this, appWidgetId)
-        if (sound == null || sound == "random")
+        val soundIdAndDisplay = ConfigActivity.loadSound(this, appWidgetId)
+        if (soundIdAndDisplay == null || soundIdAndDisplay[0] == "random")
             discotheque!!.playRandom()
         else
-            discotheque!!.play(sound)
+            discotheque!!.play(soundIdAndDisplay[0])
     }
 
 }

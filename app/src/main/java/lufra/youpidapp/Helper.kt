@@ -1,5 +1,6 @@
 package lufra.youpidapp
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.util.Log
@@ -11,7 +12,7 @@ import java.util.*
 object Helper {
     private const val TAG = "==== HELPER ===="
     private const val fileName = "config.properties"
-    lateinit var context: MainActivity
+    lateinit var context: Activity
     private lateinit var resources: Resources
     private lateinit var properties: Properties
     private lateinit var f: File
@@ -20,7 +21,7 @@ object Helper {
     private lateinit var jsonObj: JSONObject
 
     fun init(c: Context) {
-        context = c as MainActivity
+        context = c as Activity
         resources = context.resources
         properties = Properties()
         try {

@@ -6,6 +6,7 @@ import android.content.Context
 import android.widget.RemoteViews
 import android.app.PendingIntent
 import android.content.Intent
+import android.util.Log
 
 
 class PlayRandomWidget : AppWidgetProvider() {
@@ -35,9 +36,9 @@ class PlayRandomWidget : AppWidgetProvider() {
         val pendingIntentTwo = PendingIntent.getActivity(context, appWidgetId, intentTwo, PendingIntent.FLAG_UPDATE_CURRENT)
         views.setOnClickPendingIntent(R.id.name_sound, pendingIntentTwo)
 
-        val soundToPlay = ConfigActivity.loadSound(context, appWidgetId)
-        val identifierSound = context.resources.getIdentifier(soundToPlay, "string", context.packageName)
-        views.setTextViewText(R.id.name_sound, context.getText(identifierSound))
+        val soundIdAndDisplay = ConfigActivity.loadSound(context, appWidgetId)
+        Log.e("PLAY WIDGET", soundIdAndDisplay.toString())
+        views.setTextViewText(R.id.name_sound, soundIdAndDisplay?.get(1) ?:"Random")
 
         // Instruct the widget manager to update the widget
         appWidgetManager.partiallyUpdateAppWidget(appWidgetId, views)

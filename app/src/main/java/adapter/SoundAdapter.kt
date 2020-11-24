@@ -8,16 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SortedList
 import androidx.recyclerview.widget.SortedListAdapterCallback
 import data.Sound
+import data.Sound.Companion.normalizeString
 import lufra.youpidapp.R
-import java.text.Normalizer
 
 class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: SoundClickedListener): RecyclerView.Adapter<SoundAdapter.SoundViewHolder>() {
 
-    private var mComparator: Comparator<Sound> = Comparator { o1, o2 ->
-        val s1 = o1!!
-        val s2 = o2!!
-        s1.name.compareTo(s2.name)
-    }
     private val mSoundsList = _soundsList.toMutableList()
     private val mSortedList = SortedList(Sound::class.java, object: SortedListAdapterCallback<Sound>(this) {
         override fun compare(o1: Sound?, o2: Sound?): Int {
@@ -100,8 +95,6 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
         return mSortedList.size()
     }
 
-    private fun normalizeString(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replace("\\p{Mn}+".toRegex(), "").toLowerCase()
-
     fun filter(query: String?) {
         if (query == null)
             return
@@ -123,5 +116,13 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
 
     fun replaceAll(sounds: List<Sound>) {
         mSortedList.replaceAll(sounds)
+    }
+
+    companion object {
+        var mComparator: Comparator<Sound> = Comparator { o1, o2 ->
+            val s1 = o1!!
+            val s2 = o2!!
+            normalizeString(s1.displayText).compareTo(normalizeString(s2.displayText))
+        }
     }
 }

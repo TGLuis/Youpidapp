@@ -1,9 +1,14 @@
 package data
 
+import java.text.Normalizer
+
 class Sound(
     val name: String,
     val displayText: String
 ) {
+    companion object {
+        fun normalizeString(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replace("\\p{Mn}+".toRegex(), "").toLowerCase()
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
