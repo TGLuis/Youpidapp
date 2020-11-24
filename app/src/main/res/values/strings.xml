@@ -18,6 +18,7 @@
     <string name="type3">Un après l\'autre</string>
 
     <!-- Buttons -->
+    <string name="create_widget">Créer le widget</string>
     <string name="random">Random</string>
     <string name="pilou">Pilou</string>
     <string name="on_aime_pas">On aime pas</string>

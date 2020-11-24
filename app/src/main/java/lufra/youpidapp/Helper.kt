@@ -1,5 +1,6 @@
 package lufra.youpidapp
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.util.Log
@@ -10,7 +11,8 @@ import java.util.*
 
 object Helper {
     private const val TAG = "==== HELPER ===="
-    lateinit var context: MainActivity
+    private const val fileName = "config.properties"
+    lateinit var context: Activity
     private lateinit var resources: Resources
     private lateinit var properties: Properties
     private lateinit var f: File
@@ -19,14 +21,15 @@ object Helper {
     private lateinit var jsonObj: JSONObject
 
     fun init(c: Context) {
-        context = c as MainActivity
+        context = c as Activity
         resources = context.resources
         properties = Properties()
         try {
-            val fileName = "config.properties"
             f = File(context.filesDir.path + "/" + fileName)
             if (f.exists()) {
-                properties.load(FileReader(f))
+                val freader = FileReader(f)
+                properties.load(freader)
+                freader.close()
             } else {
                 f.setReadable(true)
                 f.setWritable(true)
@@ -38,9 +41,20 @@ object Helper {
             Log.e(TAG, "Unable to find the config file: " + e.message)
         } catch (e: IOException) {
             Log.e(TAG, "Failed to open config file. " + e.message)
-            //e.printStackTrace()
         }
         initSoundDB()
+    }
+
+    fun restart(c: Context) {
+        try {
+            f = File(context.filesDir.path + "/" + fileName)
+            if (f.exists()) {
+                f.delete()
+            }
+        } catch (e: Resources.NotFoundException) {
+            Log.e(TAG, "Unable to find the config file: " + e.message)
+        }
+        this.init(c)
     }
 
     private fun initElements() {
@@ -53,7 +67,9 @@ object Helper {
 
     fun setConfigValue(name: String, value: String) {
         properties.setProperty(name, value)
-        properties.store(FileOutputStream(f), "This is an optional comment.")
+        val outputStream = FileOutputStream(f)
+        properties.store(outputStream, "This is an optional comment.")
+        outputStream.close()
     }
 
     private fun initSoundDB() {
