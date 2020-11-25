@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity() {
                     setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
                     setOnMenuItemClickListener {
                         discotheque.stopAll()
+                        frags.peek().stopAll()
                         true
                     }
                 }
