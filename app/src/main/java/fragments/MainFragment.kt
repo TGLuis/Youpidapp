@@ -12,6 +12,7 @@ import android.content.res.Configuration
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import lufra.youpidapp.Helper
 import lufra.youpidapp.MainActivity
@@ -36,7 +37,7 @@ class MainFragment: MyFragment() {
     }
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
-            soundViewHolder.button.setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+            soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
         }
     }
     private val soundFilterListener = object : SearchView.OnQueryTextListener {

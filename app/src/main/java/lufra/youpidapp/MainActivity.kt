@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             type = Helper.getConfigValue("reading_type")
             Log.e("MainActivity", "restart reading type")
         }
-        discotheque.setType(type!!.toInt())
+        discotheque.setType(type.toInt())
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)
