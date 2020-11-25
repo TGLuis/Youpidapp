@@ -73,7 +73,7 @@ class MainFragment: MyFragment() {
 
         val randomButton = context.findViewById<Button>(R.id.button_random)
         randomButton.setOnClickListener { button ->
-            val duration = context.discotheque.playRandom()
+            val duration = context.discotheque.play(viewAdapter.random())
             playTargetedAnimator(button, duration.toLong())
         }
         context.setMenu("soundbox")
