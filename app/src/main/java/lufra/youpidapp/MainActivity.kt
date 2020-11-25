@@ -1,11 +1,6 @@
 package lufra.youpidapp
 
-import android.appwidget.AppWidgetManager
-import android.content.ComponentName
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.*
 import android.widget.AdapterView
@@ -26,12 +21,15 @@ import fragments.BoiteFragment
 import fragments.MainFragment
 import fragments.MyFragment
 import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.LinkedHashMap
 
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "==== MAINACTIVITY ===="
 
     private lateinit var frags: Stack<MyFragment>
+    private lateinit var lesFragments: MutableMap<String, MyFragment>
     private lateinit var toolbar: Toolbar
     private lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
@@ -75,7 +73,8 @@ class MainActivity : AppCompatActivity() {
 
         // Fragments
         frags = Stack()
-        openFragment(MainFragment())
+        lesFragments = HashMap()
+        openFragment(MainFragment::class.java.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -120,7 +119,8 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 myMenu.add(R.string.type).apply {
-                    icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
+                    icon =
+                        ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
                     setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
                     setOnMenuItemClickListener {
                         dialogAndSetType()
@@ -135,17 +135,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun dialogAndSetType() {
-        val viewInflated = LayoutInflater.from(this).inflate(R.layout.simple_spinner_input, this.navView as ViewGroup, false)
+        val viewInflated = LayoutInflater.from(this)
+            .inflate(R.layout.simple_spinner_input, this.navView as ViewGroup, false)
         val theSpinner = viewInflated.findViewById<Spinner>(R.id.input_spinner)
-        val adaptor = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, discotheque.getTypes())
+        val adaptor = ArrayAdapter(
+            this,
+            R.layout.support_simple_spinner_dropdown_item,
+            discotheque.getTypes()
+        )
         var selectedType = 1
         adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         theSpinner.adapter = adaptor
-        theSpinner.setSelection(discotheque.getType()-1)
+        theSpinner.setSelection(discotheque.getType() - 1)
         theSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long ) {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     selectedType = p2 + 1
                 }
             }
@@ -156,7 +161,11 @@ class MainActivity : AppCompatActivity() {
             .setTitle(R.string.type)
             .setPositiveButton(R.string.ok) { dialog, _ ->
                 discotheque.setType(selectedType)
-                Toast.makeText(that, "Mode de lecture: " + discotheque.getTypes()[discotheque.getType()-1], Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    that,
+                    "Mode de lecture: " + discotheque.getTypes()[discotheque.getType() - 1],
+                    Toast.LENGTH_LONG
+                ).show()
                 dialog.dismiss()
             }
             .setNegativeButton(R.string.cancel) { dialog, _ ->
@@ -173,27 +182,31 @@ class MainActivity : AppCompatActivity() {
         navView.menu.add(R.string.home).apply {
             setOnMenuItemClickListener {
                 drawerLayout.closeDrawers()
-                context.openFragment(MainFragment())
+                context.openFragment(MainFragment::class.java.name)
                 true
             }
         }
         navView.menu.add(R.string.boite_title).apply {
             setOnMenuItemClickListener {
                 drawerLayout.closeDrawers()
-                context.openFragment(BoiteFragment())
+                context.openFragment(BoiteFragment::class.java.name)
                 true
             }
         }
         navView.menu.add(R.string.about_title).apply {
             setOnMenuItemClickListener {
                 drawerLayout.closeDrawers()
-                context.openFragment(AboutFragment())
+                context.openFragment(AboutFragment::class.java.name)
                 true
             }
         }
     }
 
-    fun openFragment(frag: MyFragment, pop: Boolean = false) {
+    fun openFragment(fragmentName: String, pop: Boolean = false) {
+        if (!lesFragments.containsKey(fragmentName)) {
+            lesFragments[fragmentName] = Class.forName(fragmentName).newInstance() as MyFragment
+        }
+        val frag = lesFragments[fragmentName]!!
         if (!pop && (frags.empty() || frag::class != this.frags.peek()::class))
             frags.push(frag)
         supportFragmentManager.beginTransaction().replace(R.id.frame, frag, frag.TAG).commit()
@@ -210,7 +223,7 @@ class MainActivity : AppCompatActivity() {
             }
             frags.size >= 2 -> {
                 frags.pop()
-                openFragment(frags.peek(), true)
+                openFragment(frags.peek()::class.java.name, true)
             }
             else -> {
                 saveState()
