@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.SortedListAdapterCallback
 import data.Sound
 import data.Sound.Companion.normalizeString
 import lufra.youpidapp.R
+import kotlin.random.Random
 
 class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: SoundClickedListener): RecyclerView.Adapter<SoundAdapter.SoundViewHolder>() {
 
@@ -116,6 +117,13 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
 
     fun replaceAll(sounds: List<Sound>) {
         mSortedList.replaceAll(sounds)
+    }
+
+    private fun <T> SortedList<T>.random(): T? = if (size() > 0) get(Random.Default.nextInt(size())) else null
+
+    fun random(): String {
+        val res = mSortedList.random()
+        return res?.name ?: mSoundsList.random().name
     }
 
     companion object {
