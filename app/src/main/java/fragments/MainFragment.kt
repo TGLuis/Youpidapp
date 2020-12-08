@@ -25,6 +25,7 @@ class MainFragment: MyFragment() {
     private lateinit var viewLayoutManager: GridLayoutManager
     private var viewColumnCount = 1
     override var TAG: String = "=====MAINFRAGMENT====="
+    private lateinit var animatorsPlaying: MutableList<Animator>
 
     private val soundClickedListener = object: SoundAdapter.SoundClickedListener {
         override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
@@ -64,6 +65,7 @@ class MainFragment: MyFragment() {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
         }
+        animatorsPlaying = mutableListOf()
 
         return view
     }
@@ -79,6 +81,14 @@ class MainFragment: MyFragment() {
         context.setMenu("soundbox")
         // Mandatory to do this now...
         context.setFilterQueryTextListener(soundFilterListener)
+    }
+
+    override fun stopAll() {
+        var i = animatorsPlaying.size-1
+        while (i >= 0) {
+            animatorsPlaying[i].cancel()
+            i--
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -97,8 +107,15 @@ class MainFragment: MyFragment() {
             viewHolder?.button?.setBackgroundColor(animVal)
             viewHolder?.cleanupAnimationListener = animCleanup
         }
+        animator.addListener(object: AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                animatorsPlaying.remove(animator)
+                viewAdapter.getActiveViewHolder(sound)?.also { animCleanup.onUnbind(it) }
+            }
+        })
         animator.duration = duration
         animator.start()
+        animatorsPlaying.add(animator)
     }
 
     private fun playTargetedAnimator(view: View, duration: Long) {
