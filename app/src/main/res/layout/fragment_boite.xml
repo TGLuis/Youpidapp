@@ -132,6 +132,50 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/aviondepapier"
             android:contentDescription="@string/covid" />
+        <ImageView
+            android:id="@+id/aviondepapier2"
+            android:visibility="invisible"
+            android:elevation="4dp"
+            android:layout_width="@dimen/covid_size_normal"
+            android:layout_height="@dimen/covid_size_normal"
+            android:layout_margin="@dimen/margin_fab_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/aviondepapier"
+            android:contentDescription="@string/covid" />
+        <ImageView
+            android:id="@+id/aviondepapier3"
+            android:visibility="invisible"
+            android:elevation="4dp"
+            android:layout_width="@dimen/covid_size_normal"
+            android:layout_height="@dimen/covid_size_normal"
+            android:layout_margin="@dimen/margin_fab_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/aviondepapier"
+            android:contentDescription="@string/covid" />
+        <ImageView
+            android:id="@+id/aviondepapier4"
+            android:visibility="invisible"
+            android:elevation="4dp"
+            android:layout_width="@dimen/covid_size_normal"
+            android:layout_height="@dimen/covid_size_normal"
+            android:layout_margin="@dimen/margin_fab_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/aviondepapier"
+            android:contentDescription="@string/covid" />
+        <ImageView
+            android:id="@+id/aviondepapier5"
+            android:visibility="invisible"
+            android:elevation="4dp"
+            android:layout_width="@dimen/covid_size_normal"
+            android:layout_height="@dimen/covid_size_normal"
+            android:layout_margin="@dimen/margin_fab_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/aviondepapier"
+            android:contentDescription="@string/covid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
