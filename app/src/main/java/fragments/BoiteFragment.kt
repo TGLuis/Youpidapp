@@ -3,20 +3,23 @@ package fragments
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import animation.Direction
 import animation.TranslationAnim
+import data.PaperPlane
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
+import java.util.*
+import kotlin.concurrent.schedule
 
 class BoiteFragment: MyFragment() {
     private lateinit var context: MainActivity
+    private lateinit var planes: Array<PaperPlane>
+    private val timer = Timer("paperplane", true)
+    private var planeSpecialCounter = 0
     override var TAG: String = "=====BOITEFRAGMENT====="
-    private var avionInitX = 0.0f
-    private var avionInitY = 0.0f
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,12 +31,7 @@ class BoiteFragment: MyFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val aviondepapier: View = context.findViewById(R.id.aviondepapier)
-        aviondepapier.translationX += 300
-        aviondepapier.translationY += 300
-        avionInitX = aviondepapier.translationX
-        avionInitY = aviondepapier.translationY
-        Log.d(TAG, "X: " + avionInitX + ", Y: " + avionInitY)
+        initPlanes()
 
         val pilouBtn: View = context.findViewById(R.id.buzzer_pilou)
         pilouBtn.setOnClickListener {
@@ -58,28 +56,7 @@ class BoiteFragment: MyFragment() {
         val eplBtn: View = context.findViewById(R.id.buzzer_epl)
         eplBtn.setOnClickListener {
             context.discotheque.playCasteSuperieure()
-
-            // Avion animation
-            aviondepapier.visibility = View.VISIBLE
-            val rdm = Math.random()
-            val flyAway: Animator
-            if (rdm < 0.1) { // We send it from SE -> NO
-                aviondepapier.rotation = 0f
-                flyAway = TranslationAnim.translateDiagonale(aviondepapier, Direction.NORDOUEST)
-            } else { // We send it from SO -> NE
-                // We have to move the ship first on the other side of the screen
-                aviondepapier.rotation = 90f
-                aviondepapier.translationX = -1200f
-                flyAway = TranslationAnim.translateDiagonale(aviondepapier, Direction.NORDEST)
-            }
-            flyAway.start()
-            flyAway.addListener(object: AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
-                    aviondepapier.visibility = View.INVISIBLE
-                    aviondepapier.translationX = avionInitX
-                    aviondepapier.translationY = avionInitY
-                }
-            })
+            eplPaperPlaneListener()
         }
 
         val comuBtn: View = context.findViewById(R.id.buzzer_comu)
@@ -89,5 +66,71 @@ class BoiteFragment: MyFragment() {
 
         context.setMenu("buzzbox")
         context.setTitle(R.string.boite_title)
+    }
+
+    private fun initPlanes() {
+        val aviondepapier = PaperPlane(context.findViewById(R.id.aviondepapier), 0f,0f)
+        val aviondepapier2 = PaperPlane(context.findViewById(R.id.aviondepapier2), 0f,0f)
+        val aviondepapier3 = PaperPlane(context.findViewById(R.id.aviondepapier3), 0f,0f)
+        val aviondepapier4 = PaperPlane(context.findViewById(R.id.aviondepapier4), 0f,0f)
+        val aviondepapier5 = PaperPlane(context.findViewById(R.id.aviondepapier5), 0f,0f)
+
+        planes = arrayOf(aviondepapier, aviondepapier2, aviondepapier3, aviondepapier4, aviondepapier5)
+
+        for (i in planes.indices) {
+            val avion = planes.get(i)
+            val translationVal = 290 + (i * 12)
+            avion.view.translationX += translationVal
+            avion.view.translationY += translationVal
+            avion.initX = avion.view.translationX
+            avion.initY = avion.view.translationY
+//            Log.d(TAG, "initX: " + avion.initX + ", initY: " + avion.initY +
+//                    ", x" + avion.view.x + ", y" + avion.view.y)
+        }
+    }
+
+    private fun eplPaperPlaneListener() {
+        playRandomPaperPlaneAnimation()
+        planeSpecialCounter++
+        if (planeSpecialCounter > 3) {
+            playAllPaperPlanesAnimations()
+        }
+        timer.schedule(3000) {
+            planeSpecialCounter = 0
+        }
+    }
+
+    private fun playRandomPaperPlaneAnimation() {
+        playPaperplaneAnimation(planes.random())
+    }
+
+    private fun playAllPaperPlanesAnimations() {
+        for (i in planes.indices) {
+            val plane = planes.get(i)
+            plane.resetTranslationXY()
+            playPaperplaneAnimation(plane)
+        }
+    }
+
+    private fun playPaperplaneAnimation(aviondepapier: PaperPlane) {
+        aviondepapier.view.visibility = View.VISIBLE
+        //Log.d(TAG, "$aviondepapier, x" + aviondepapier.view.x + ", y" + aviondepapier.view.y)
+        val rdm = Math.random()
+        val flyAway: Animator
+        if (rdm < 0.5) { // We send it from SE -> NO
+            aviondepapier.view.rotation = 0f
+            flyAway = TranslationAnim.translateDiagonale(aviondepapier.view, Direction.NORDOUEST)
+        } else { // We send it from SO -> NE
+            // We have to move the ship first on the other side of the screen
+            aviondepapier.view.rotation = 90f
+            aviondepapier.view.translationX = -1200f
+            flyAway = TranslationAnim.translateDiagonale(aviondepapier.view, Direction.NORDEST)
+        }
+        flyAway.start()
+        flyAway.addListener(object: AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                aviondepapier.resetTranslationXY()
+            }
+        })
     }
 }
