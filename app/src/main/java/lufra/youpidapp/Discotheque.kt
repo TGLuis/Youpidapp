@@ -19,6 +19,8 @@ class Discotheque(private val context: Context) {
         "youtubepointcomhein")
     private val CASTE_SUPERIEURE: String = "epl"
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
+    private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
+    private val MUSIQUE_TRISTE: String = "heartbreaking-by-kevin-macleod-from-filmmusic-io.mp3";
 
     private val all = HashMap<String, Int>()
     private val random = Random()
@@ -164,6 +166,10 @@ class Discotheque(private val context: Context) {
             return play((CASTE_INFERIEURE[1]))
         }
         return play(CASTE_INFERIEURE[0])
+    }
+
+    fun playMonstreTerrifiant(): Int {
+        return play(MONSTRE_TERRIFIANT)
     }
 
     private fun stopIt(player: MediaPlayer) {

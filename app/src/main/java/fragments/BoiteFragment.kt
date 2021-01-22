@@ -1,8 +1,8 @@
 package fragments
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
+import android.animation.*
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,9 +59,15 @@ class BoiteFragment: MyFragment() {
             eplPaperPlaneListener()
         }
 
+
+
         val comuBtn: View = context.findViewById(R.id.buzzer_comu)
         comuBtn.setOnClickListener {
             context.discotheque.playCasteInferieure()
+        }
+        comuBtn.setOnLongClickListener {
+            playSadCatAnimation()
+            true
         }
 
         context.setMenu("buzzbox")
@@ -84,8 +90,6 @@ class BoiteFragment: MyFragment() {
             avion.view.translationY += translationVal
             avion.initX = avion.view.translationX
             avion.initY = avion.view.translationY
-//            Log.d(TAG, "initX: " + avion.initX + ", initY: " + avion.initY +
-//                    ", x" + avion.view.x + ", y" + avion.view.y)
         }
     }
 
@@ -132,5 +136,38 @@ class BoiteFragment: MyFragment() {
                 aviondepapier.resetTranslationXY()
             }
         })
+    }
+
+    private fun playSadCatAnimation() {
+        val chat: View = context.findViewById(R.id.chattriste)
+        chat.visibility = View.VISIBLE
+
+        val SCALE_FACTOR = 2f
+        val SCALE_DURATION = 1000.toLong()
+        val ANIMATION_DURATION = 4000.toLong()
+        AnimatorSet().apply {
+            play(ObjectAnimator.ofFloat(chat, "scaleX", SCALE_FACTOR).apply {
+                duration = SCALE_DURATION
+            }).with(ObjectAnimator.ofFloat(chat, "scaleY", SCALE_FACTOR).apply {
+                duration = SCALE_DURATION
+            })
+            start()
+        }
+
+        timer.schedule(ANIMATION_DURATION) {
+            chat.visibility = View.INVISIBLE
+        }
+
+        AnimatorSet().apply {
+            val scaleY = ObjectAnimator.ofFloat(chat, "scaleY", 1 / SCALE_FACTOR).apply {
+                duration = SCALE_DURATION
+                startDelay = ANIMATION_DURATION
+            }
+            play(ObjectAnimator.ofFloat(chat, "scaleX", 1 / SCALE_FACTOR).apply {
+                duration = SCALE_DURATION
+                startDelay = ANIMATION_DURATION
+            }).with(scaleY)
+            start()
+        }
     }
 }

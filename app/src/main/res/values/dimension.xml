@@ -19,6 +19,7 @@
     <dimen name="margin_btn_margin_hor_smaller">20dp</dimen>
     <dimen name="margin_btn_margin_ver_normal">15dp</dimen>
     <!-- TAILLE IMAGES -->
+    <dimen name="chaton_size">180dp</dimen>
     <dimen name="covid_size_big">123dp</dimen>
     <dimen name="covid_size_normal">82dp</dimen>
     <dimen name="covid_size_small">54dp</dimen>

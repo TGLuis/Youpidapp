@@ -47,12 +47,14 @@ class AboutFragment: MyFragment() {
 
         val fabYtb: View = context.findViewById(R.id.youtube_link)
         fabYtb.setOnClickListener {
+            context.discotheque.playRdmYoutube()
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC-QAurzK1czAlnMFOqkfxfw"))
             startActivity(browserIntent)
         }
 
         val covid: View = context.findViewById(R.id.covid)
         covid.setOnLongClickListener {
+            context.discotheque.playMonstreTerrifiant()
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(YTB_URLS.random()))
             startActivity(browserIntent)
             true

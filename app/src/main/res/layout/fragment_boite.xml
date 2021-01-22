@@ -122,6 +122,20 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
+            android:id="@+id/chattriste"
+            android:visibility="invisible"
+            android:elevation="6dp"
+            android:layout_width="@dimen/chaton_size"
+            android:layout_height="@dimen/chaton_size"
+            android:layout_margin="@dimen/margin_fab_normal"
+            app:layout_constraintTop_toBottomOf="@id/buzzer_epl"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/chattriste"
+            android:contentDescription="@string/covid" />
+
+        <ImageView
             android:id="@+id/aviondepapier"
             android:visibility="invisible"
             android:elevation="4dp"
