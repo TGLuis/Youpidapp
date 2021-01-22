@@ -21,7 +21,8 @@ class Discotheque(private val context: Context) {
     private val CASTE_SUPERIEURE: String = "epl"
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
     private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
-    private val MUSIQUE_TRISTE: String = "heartbreaking_by_kevin_macleod_from_filmmusic_io.mp3";
+    // musiques (on stock ça dans un array c'est plus facile
+    private val MUSICS_NAMES: Array<String> = arrayOf("heartbreaking_by_kevin_macleod_from_filmmusic_io")
 
     private val all = HashMap<String, Int>()
     private val musics = HashMap<String, Int>()
@@ -34,9 +35,13 @@ class Discotheque(private val context: Context) {
     init {
         val fields: Array<Field> = R.raw::class.java.fields
         for (f in fields) {
-            all[f.name] = f.getInt(f)
+            // comme ça on mélange pas tout
+            if (MUSICS_NAMES.contains(f.name)) {
+                musics[f.name] = f.getInt(f);
+            } else {
+                all[f.name] = f.getInt(f)
+            }
         }
-        Log.d("discotheque", all.toString())
     }
 
     fun setType(newType: Int) {
@@ -84,16 +89,24 @@ class Discotheque(private val context: Context) {
         return mp
     }
 
+    // par défault on utilise "all" et pas "musics"
     private fun playOne(name: String): Int {
+        return playOne(name, all)
+    }
+
+    /**
+     * Joue le son "name" en mode "un seul à la fois". soundList est soit "all" soit "musics"
+     */
+    private fun playOne(name: String, soundList: HashMap<String, Int>): Int {
         if (reading.size == 0) {
-            val mp = getPlayer(all[name]!!)
+            val mp = getPlayer(soundList[name]!!)
             mp.setOnCompletionListener { mp.stop() }
             reading.add(mp)
             reading[0].start()
             return reading[0].duration
         } else if (reading.size == 1) {
             reading[0].stop()
-            return changeSongAndStart(reading[0], all[name]!!)
+            return changeSongAndStart(reading[0], soundList[name]!!)
         } else {
             stopAll()
             return playOne(name)
@@ -174,6 +187,12 @@ class Discotheque(private val context: Context) {
     fun playMonstreTerrifiant(): Int {
         return play(MONSTRE_TERRIFIANT)
     }
+
+    fun playMusiqueTriste(): Int {
+        return playOne(MUSICS_NAMES[0], musics)
+    }
+
+    // STOP
 
     private fun stopIt(player: MediaPlayer) {
         if (player.isPlaying)
