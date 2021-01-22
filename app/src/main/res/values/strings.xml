@@ -58,7 +58,7 @@
     <string name="about_corps_5">
         L\'app est complètement open-source sous license GPLv3 à part les extraits audio (et les dessins) qui restent la propriété du Professeur Vincent Legat.
         Vous pouvez contribuer en vous rendant sur le github associé (appuyez sur l\'icone plus bas ).
-        Certains extraits de musique sont utilisés sous license et ne sont pas libres de droit. Plus d'infos sur github dans le fichier "LICENSE MUSICS" dans le dossier racine.
+        Certains extraits de musique sont utilisés sous license et ne sont pas libres de droit. Plus d\'infos sur github dans le fichier "LICENSE MUSICS" dans le dossier racine.
         (Cela étant dit, ils viennent tous de https://incompetech.filmmusic.io d\'où proviennent 85% des musiques utilisées sur internet)
     </string>
 

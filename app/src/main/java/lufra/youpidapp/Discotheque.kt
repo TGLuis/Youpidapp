@@ -3,6 +3,7 @@ package lufra.youpidapp
 import android.content.Context
 import android.media.MediaPlayer
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import java.lang.reflect.Field
 import java.util.*
@@ -20,9 +21,10 @@ class Discotheque(private val context: Context) {
     private val CASTE_SUPERIEURE: String = "epl"
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
     private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
-    private val MUSIQUE_TRISTE: String = "heartbreaking-by-kevin-macleod-from-filmmusic-io.mp3";
+    private val MUSIQUE_TRISTE: String = "heartbreaking_by_kevin_macleod_from_filmmusic_io.mp3";
 
     private val all = HashMap<String, Int>()
+    private val musics = HashMap<String, Int>()
     private val random = Random()
     private fun <T, U> Map<T, U>.random(): Map.Entry<T, U> = entries.elementAt(random.nextInt(size))
     private var reading: LinkedList<MediaPlayer> = LinkedList()
@@ -34,6 +36,7 @@ class Discotheque(private val context: Context) {
         for (f in fields) {
             all[f.name] = f.getInt(f)
         }
+        Log.d("discotheque", all.toString())
     }
 
     fun setType(newType: Int) {
