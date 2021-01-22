@@ -67,6 +67,8 @@ class BoiteFragment: MyFragment() {
         }
         comuBtn.setOnLongClickListener {
             playSadCatAnimation()
+            context.discotheque.playMusiqueTriste()
+            context.discotheque.setType(2)
             true
         }
 
@@ -143,8 +145,8 @@ class BoiteFragment: MyFragment() {
         chat.visibility = View.VISIBLE
 
         val SCALE_FACTOR = 2f
-        val SCALE_DURATION = 1000.toLong()
-        val ANIMATION_DURATION = 4000.toLong()
+        val SCALE_DURATION = 15000.toLong()
+        val ANIMATION_DURATION = 60000.toLong()
         AnimatorSet().apply {
             play(ObjectAnimator.ofFloat(chat, "scaleX", SCALE_FACTOR).apply {
                 duration = SCALE_DURATION
@@ -152,6 +154,9 @@ class BoiteFragment: MyFragment() {
                 duration = SCALE_DURATION
             })
             start()
+        }
+        timer.schedule(ANIMATION_DURATION - SCALE_DURATION) {
+            context.discotheque.playCasteInferieure()
         }
 
         timer.schedule(ANIMATION_DURATION) {
@@ -161,11 +166,11 @@ class BoiteFragment: MyFragment() {
         AnimatorSet().apply {
             val scaleY = ObjectAnimator.ofFloat(chat, "scaleY", 1 / SCALE_FACTOR).apply {
                 duration = SCALE_DURATION
-                startDelay = ANIMATION_DURATION
+                startDelay = ANIMATION_DURATION - SCALE_DURATION
             }
             play(ObjectAnimator.ofFloat(chat, "scaleX", 1 / SCALE_FACTOR).apply {
                 duration = SCALE_DURATION
-                startDelay = ANIMATION_DURATION
+                startDelay = ANIMATION_DURATION - SCALE_DURATION
             }).with(scaleY)
             start()
         }
