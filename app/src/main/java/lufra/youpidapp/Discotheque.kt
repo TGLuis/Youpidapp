@@ -3,11 +3,11 @@ package lufra.youpidapp
 import android.content.Context
 import android.media.MediaPlayer
 import android.net.Uri
-import android.util.Log
 import android.widget.Toast
 import java.lang.reflect.Field
-import java.util.*
+import java.util.LinkedList
 import kotlin.collections.HashMap
+import kotlin.random.Random
 
 
 class Discotheque(private val context: Context) {
@@ -26,8 +26,7 @@ class Discotheque(private val context: Context) {
 
     private val all = HashMap<String, Int>()
     private val musics = HashMap<String, Int>()
-    private val random = Random()
-    private fun <T, U> Map<T, U>.random(): Map.Entry<T, U> = entries.elementAt(random.nextInt(size))
+    private fun <T, U> Map<T, U>.random(): Map.Entry<T, U> = entries.elementAt(Random.nextInt(size))
     private var reading: LinkedList<MediaPlayer> = LinkedList()
     private var playlist: LinkedList<Int> = LinkedList()
     private var type = 1 /* 1 = 1 song at a time, 2 = stack songs, 3 = playlist*/
@@ -37,7 +36,7 @@ class Discotheque(private val context: Context) {
         for (f in fields) {
             // comme ça on mélange pas tout
             if (MUSICS_NAMES.contains(f.name)) {
-                musics[f.name] = f.getInt(f);
+                musics[f.name] = f.getInt(f)
             } else {
                 all[f.name] = f.getInt(f)
             }
@@ -63,7 +62,7 @@ class Discotheque(private val context: Context) {
         try {
             when (type) {
                 1 -> {
-                    return playOne(name)
+                    return playOne(all[name]!!)
                 }
                 2 -> {
                     return playStack(name)
@@ -89,27 +88,23 @@ class Discotheque(private val context: Context) {
         return mp
     }
 
-    // par défault on utilise "all" et pas "musics"
-    private fun playOne(name: String): Int {
-        return playOne(name, all)
-    }
-
     /**
-     * Joue le son "name" en mode "un seul à la fois". soundList est soit "all" soit "musics"
+     * Joue le son "name" en mode "un seul à la fois".
+     * @param soundId id de resource de son (valide).
      */
-    private fun playOne(name: String, soundList: HashMap<String, Int>): Int {
+    private fun playOne(soundId: Int): Int {
         if (reading.size == 0) {
-            val mp = getPlayer(soundList[name]!!)
+            val mp = getPlayer(soundId)
             mp.setOnCompletionListener { mp.stop() }
             reading.add(mp)
             reading[0].start()
             return reading[0].duration
         } else if (reading.size == 1) {
             reading[0].stop()
-            return changeSongAndStart(reading[0], soundList[name]!!)
+            return changeSongAndStart(reading[0], soundId)
         } else {
             stopAll()
-            return playOne(name)
+            return playOne(soundId)
         }
     }
 
@@ -177,7 +172,7 @@ class Discotheque(private val context: Context) {
     }
 
     fun playCasteInferieure(): Int {
-        val rdm = Math.random()
+        val rdm = Random.nextFloat()
         if (rdm < 0.2) {
             return play((CASTE_INFERIEURE[1]))
         }
@@ -189,7 +184,7 @@ class Discotheque(private val context: Context) {
     }
 
     fun playMusiqueTriste(): Int {
-        return playOne(MUSICS_NAMES[0], musics)
+        return playOne(musics[MUSICS_NAMES[0]]!!)
     }
 
     // STOP
