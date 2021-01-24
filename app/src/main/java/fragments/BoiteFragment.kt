@@ -1,24 +1,27 @@
 package fragments
 
-import android.animation.*
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import animation.Direction
 import animation.TranslationAnim
-import data.PaperPlane
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
-import java.util.*
+import java.util.Timer
 import kotlin.concurrent.schedule
+import kotlin.random.Random
 
 class BoiteFragment: MyFragment() {
     private lateinit var context: MainActivity
     private lateinit var planes: Array<PaperPlane>
     private val timer = Timer("paperplane", true)
     private var planeSpecialCounter = 0
+    private var discothequeMode: Int = 1
     override var TAG: String = "=====BOITEFRAGMENT====="
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -59,8 +62,6 @@ class BoiteFragment: MyFragment() {
             eplPaperPlaneListener()
         }
 
-
-
         val comuBtn: View = context.findViewById(R.id.buzzer_comu)
         comuBtn.setOnClickListener {
             context.discotheque.playCasteInferieure()
@@ -68,6 +69,7 @@ class BoiteFragment: MyFragment() {
         comuBtn.setOnLongClickListener {
             playSadCatAnimation()
             context.discotheque.playMusiqueTriste()
+            discothequeMode = context.discotheque.getType()
             context.discotheque.setType(2)
             true
         }
@@ -77,11 +79,11 @@ class BoiteFragment: MyFragment() {
     }
 
     private fun initPlanes() {
-        val aviondepapier = PaperPlane(context.findViewById(R.id.aviondepapier), 0f,0f)
-        val aviondepapier2 = PaperPlane(context.findViewById(R.id.aviondepapier2), 0f,0f)
-        val aviondepapier3 = PaperPlane(context.findViewById(R.id.aviondepapier3), 0f,0f)
-        val aviondepapier4 = PaperPlane(context.findViewById(R.id.aviondepapier4), 0f,0f)
-        val aviondepapier5 = PaperPlane(context.findViewById(R.id.aviondepapier5), 0f,0f)
+        val aviondepapier = PaperPlane(context.findViewById(R.id.aviondepapier), 0f, 0f)
+        val aviondepapier2 = PaperPlane(context.findViewById(R.id.aviondepapier2), 0f, 0f)
+        val aviondepapier3 = PaperPlane(context.findViewById(R.id.aviondepapier3), 0f, 0f)
+        val aviondepapier4 = PaperPlane(context.findViewById(R.id.aviondepapier4), 0f, 0f)
+        val aviondepapier5 = PaperPlane(context.findViewById(R.id.aviondepapier5), 0f, 0f)
 
         planes = arrayOf(aviondepapier, aviondepapier2, aviondepapier3, aviondepapier4, aviondepapier5)
 
@@ -121,7 +123,7 @@ class BoiteFragment: MyFragment() {
     private fun playPaperplaneAnimation(aviondepapier: PaperPlane) {
         aviondepapier.view.visibility = View.VISIBLE
         //Log.d(TAG, "$aviondepapier, x" + aviondepapier.view.x + ", y" + aviondepapier.view.y)
-        val rdm = Math.random()
+        val rdm = Random.nextFloat()
         val flyAway: Animator
         if (rdm < 0.5) { // We send it from SE -> NO
             aviondepapier.view.rotation = 0f
@@ -145,8 +147,8 @@ class BoiteFragment: MyFragment() {
         chat.visibility = View.VISIBLE
 
         val SCALE_FACTOR = 2f
-        val SCALE_DURATION = 15000.toLong()
-        val ANIMATION_DURATION = 60000.toLong()
+        val SCALE_DURATION = 12000.toLong()
+        val ANIMATION_DURATION = 27500.toLong()
         AnimatorSet().apply {
             play(ObjectAnimator.ofFloat(chat, "scaleX", SCALE_FACTOR).apply {
                 duration = SCALE_DURATION
@@ -161,6 +163,7 @@ class BoiteFragment: MyFragment() {
 
         timer.schedule(ANIMATION_DURATION) {
             chat.visibility = View.INVISIBLE
+            context.discotheque.setType(discothequeMode)
         }
 
         AnimatorSet().apply {
@@ -175,4 +178,20 @@ class BoiteFragment: MyFragment() {
             start()
         }
     }
+
+    private class PaperPlane(
+            val view: View,
+            var initX: Float, var initY: Float
+    ) {
+        override fun toString(): String {
+            return view.toString() + ", initX= " + initX + ", initY= " + initY
+        }
+
+        fun resetTranslationXY() {
+            view.visibility = View.INVISIBLE
+            view.translationX = initX
+            view.translationY = initY
+        }
+    }
 }
+
