@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import animation.Direction
 import animation.TranslationAnim
 import lufra.youpidapp.MainActivity
@@ -60,6 +61,29 @@ class BoiteFragment: MyFragment() {
         eplBtn.setOnClickListener {
             context.discotheque.playCasteSuperieure()
             eplPaperPlaneListener()
+        }
+
+        val exterminateBtn: View = context.findViewById(R.id.buzzer_exterminate)
+        exterminateBtn.setOnClickListener {
+            context.discotheque.playExterminate()
+            val toastText = "Hacking raté - svp réessayez, le monde a besoin de vous !"
+            Toast.makeText(context, toastText, Toast.LENGTH_LONG).show()
+        }
+        exterminateBtn.setOnLongClickListener {
+            val toastText = "Hacking réussi ! Daleks neutralisés !"
+            val toast = Toast.makeText(context, toastText, Toast.LENGTH_LONG)
+
+            discothequeMode = context.discotheque.getType()
+            context.discotheque.setType(2)
+            context.discotheque.playHacking()
+
+            timer.schedule(5000) {
+                context.discotheque.playPiou()
+                toast.show()
+                context.discotheque.setType(discothequeMode)
+            }
+
+            true
         }
 
         val comuBtn: View = context.findViewById(R.id.buzzer_comu)
