@@ -68,9 +68,10 @@ class BoiteFragment: MyFragment() {
         }
         comuBtn.setOnLongClickListener {
             playSadCatAnimation()
-            context.discotheque.playMusiqueTriste()
             discothequeMode = context.discotheque.getType()
             context.discotheque.setType(2)
+            context.discotheque.playMusiqueTriste()
+            context.discotheque.playPluie()
             true
         }
 
