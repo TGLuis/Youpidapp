@@ -22,7 +22,7 @@ class Discotheque(private val context: Context) {
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
     private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
     // musiques (on stock ça dans un array c'est plus facile
-    private val MUSICS_NAMES: Array<String> = arrayOf("heartbreaking_by_kevin_macleod_from_filmmusic_io")
+    private val MUSICS_NAMES: Array<String> = arrayOf("heartbreaking_by_kevin_macleod_from_filmmusic_io", "pluie")
 
     private val all = HashMap<String, Int>()
     private val musics = HashMap<String, Int>()
@@ -65,10 +65,10 @@ class Discotheque(private val context: Context) {
                     return playOne(all[name]!!)
                 }
                 2 -> {
-                    return playStack(name)
+                    return playStack(all[name]!!)
                 }
                 3 -> {
-                    return playList(name)
+                    return playList(all[name]!!)
                 }
             }
         } catch (e: java.lang.IllegalStateException) {
@@ -108,8 +108,8 @@ class Discotheque(private val context: Context) {
         }
     }
 
-    private fun playStack(name: String): Int {
-        val mp = getPlayer(all[name]!!)
+    private fun playStack(soundId: Int): Int {
+        val mp = getPlayer(soundId)
         reading.add(mp)
         mp.setOnCompletionListener {
             mp.release()
@@ -119,10 +119,10 @@ class Discotheque(private val context: Context) {
         return mp.duration
     }
 
-    private fun playList(name: String): Int {
+    private fun playList(soundId: Int): Int {
         if (reading.size != 1) {
             reading.clear()
-            val mp = getPlayer(all[name]!!)
+            val mp = getPlayer(soundId)
             reading.add(mp)
             mp.setOnCompletionListener {
                 if (playlist.size > 0) {
@@ -132,9 +132,9 @@ class Discotheque(private val context: Context) {
             }
             mp.start()
         } else if (reading.size == 1 && !reading[0].isPlaying) {
-            changeSongAndStart(reading[0], all[name]!!)
+            changeSongAndStart(reading[0], soundId)
         } else {
-            playlist.add(all[name]!!)
+            playlist.add(soundId)
         }
         return 0
     }
@@ -184,7 +184,11 @@ class Discotheque(private val context: Context) {
     }
 
     fun playMusiqueTriste(): Int {
-        return playOne(musics[MUSICS_NAMES[0]]!!)
+        return playStack(musics[MUSICS_NAMES[0]]!!)
+    }
+
+    fun playPluie(): Int {
+        return playStack(musics[MUSICS_NAMES[1]]!!)
     }
 
     // STOP
