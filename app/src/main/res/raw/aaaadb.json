@@ -36,6 +36,11 @@
       "transcript": "Charles Pecheur"
     },
     {
+      "name": "chef",
+      "displaytext": "CHEF",
+      "transcript": "CHEF CHEF CHEF"
+    },
+    {
       "name": "complique",
       "displaytext": "Compliqué",
       "transcript": "C'est compliqué compliqué compliqué compliqué compliquéhein"
@@ -49,6 +54,11 @@
       "name": "do_not_worry",
       "displaytext": "Do not worry",
       "transcript": "Do not worry, tu t'en fais pas, tu t'énerves pas"
+    },
+    {
+      "name": "doux_jesus",
+      "displaytext": "Doux Jesus",
+      "transcript": "Quelle horreur doux jesus"
     },
     {
       "name": "doyen_verleysen",
@@ -91,6 +101,11 @@
       "transcript": "Voilà, il est mort"
     },
     {
+      "name": "il_se_fait_manger",
+      "displaytext": "Il se fait manger",
+      "transcript": "Il se fait manger par un monstre terrifiant"
+    },
+    {
       "name": "it_must_work",
       "displaytext": "It must work",
       "transcript": "Bon, normalement, it must work"
@@ -99,6 +114,11 @@
       "name": "jean_didou",
       "displaytext": "Jean-Didou",
       "transcript": "Jean-Didou aussi hein"
+    },
+    {
+      "name": "le_plus_important",
+      "displaytext": "Le plus important",
+      "transcript": "Mais ce qui est plus important, c'est que le chef a survécu"
     },
     {
       "name": "le_prof_est_con",
@@ -184,6 +204,11 @@
       "name": "puree",
       "displaytext": "Purée",
       "transcript": "Purée !"
+    },
+    {
+      "name": "qui_va_survivre",
+      "displaytext": "Qui va survivre ?",
+      "transcript": "Qui va survivre dans le monde hostile rempli de contaminations, de zombis pervers, de choses atroces !"
     },
     {
       "name": "regarder_nouvelles",
