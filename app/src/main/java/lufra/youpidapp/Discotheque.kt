@@ -21,8 +21,10 @@ class Discotheque(private val context: Context) {
     private val CASTE_SUPERIEURE: String = "epl"
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
     private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
+    private val ELIMINATION: String = "elimination"
     // musiques (on stock ça dans un array c'est plus facile
     private val MUSICS_NAMES: Array<String> = arrayOf("heartbreaking_by_kevin_macleod_from_filmmusic_io", "pluie")
+    private val BRUITAGES: Array<String> = arrayOf("hacking")
 
     private val all = HashMap<String, Int>()
     private val musics = HashMap<String, Int>()
@@ -189,6 +191,20 @@ class Discotheque(private val context: Context) {
 
     fun playPluie(): Int {
         return playStack(musics[MUSICS_NAMES[1]]!!)
+    }
+
+    // EXTERMINATE button
+
+    fun playPiou(): Int {
+        return play(PIOU_ARRAY[0])
+    }
+
+    fun playExterminate(): Int {
+        return play(ELIMINATION)
+    }
+
+    fun playHacking(): Int {
+        return play(BRUITAGES[0])
     }
 
     // STOP
