@@ -62,6 +62,11 @@ class AboutFragment: MyFragment() {
             true
         }
 
-        context.setMenu("nothing")
+        setMenu()
+    }
+
+    override fun setMenu() {
+        val menu = context.toolbar.menu
+        menu.clear()
     }
 }

@@ -3,18 +3,12 @@ package lufra.youpidapp
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
 import fragments.AboutFragment
 import fragments.BoiteFragment
@@ -22,19 +16,18 @@ import fragments.MainFragment
 import fragments.MyFragment
 import java.util.*
 import kotlin.collections.HashMap
-import kotlin.collections.LinkedHashMap
 
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "==== MAINACTIVITY ===="
 
-    private lateinit var frags: Stack<MyFragment>
+    lateinit var actionBarButtons: ActionBarButtons
+    lateinit var frags: Stack<MyFragment>
     private lateinit var lesFragments: MutableMap<String, MyFragment>
-    private lateinit var toolbar: Toolbar
-    private lateinit var navView: NavigationView
+    lateinit var toolbar: Toolbar
+    lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
     private var searchMenuItem: MenuItem? = null
-    private var lastMenu: String? = null
     lateinit var discotheque: Discotheque
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Toolbar
+        actionBarButtons = ActionBarButtons(this)
         toolbar = this.findViewById(R.id.my_toolbar)
         drawerLayout = this.findViewById(R.id.drawer_layout)
         val toggle = ActionBarDrawerToggle(
@@ -81,100 +75,6 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu, menu)
         return true
-    }
-
-    /**
-     * Contextual menu, create dynamically the menu in function of the parameter 'which'
-     * There are three recognized menu configurations:
-     * - "soundbox" for the soundbox; contains a search widget, a button to stop
-     *   the playlist and a button to select the playing type;
-     * - "buzzbox" for the buzzer box; contains the same items as the soundbox but without the search widget;
-     * - "none" for fragments that don't need a toolbar.
-     */
-    fun setMenu(which: String) {
-        val context = this
-        val myMenu = toolbar.menu
-        if (which == lastMenu)
-            return
-        myMenu.clear()
-        lastMenu = which
-        if (which == "soundbox") {
-            searchMenuItem = myMenu.add(R.string.search).apply {
-                icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_search_24)
-                actionView = SearchView(context)
-                setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
-                (actionView as SearchView).maxWidth = Integer.MAX_VALUE
-            }
-        } else {
-            searchMenuItem = null
-        }
-        when (which) {
-            "soundbox", "buzzbox" -> {
-                myMenu.add(R.string.stop).apply {
-                    icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
-                    setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
-                    setOnMenuItemClickListener {
-                        discotheque.stopAll()
-                        frags.peek().stopAll()
-                        true
-                    }
-                }
-                myMenu.add(R.string.type).apply {
-                    icon =
-                        ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
-                    setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-                    setOnMenuItemClickListener {
-                        dialogAndSetType()
-                        true
-                    }
-                }
-            }
-            "nothing" -> {
-                myMenu.clear()
-            }
-        }
-    }
-
-    private fun dialogAndSetType() {
-        val viewInflated = LayoutInflater.from(this)
-            .inflate(R.layout.simple_spinner_input, this.navView as ViewGroup, false)
-        val theSpinner = viewInflated.findViewById<Spinner>(R.id.input_spinner)
-        val adaptor = ArrayAdapter(
-            this,
-            R.layout.support_simple_spinner_dropdown_item,
-            discotheque.getTypes()
-        )
-        var selectedType = 1
-        adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-        theSpinner.adapter = adaptor
-        theSpinner.setSelection(discotheque.getType() - 1)
-        theSpinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    selectedType = p2 + 1
-                }
-            }
-        val that = this
-
-        MaterialAlertDialogBuilder(this, R.style.AlertDialogPositiveBtnFilled)
-            .setView(viewInflated)
-            .setTitle(R.string.type)
-            .setPositiveButton(R.string.ok) { dialog, _ ->
-                discotheque.setType(selectedType)
-                Toast.makeText(
-                    that,
-                    "Mode de lecture: " + discotheque.getTypes()[discotheque.getType() - 1],
-                    Toast.LENGTH_LONG
-                ).show()
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.cancel) { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setCancelable(false)
-            .create()
-            .show()
     }
 
     private fun setDrawer() {
@@ -218,7 +118,7 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onBackPressed() {
         when {
-            isSearchOpened() -> closesearchIfOpen()
+            frags.peek().isSearchOpened() -> frags.peek().closeSearchIfOpened()
             drawerLayout.isDrawerOpen(GravityCompat.START) -> {
                 drawerLayout.closeDrawer(GravityCompat.START)
             }
@@ -232,17 +132,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun isSearchOpened(): Boolean = searchMenuItem?.isActionViewExpanded == true
-
-    private fun closesearchIfOpen() {
-        searchMenuItem?.collapseActionView()
-    }
-
-    fun setFilterQueryTextListener(listener: SearchView.OnQueryTextListener) {
-        (searchMenuItem?.actionView as SearchView?)?.setOnQueryTextListener(listener)
-    }
-
 
     override fun onDestroy() {
         saveState()

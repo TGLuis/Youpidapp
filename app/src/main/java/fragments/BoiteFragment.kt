@@ -29,6 +29,7 @@ class BoiteFragment: MyFragment() {
                               savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         context = activity as MainActivity
+        menu = context.toolbar.menu
         return inflater.inflate(R.layout.fragment_boite, container, false)
     }
 
@@ -99,8 +100,15 @@ class BoiteFragment: MyFragment() {
             true
         }
 
-        context.setMenu("buzzbox")
+        setMenu()
         context.setTitle(R.string.boite_title)
+    }
+
+    override fun setMenu() {
+        val menu = context.toolbar.menu
+        menu.clear()
+        context.actionBarButtons.addStop(menu)
+        context.actionBarButtons.addTypeLecture(menu)
     }
 
     private fun initPlanes() {
