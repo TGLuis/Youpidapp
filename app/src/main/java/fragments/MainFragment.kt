@@ -10,6 +10,7 @@ import adapter.SoundAdapter
 import android.animation.*
 import android.content.res.Configuration
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
@@ -26,6 +27,7 @@ class MainFragment: MyFragment() {
     private var viewColumnCount = 1
     override var TAG: String = "=====MAINFRAGMENT====="
     private lateinit var animatorsPlaying: MutableList<Animator>
+    private lateinit var searchMenuItem: MenuItem
 
     private val soundClickedListener = object: SoundAdapter.SoundClickedListener {
         override fun onSoundClicked(soundViewHolder: SoundAdapter.SoundViewHolder) {
@@ -78,9 +80,17 @@ class MainFragment: MyFragment() {
             val duration = context.discotheque.play(viewAdapter.random())
             playTargetedAnimator(button, duration.toLong())
         }
-        context.setMenu("soundbox")
+        setMenu()
+    }
+
+    override fun setMenu() {
+        val menu = context.toolbar.menu
+        menu.clear()
+        this.searchMenuItem = context.actionBarButtons.addResearch(menu)
         // Mandatory to do this now...
-        context.setFilterQueryTextListener(soundFilterListener)
+        (this.searchMenuItem.actionView as SearchView).setOnQueryTextListener(soundFilterListener)
+        context.actionBarButtons.addStop(menu)
+        context.actionBarButtons.addTypeLecture(menu)
     }
 
     override fun stopAll() {
@@ -123,5 +133,11 @@ class MainFragment: MyFragment() {
         animator.setTarget(view)
         animator.duration = duration
         animator.start()
+    }
+
+    override fun isSearchOpened(): Boolean = searchMenuItem.isActionViewExpanded
+
+    override fun closeSearchIfOpened() {
+        searchMenuItem.collapseActionView()
     }
 }
