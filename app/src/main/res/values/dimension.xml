@@ -13,6 +13,7 @@
     <dimen name="margin_hor_small">10dp</dimen>
     <dimen name="margin_ver_normal">16dp</dimen>
     <dimen name="margin_fab_normal">16dp</dimen>
+    <dimen name="margin_ver_title">24dp</dimen>
     <!-- - boutons - -->
     <dimen name="margin_btn_margin_hor_normal">40dp</dimen>
     <dimen name="margin_btn_margin_hor_small">25dp</dimen>

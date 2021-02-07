@@ -59,6 +59,7 @@ object Helper {
 
     private fun initElements() {
         setConfigValue("reading_type", 1.toString())
+        setConfigValue("pitch", 1.0f.toString())
     }
 
     fun getConfigValue(name: String): String? {

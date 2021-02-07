@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import fragments.ParameterFragment
 
 class ActionBarButtons(activity: MainActivity) {
 
@@ -35,6 +36,17 @@ class ActionBarButtons(activity: MainActivity) {
         }
     }
 
+    fun addParameters(menu: Menu): MenuItem {
+        return menu.add(R.string.parameters).apply {
+            icon =ContextCompat.getDrawable(context, R.drawable.ic_baseline_settings_24)
+            setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            setOnMenuItemClickListener {
+                context.openFragment(ParameterFragment::class.java.name)
+                true
+            }
+        }
+    }
+
     fun addTypeLecture(menu: Menu): MenuItem {
         return menu.add(R.string.type).apply {
             icon =
@@ -50,7 +62,7 @@ class ActionBarButtons(activity: MainActivity) {
     fun dialogAndSetType() {
         val viewInflated = LayoutInflater.from(context)
                 .inflate(R.layout.simple_spinner_input, context.navView as ViewGroup, false)
-        val theSpinner = viewInflated.findViewById<Spinner>(R.id.input_spinner)
+        val theSpinner = viewInflated.findViewById<Spinner>(R.id.type_spinner)
         val adaptor = ArrayAdapter(
                 context,
                 R.layout.support_simple_spinner_dropdown_item,

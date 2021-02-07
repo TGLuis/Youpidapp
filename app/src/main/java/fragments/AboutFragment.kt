@@ -61,8 +61,6 @@ class AboutFragment: MyFragment() {
             startActivity(browserIntent)
             true
         }
-
-        setMenu()
     }
 
     override fun setMenu() {
