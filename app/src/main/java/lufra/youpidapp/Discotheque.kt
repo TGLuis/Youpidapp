@@ -100,9 +100,7 @@ class Discotheque(private val context: Context) {
 
     private fun getPlayer(id: Int): MediaPlayer {
         val mp = MediaPlayer.create(context, id)
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            mp.playbackParams = params
-        }
+        mp.playbackParams = params
         mp.setOnErrorListener { _, _, _ ->
             stopAll()
             reading.clear()
