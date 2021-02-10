@@ -58,7 +58,7 @@ object Helper {
     }
 
     private fun initElements() {
-        setConfigValue("reading_type", 1.toString())
+        setConfigValue("reading_type", PlayType.SINGLE.name)
         setConfigValue("pitch", 1.0f.toString())
     }
 
