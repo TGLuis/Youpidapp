@@ -40,7 +40,7 @@ class ConfigActivity : Activity() {
         Helper.init(this)
 
         sounds = Helper.getSounds().sortedWith(SoundAdapter.mComparator).toMutableList()
-        sounds.add(0, Sound("random", "Random"))
+        sounds.add(0, Sound.RANDOM)
 
         makeSpinnerSound()
 

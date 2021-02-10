@@ -84,6 +84,7 @@ object Helper {
             Sound(
                 it.getString("name"),
                 it.getString("displaytext"),
+                it.getString("transcript"),
             )
         }
     }
