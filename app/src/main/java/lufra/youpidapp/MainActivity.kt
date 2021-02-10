@@ -10,10 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import fragments.AboutFragment
-import fragments.BoiteFragment
-import fragments.MainFragment
-import fragments.MyFragment
+import fragments.*
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -53,13 +50,17 @@ class MainActivity : AppCompatActivity() {
         Helper.init(this)
         discotheque = Discotheque(this)
         var type = Helper.getConfigValue("reading_type")
-        while (type == null) {
+        var pitch = Helper.getConfigValue("pitch")
+        while (type == null || pitch == null) {
             Helper.restart(this)
             Thread.sleep(50)
             type = Helper.getConfigValue("reading_type")
+            pitch = Helper.getConfigValue("pitch")
             Log.e("MainActivity", "restart reading type")
         }
         discotheque.setType(type.toInt())
+        discotheque.setPitch(pitch.toFloat())
+
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)
@@ -91,6 +92,13 @@ class MainActivity : AppCompatActivity() {
             setOnMenuItemClickListener {
                 drawerLayout.closeDrawers()
                 context.openFragment(BoiteFragment::class.java.name)
+                true
+            }
+        }
+        navView.menu.add(R.string.parameters).apply {
+            setOnMenuItemClickListener {
+                drawerLayout.closeDrawers()
+                context.openFragment(ParameterFragment::class.java.name)
                 true
             }
         }
@@ -150,5 +158,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun saveState() {
         Helper.setConfigValue("reading_type", discotheque.getType().toString())
+        Helper.setConfigValue("pitch", discotheque.getPitch().toString())
     }
 }

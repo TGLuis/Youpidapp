@@ -100,7 +100,6 @@ class BoiteFragment: MyFragment() {
             true
         }
 
-        setMenu()
         context.setTitle(R.string.boite_title)
     }
 
@@ -108,7 +107,7 @@ class BoiteFragment: MyFragment() {
         val menu = context.toolbar.menu
         menu.clear()
         context.actionBarButtons.addStop(menu)
-        context.actionBarButtons.addTypeLecture(menu)
+        context.actionBarButtons.addParameters(menu)
     }
 
     private fun initPlanes() {

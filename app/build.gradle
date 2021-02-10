@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "lufra.youpidapp"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 4
         versionName "2.1"

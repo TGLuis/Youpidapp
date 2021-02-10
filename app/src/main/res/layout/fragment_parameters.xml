@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:text="@string/parameters"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_title_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_ver_title"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/type_of_reading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/type_of_reading"
+            android:text="@string/type"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintBottom_toTopOf="@id/type_spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_btn_margin_ver_normal"
+            android:entries="@array/types"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/type_of_reading"
+            app:layout_constraintBottom_toTopOf="@id/pitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/pitch"
+            android:text="@string/pitch"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_ver_normal"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/type_spinner"
+            app:layout_constraintBottom_toTopOf="@id/pitch_seekBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <SeekBar
+            android:id="@+id/pitch_seekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:max="30"
+            android:progress="15"
+            android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal"
+            android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+            app:layout_constraintTop_toBottomOf="@id/pitch"
+            app:layout_constraintBottom_toTopOf="@id/default_settings_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/default_settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_ver_normal"
+            android:text="@string/default_parameters"
+            app:layout_constraintTop_toBottomOf="@id/pitch_seekBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

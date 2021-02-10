@@ -80,7 +80,6 @@ class MainFragment: MyFragment() {
             val duration = context.discotheque.play(viewAdapter.random())
             playTargetedAnimator(button, duration.toLong())
         }
-        setMenu()
     }
 
     override fun setMenu() {
@@ -90,7 +89,7 @@ class MainFragment: MyFragment() {
         // Mandatory to do this now...
         (this.searchMenuItem.actionView as SearchView).setOnQueryTextListener(soundFilterListener)
         context.actionBarButtons.addStop(menu)
-        context.actionBarButtons.addTypeLecture(menu)
+        context.actionBarButtons.addParameters(menu)
     }
 
     override fun stopAll() {

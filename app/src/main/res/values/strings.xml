@@ -13,6 +13,11 @@
     <string name="search">Rechercher</string>
 
     <!-- Discotheque -->
+    <string-array name="types">
+        <item>@string/type1</item>
+        <item>@string/type2</item>
+        <item>@string/type3</item>
+    </string-array>
     <string name="type1">1 seul à la fois</string>
     <string name="type2">En même temps</string>
     <string name="type3">Un après l\'autre</string>
@@ -82,4 +87,9 @@
     <string name="buzzer_youpidou">Youpidou\n\n</string>
     <string name="buzzer_youtube">Youtube\n\n</string>
     <string name="buzzer_exterminate">EXTERMINATE\n\n</string>
+
+    <!-- parameters -->
+    <string name="parameters">Paramètres</string>
+    <string name="default_parameters">défaut</string>
+    <string name="pitch">Hauteur du son</string>
 </resources>

@@ -2,6 +2,7 @@ package lufra.youpidapp
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.media.PlaybackParams
 import android.net.Uri
 import android.widget.Toast
 import java.lang.reflect.Field
@@ -12,12 +13,16 @@ import kotlin.random.Random
 
 class Discotheque(private val context: Context) {
 
-    private val PILOU_ARRAY: Array<String> = arrayOf("pilou", "pilou_calme", "pilou_concentre",
-        "pilou_grandiloquent", "pilou_rapide", "pilou_long", "pilou_attentif", "pilou_explicatif")
+    private val PILOU_ARRAY: Array<String> = arrayOf(
+        "pilou", "pilou_calme", "pilou_concentre",
+        "pilou_grandiloquent", "pilou_rapide", "pilou_long", "pilou_attentif", "pilou_explicatif"
+    )
     private val PIOU_ARRAY: Array<String> = arrayOf("piou_piou", "piou_piou_triste")
     private val YOUPIDOU_ARRAY: Array<String> = arrayOf("youpidou", "youpidou_calme")
-    private val YOUTUBE_ARRAY: Array<String> = arrayOf("youtube", "youtubehein", "youtubepointcom",
-        "youtubepointcomhein")
+    private val YOUTUBE_ARRAY: Array<String> = arrayOf(
+        "youtube", "youtubehein", "youtubepointcom",
+        "youtubepointcomhein"
+    )
     private val CASTE_SUPERIEURE: String = "epl"
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
     private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
@@ -32,6 +37,7 @@ class Discotheque(private val context: Context) {
     private var reading: LinkedList<MediaPlayer> = LinkedList()
     private var playlist: LinkedList<Int> = LinkedList()
     private var type = 1 /* 1 = 1 song at a time, 2 = stack songs, 3 = playlist*/
+    private var params: PlaybackParams
 
     init {
         val fields: Array<Field> = R.raw::class.java.fields
@@ -43,10 +49,31 @@ class Discotheque(private val context: Context) {
                 all[f.name] = f.getInt(f)
             }
         }
+
+        params = PlaybackParams()
+        params.pitch = 1.0f
     }
 
     fun setType(newType: Int) {
         type = newType
+    }
+
+    fun setPitch(newPitch: Float) {
+        if (newPitch < 0.5f) {
+            params.pitch = 0.5f
+        } else if (newPitch > 2.0f) {
+            params.pitch = 2.0f
+        } else {
+            params.pitch = newPitch
+        }
+    }
+
+    fun getPitch(): Float {
+        return params.pitch
+    }
+
+    fun getDefaultPitch(): Float {
+        return 1f
     }
 
     fun getType(): Int {
@@ -54,24 +81,15 @@ class Discotheque(private val context: Context) {
     }
 
     fun getTypes(): Array<String> {
-        return arrayOf(
-            context.getString(R.string.type1),
-            context.getString(R.string.type2),
-            context.getString(R.string.type3))
+        return context.resources.getStringArray(R.array.types)
     }
 
     fun play(name: String): Int {
         try {
             when (type) {
-                1 -> {
-                    return playOne(all[name]!!)
-                }
-                2 -> {
-                    return playStack(all[name]!!)
-                }
-                3 -> {
-                    return playList(all[name]!!)
-                }
+                1 -> return playOne(all[name]!!)
+                2 -> return playStack(all[name]!!)
+                3 -> return playList(all[name]!!)
             }
         } catch (e: java.lang.IllegalStateException) {
             reading.clear()
@@ -82,6 +100,7 @@ class Discotheque(private val context: Context) {
 
     private fun getPlayer(id: Int): MediaPlayer {
         val mp = MediaPlayer.create(context, id)
+        mp.playbackParams = params
         mp.setOnErrorListener { _, _, _ ->
             stopAll()
             reading.clear()
@@ -99,6 +118,7 @@ class Discotheque(private val context: Context) {
             val mp = getPlayer(soundId)
             mp.setOnCompletionListener { mp.stop() }
             reading.add(mp)
+            reading[0].playbackParams.pitch = params.pitch
             reading[0].start()
             return reading[0].duration
         } else if (reading.size == 1) {
@@ -117,6 +137,7 @@ class Discotheque(private val context: Context) {
             mp.release()
             reading.remove(mp)
         }
+        mp.playbackParams.pitch = params.pitch
         mp.start()
         return mp.duration
     }
@@ -132,6 +153,7 @@ class Discotheque(private val context: Context) {
                     changeSongAndStart(mp, playlist.pop())
                 }
             }
+            mp.playbackParams.pitch = params.pitch
             mp.start()
         } else if (reading.size == 1 && !reading[0].isPlaying) {
             changeSongAndStart(reading[0], soundId)
@@ -145,6 +167,7 @@ class Discotheque(private val context: Context) {
         mp.reset()
         mp.setDataSource(context, Uri.parse("android.resource://lufra.youpidapp/$id"))
         mp.prepare()
+        mp.playbackParams = params
         mp.start()
         return mp.duration
     }
