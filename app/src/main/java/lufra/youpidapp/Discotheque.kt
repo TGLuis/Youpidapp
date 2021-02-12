@@ -36,7 +36,7 @@ class Discotheque(private val context: Context) {
     private fun <T, U> Map<T, U>.random(): Map.Entry<T, U> = entries.elementAt(Random.nextInt(size))
     private var reading: LinkedList<MediaPlayer> = LinkedList()
     private var playlist: LinkedList<Int> = LinkedList()
-    private var type = 1 /* 1 = 1 song at a time, 2 = stack songs, 3 = playlist*/
+    private var type = PlayType.SINGLE /* 1 = 1 song at a time, 2 = stack songs, 3 = playlist*/
     private var params: PlaybackParams
 
     init {
@@ -54,7 +54,7 @@ class Discotheque(private val context: Context) {
         params.pitch = 1.0f
     }
 
-    fun setType(newType: Int) {
+    fun setType(newType: PlayType) {
         type = newType
     }
 
@@ -76,7 +76,7 @@ class Discotheque(private val context: Context) {
         return 1f
     }
 
-    fun getType(): Int {
+    fun getType(): PlayType {
         return type
     }
 
@@ -87,9 +87,9 @@ class Discotheque(private val context: Context) {
     fun play(name: String): Int {
         try {
             when (type) {
-                1 -> return playOne(all[name]!!)
-                2 -> return playStack(all[name]!!)
-                3 -> return playList(all[name]!!)
+                PlayType.SINGLE -> return playOne(all[name]!!)
+                PlayType.PARALLEL -> return playStack(all[name]!!)
+                PlayType.SEQUENTIAL -> return playList(all[name]!!)
             }
         } catch (e: java.lang.IllegalStateException) {
             reading.clear()

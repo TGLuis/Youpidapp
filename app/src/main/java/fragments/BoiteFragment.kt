@@ -12,6 +12,7 @@ import android.widget.Toast
 import animation.Direction
 import animation.TranslationAnim
 import lufra.youpidapp.MainActivity
+import lufra.youpidapp.PlayType
 import lufra.youpidapp.R
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -22,7 +23,7 @@ class BoiteFragment: MyFragment() {
     private lateinit var planes: Array<PaperPlane>
     private val timer = Timer("paperplane", true)
     private var planeSpecialCounter = 0
-    private var discothequeMode: Int = 1
+    private var discothequeMode: PlayType = PlayType.SINGLE
     override var TAG: String = "=====BOITEFRAGMENT====="
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +76,7 @@ class BoiteFragment: MyFragment() {
             val toast = Toast.makeText(context, toastText, Toast.LENGTH_LONG)
 
             discothequeMode = context.discotheque.getType()
-            context.discotheque.setType(2)
+            context.discotheque.setType(PlayType.PARALLEL)
             context.discotheque.playHacking()
 
             timer.schedule(5000) {
@@ -94,7 +95,7 @@ class BoiteFragment: MyFragment() {
         comuBtn.setOnLongClickListener {
             playSadCatAnimation()
             discothequeMode = context.discotheque.getType()
-            context.discotheque.setType(2)
+            context.discotheque.setType(PlayType.PARALLEL)
             context.discotheque.playMusiqueTriste()
             context.discotheque.playPluie()
             true

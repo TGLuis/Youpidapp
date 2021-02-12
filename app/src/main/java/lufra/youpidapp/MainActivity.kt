@@ -58,9 +58,8 @@ class MainActivity : AppCompatActivity() {
             pitch = Helper.getConfigValue("pitch")
             Log.e("MainActivity", "restart reading type")
         }
-        discotheque.setType(type.toInt())
+        discotheque.setType(PlayType.valueOf(type))
         discotheque.setPitch(pitch.toFloat())
-
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)
@@ -157,7 +156,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveState() {
-        Helper.setConfigValue("reading_type", discotheque.getType().toString())
+        Helper.setConfigValue("reading_type", discotheque.getType().name)
         Helper.setConfigValue("pitch", discotheque.getPitch().toString())
     }
 }

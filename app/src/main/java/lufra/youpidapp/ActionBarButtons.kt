@@ -68,15 +68,15 @@ class ActionBarButtons(activity: MainActivity) {
                 R.layout.support_simple_spinner_dropdown_item,
                 context.discotheque.getTypes()
         )
-        var selectedType = 1
+        var selectedType = PlayType.SINGLE
         adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         theSpinner.adapter = adaptor
-        theSpinner.setSelection(context.discotheque.getType() - 1)
+        theSpinner.setSelection(context.discotheque.getType().ordinal)
         theSpinner.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {}
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                        selectedType = p2 + 1
+                        selectedType = PlayType.fromInt(p2)
                     }
                 }
 
@@ -87,7 +87,7 @@ class ActionBarButtons(activity: MainActivity) {
                     context.discotheque.setType(selectedType)
                     Toast.makeText(
                             context,
-                            "Mode de lecture: " + context.discotheque.getTypes()[context.discotheque.getType() - 1],
+                            "Mode de lecture: " + context.discotheque.getTypes()[context.discotheque.getType().ordinal],
                             Toast.LENGTH_LONG
                     ).show()
                     dialog.dismiss()
