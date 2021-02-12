@@ -102,7 +102,7 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
         val queryNormalized = normalizeString(query)
         val filteredList = mutableListOf<Sound>()
         for (sound in mSoundsList)
-            if (normalizeString(sound.displayText).contains(queryNormalized))
+            if (normalizeString(sound.displayText).contains(queryNormalized) or normalizeString(sound.transcript).contains(queryNormalized))
                 filteredList.add(sound)
         replaceAll(filteredList)
     }
