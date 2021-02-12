@@ -1,9 +1,19 @@
 {
   "sounds": [
     {
+      "name": "abonnezvous",
+      "displaytext": "Abonnez-vous !",
+      "transcript": "vous pouvez vous abonnez, n'oubliez d'abonner votre grand-mère, votre grand-père, toute la famille. Vous pouvez aussi abonner vos amis d'enfance, si t'as une copine, AAAABONNE la, ou un copain, AAAABONNE LA à notre chaine favori"
+    },
+    {
       "name": "aiou",
       "displaytext": "Aïou !",
       "transcript": "Aïou !"
+    },
+    {
+      "name": "anglosaxons",
+      "displaytext": "Anglo-saxons",
+      "transcript": "ça quand il y a moyen de faire des trucs débiles, les anglo-saxons ils sont toujours très fort"
     },
     {
       "name": "aucune_chance",
@@ -46,6 +56,11 @@
       "transcript": "C'est compliqué compliqué compliqué compliqué compliquéhein"
     },
     {
+      "name": "contamines",
+      "displaytext": "Contaminés",
+      "transcript": "les contaminés parlent aux cons, et les cons parlent aux contaminés"
+    },
+    {
       "name": "donald",
       "displaytext": "Donald",
       "transcript": "Ouh, il va pas être content Donald"
@@ -86,9 +101,24 @@
       "transcript": "Moi je suis l'énergie cinétique"
     },
     {
+      "name": "equations_compliquees",
+      "displaytext": "Equations compliquées",
+      "transcript": "des équations SUPEEEEER compliquées"
+    },
+    {
+      "name": "fonctionnaires",
+      "displaytext": "Fonctionnaires",
+      "transcript": "fonctionnaires, c'est comme les profs d'unif, c'est des gens qui foutent rien"
+    },
+    {
       "name": "frappe_par_la_douleur",
       "displaytext": "Frappé par la douleur",
       "transcript": "Ils ont le visage frappé par la douleur"
+    },
+    {
+      "name": "googleyoupidapp",
+      "displaytext": "Google Youpidapp",
+      "transcript": "si la chaine youtube de méthode numérique arrive au million d'abonnés, mais alors on va commencer à investir dans l'immobilier,  vous allez imaginer le batiment YOUPIDAPP, LA TOUR YOUPIDAPP ? On rachète le campus des chinois qui est vide là,  et on le transforme en GOOGLEYOUPIDAPP"
     },
     {
       "name": "ikea",
@@ -146,6 +176,16 @@
       "transcript": "Monstrueusement long"
     },
     {
+      "name": "objectif2021",
+      "displaytext": "Objectif de 2021",
+      "transcript": "L'objectif pour cette année-ci, c'est d'atteindre 2000, question quand même que je batte la chaine youtube de UCLOUVAIN dans laquelle il n'y a que de la propagande débile sans aucun intérêt"
+    },
+    {
+      "name": "oestges",
+      "displaytext": "Oestges",
+      "transcript": "OESTGES CLAUDE OESTGES un truc comme ça"
+    },
+    {
       "name": "ohoui",
       "displaytext": "Oh oui",
       "transcript": "Oh oui"
@@ -159,6 +199,11 @@
       "name": "on_va_manger",
       "displaytext": "On va manger",
       "transcript": "Ben je vais ptet aller manger, on va prendre une petite bière, ou je sais pas, bah oui vous pouvez prendre votre café"
+    },
+    {
+      "name": "pas_content",
+      "displaytext": "Pas content",
+      "transcript": "il est pas content DU TOUT DU TOUT DU TOUT "
     },
     {
       "name": "piece_of_cake",
@@ -256,6 +301,16 @@
       "transcript": "Tintin"
     },
     {
+      "name": "toujours_merde",
+      "displaytext": "Toujours merde",
+      "transcript": "ça sera toujours de la merde"
+    },
+    {
+      "name": "truc_invente",
+      "displaytext": "Truc inventé",
+      "transcript": "c'est le truc le plus merdique qu'on peut inventer"
+    },
+    {
       "name": "vilain_vilain",
       "displaytext": "Vilain",
       "transcript": "Il est vilain vilain vilain !"
@@ -269,6 +324,11 @@
       "name": "voila_voila",
       "displaytext": "Voilà voilà",
       "transcript": "Voilà voilà voilà voilà voilà voilà"
+    },
+    {
+      "name": "youpidapp",
+      "displaytext": "Youpidapp",
+      "transcript": "si vous vous embêtez, comme dirait l'autre, il y a l'application YOUPIDAPP, qui parrait-il n'est pas mal du tout, ouais enfin elle est bien, elle m'avait fait rigoler"
     },
     {
       "name": "youpidou",
