@@ -1,6 +1,10 @@
 package lufra.youpidapp
 
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -49,8 +53,7 @@ class ActionBarButtons(activity: MainActivity) {
 
     fun addTypeLecture(menu: Menu): MenuItem {
         return menu.add(R.string.type).apply {
-            icon =
-                    ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             setOnMenuItemClickListener {
                 dialogAndSetType()
@@ -71,7 +74,7 @@ class ActionBarButtons(activity: MainActivity) {
         var selectedType = PlayType.SINGLE
         adaptor.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         theSpinner.adapter = adaptor
-        theSpinner.setSelection(context.discotheque.getType().ordinal)
+        theSpinner.setSelection(context.discotheque.getPlayType().ordinal)
         theSpinner.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -87,7 +90,7 @@ class ActionBarButtons(activity: MainActivity) {
                     context.discotheque.setType(selectedType)
                     Toast.makeText(
                             context,
-                            "Mode de lecture: " + context.discotheque.getTypes()[context.discotheque.getType().ordinal],
+                            "Mode de lecture: " + context.discotheque.getTypes()[context.discotheque.getPlayType().ordinal],
                             Toast.LENGTH_LONG
                     ).show()
                     dialog.dismiss()

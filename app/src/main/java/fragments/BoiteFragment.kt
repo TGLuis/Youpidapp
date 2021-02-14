@@ -75,7 +75,7 @@ class BoiteFragment: MyFragment() {
             val toastText = "Hacking réussi ! Daleks neutralisés !"
             val toast = Toast.makeText(context, toastText, Toast.LENGTH_LONG)
 
-            discothequeMode = context.discotheque.getType()
+            discothequeMode = context.discotheque.getPlayType()
             context.discotheque.setType(PlayType.PARALLEL)
             context.discotheque.playHacking()
 
@@ -94,7 +94,7 @@ class BoiteFragment: MyFragment() {
         }
         comuBtn.setOnLongClickListener {
             playSadCatAnimation()
-            discothequeMode = context.discotheque.getType()
+            discothequeMode = context.discotheque.getPlayType()
             context.discotheque.setType(PlayType.PARALLEL)
             context.discotheque.playMusiqueTriste()
             context.discotheque.playPluie()
