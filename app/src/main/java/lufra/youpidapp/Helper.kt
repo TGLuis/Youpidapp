@@ -27,7 +27,7 @@ object Helper {
 
     fun init(c: Context) {
         context = c as Activity
-        sharedPref = context.getSharedPreferences("Youpidou!", Context.MODE_PRIVATE)
+        sharedPref = context.getSharedPreferences("Youpidapp_preferences", Context.MODE_PRIVATE)
         try {
             f = File(context.filesDir.path + "/" + fileName)
             if (f.exists()) {
