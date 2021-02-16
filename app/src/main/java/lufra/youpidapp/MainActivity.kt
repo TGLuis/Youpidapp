@@ -1,17 +1,15 @@
 package lufra.youpidapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import fragments.*
-import java.util.*
+import java.util.Stack
 import kotlin.collections.HashMap
 
 
@@ -24,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var toolbar: Toolbar
     lateinit var navView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
-    private var searchMenuItem: MenuItem? = null
     lateinit var discotheque: Discotheque
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,17 +46,8 @@ class MainActivity : AppCompatActivity() {
         // Helper
         Helper.init(this)
         discotheque = Discotheque(this)
-        var type = Helper.getConfigValue("reading_type")
-        var pitch = Helper.getConfigValue("pitch")
-        while (type == null || pitch == null) {
-            Helper.restart(this)
-            Thread.sleep(50)
-            type = Helper.getConfigValue("reading_type")
-            pitch = Helper.getConfigValue("pitch")
-            Log.e("MainActivity", "restart reading type")
-        }
-        discotheque.setType(PlayType.valueOf(type))
-        discotheque.setPitch(pitch.toFloat())
+        discotheque.setType(Helper.getPreferredPlayType())
+        discotheque.setPitch(Helper.getPreferredPitch())
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)
@@ -156,7 +144,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveState() {
-        Helper.setConfigValue("reading_type", discotheque.getType().name)
-        Helper.setConfigValue("pitch", discotheque.getPitch().toString())
+        Helper.setPreferredPitch(discotheque.getPitch())
+        Helper.setPreferredPlayType(discotheque.getPlayType())
     }
 }

@@ -76,7 +76,7 @@ class Discotheque(private val context: Context) {
         return 1f
     }
 
-    fun getType(): PlayType {
+    fun getPlayType(): PlayType {
         return type
     }
 
