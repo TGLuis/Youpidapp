@@ -1,7 +1,9 @@
 package lufra.youpidapp
 
+import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 import lufra.youpidapp.Helper.context
 
 class MyDatabase : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
@@ -30,9 +32,9 @@ class MyDatabase : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSIO
         db.execSQL("DROP TABLE IF EXISTS '$DATABASE_NAME';")
     }
 
-    public fun getFavorites(): ArrayList<String> {
+    fun getFavorites(): ArrayList<String> {
         val db = this.writableDatabase
-        val query = "SELECT '$FAVORITE_NAME' FROM '$TABLE_FAVORITE';"
+        val query = "SELECT $FAVORITE_NAME FROM '$TABLE_FAVORITE';"
         val cursor = db.rawQuery(query, null)
         val favorites = ArrayList<String>()
         if (cursor.moveToFirst()) {
@@ -45,17 +47,19 @@ class MyDatabase : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSIO
         return favorites
     }
 
-    public fun addFavorite(sound_name : String) {
+    fun addFavorite(sound_name : String) {
         val db = this.writableDatabase
-        val query = "INSERT INTO '$TABLE_FAVORITE' ('$FAVORITE_NAME') VALUES ('$sound_name');"
-        db.execSQL(query)
+        val values = ContentValues()
+        values.apply {
+            put(FAVORITE_NAME, sound_name)
+        }
+        db.insert(TABLE_FAVORITE, null, values)
         db.close()
     }
 
-    public fun delFavorites(sound_name: String) {
+    fun delFavorites(sound_name: String) {
         val db = this.writableDatabase
-        val query = "DELETE FROM '$TABLE_FAVORITE' WHERE '$FAVORITE_NAME'='$sound_name';"
-        db.execSQL(query)
+        db.delete(TABLE_FAVORITE, "$FAVORITE_NAME='$sound_name'", null)
         db.close()
     }
 }

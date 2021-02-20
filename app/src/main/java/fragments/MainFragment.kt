@@ -19,7 +19,7 @@ import lufra.youpidapp.Helper
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 
-class MainFragment: MyFragment() {
+open class MainFragment: MyFragment() {
     private lateinit var context: MainActivity
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: SoundAdapter
@@ -35,7 +35,6 @@ class MainFragment: MyFragment() {
             val soundName = sound.name
             val duration = context.discotheque.play(soundName)
             playWtfAnimator(sound, duration.toLong())
-            Log.d(TAG, "Clicked, $soundViewHolder")
         }
     }
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
@@ -54,6 +53,10 @@ class MainFragment: MyFragment() {
         }
     }
 
+    open fun getSounds(): List<Sound> {
+        return Helper.getSounds()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -62,7 +65,7 @@ class MainFragment: MyFragment() {
         // Not sure if the following should be put in onCreateView or in onActivityCreated
         viewColumnCount = resources.getInteger(R.integer.grid_column_count)
         viewLayoutManager = GridLayoutManager(view.context, viewColumnCount)
-        viewAdapter = SoundAdapter(Helper.getSounds(), soundClickedListener)
+        viewAdapter = SoundAdapter(getSounds(), soundClickedListener)
         recyclerView = view.findViewById<RecyclerView>(R.id.sound_recyclerview).apply {
             layoutManager = viewLayoutManager
             adapter = viewAdapter
@@ -102,7 +105,6 @@ class MainFragment: MyFragment() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        Log.d(TAG, "config changed: $newConfig")
         viewColumnCount = resources.getInteger(R.integer.grid_column_count)
         viewLayoutManager.spanCount = viewColumnCount
     }

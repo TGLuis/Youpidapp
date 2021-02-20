@@ -70,29 +70,36 @@ class MainActivity : AppCompatActivity() {
         navView.menu.clear()
         navView.menu.add(R.string.home).apply {
             setOnMenuItemClickListener {
-                drawerLayout.closeDrawers()
                 context.openFragment(MainFragment::class.java.name)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
+                true
+            }
+        }
+        navView.menu.add(R.string.favorites).apply {
+            setOnMenuItemClickListener {
+                context.openFragment(FavoritesFragment::class.java.name)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
                 true
             }
         }
         navView.menu.add(R.string.boite_title).apply {
             setOnMenuItemClickListener {
-                drawerLayout.closeDrawers()
                 context.openFragment(BoiteFragment::class.java.name)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
                 true
             }
         }
         navView.menu.add(R.string.parameters).apply {
             setOnMenuItemClickListener {
-                drawerLayout.closeDrawers()
                 context.openFragment(ParameterFragment::class.java.name)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
                 true
             }
         }
         navView.menu.add(R.string.about_title).apply {
             setOnMenuItemClickListener {
-                drawerLayout.closeDrawers()
                 context.openFragment(AboutFragment::class.java.name)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
                 true
             }
         }
@@ -115,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         when {
             frags.peek().isSearchOpened() -> frags.peek().closeSearchIfOpened()
             drawerLayout.isDrawerOpen(GravityCompat.START) -> {
-                drawerLayout.closeDrawer(GravityCompat.START)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
             }
             frags.size >= 2 -> {
                 frags.pop()

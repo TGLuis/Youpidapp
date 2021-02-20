@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.util.Log
+import android.widget.Toast
 import data.Sound
 import org.json.JSONObject
 import java.io.File
@@ -19,14 +20,15 @@ object Helper {
     private const val PITCH = "Pitch"
     lateinit var context: Activity
     private lateinit var f: File
+    private lateinit var youpiDB: MyDatabase
 
     private lateinit var jsonStr: String
     private lateinit var jsonObj: JSONObject
-
+    private lateinit var preferredSounds: ArrayList<String>
     private lateinit var sharedPref: SharedPreferences
 
-    fun init(c: Context) {
-        context = c as Activity
+    fun init(c: Activity) {
+        context = c
         sharedPref = context.getSharedPreferences("Youpidapp_preferences", Context.MODE_PRIVATE)
         try {
             f = File(context.filesDir.path + "/" + fileName)
@@ -48,6 +50,8 @@ object Helper {
         } catch (e: IOException) {
             Log.e(TAG, "Failed to open config file. " + e.message)
         }
+        youpiDB = MyDatabase()
+        preferredSounds = youpiDB.getFavorites()
         initSoundDB()
     }
 
@@ -73,13 +77,35 @@ object Helper {
         jsonObj = JSONObject(jsonStr)
     }
 
+    private fun isFavouriteSound(sound_name: String): Boolean {
+        return preferredSounds.contains(sound_name)
+    }
+
+    fun addSoundFavourite(sound: Sound) {
+        if (sound.isFavourite)
+            return
+        sound.isFavourite = true
+        preferredSounds.add(sound.name)
+        youpiDB.addFavorite(sound.name)
+    }
+
+    fun removeSoundFavorite(sound: Sound) {
+        if (!sound.isFavourite)
+            return
+        sound.isFavourite = false
+        preferredSounds.remove(sound.name)
+        youpiDB.delFavorites(sound.name)
+    }
+
     fun getSounds(): List<Sound> {
         val jsonSoundsArray = jsonObj.getJSONArray("sounds")
         return (0 until jsonSoundsArray.length()).map { jsonSoundsArray[it] as JSONObject }.map {
+            val name = it.getString("name")
             Sound(
-                it.getString("name"),
+                name,
                 it.getString("displaytext"),
                 it.getString("transcript"),
+                isFavouriteSound(name),
             )
         }
     }
