@@ -25,7 +25,8 @@
         android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
         android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal"
         android:text="@string/random"
-        app:icon="@drawable/ic_random" />
+        app:icon="@drawable/ic_random"
+        app:iconGravity="end" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sound_recyclerview"
