@@ -15,20 +15,21 @@ class Discotheque(private val context: Context) {
 
     private val PILOU_ARRAY: Array<String> = arrayOf(
         "pilou", "pilou_calme", "pilou_concentre",
-        "pilou_grandiloquent", "pilou_rapide", "pilou_long", "pilou_attentif", "pilou_explicatif"
+        "pilou_grandiloquent", "pilou_rapide", "pilou_long", "pilou_attentif", "pilou_explicatif",
+            "pilou_attention", "pilou_fin", "pilou_ponctuation"
     )
     private val PIOU_ARRAY: Array<String> = arrayOf("piou_piou", "piou_piou_triste")
     private val YOUPIDOU_ARRAY: Array<String> = arrayOf("youpidou", "youpidou_calme")
     private val YOUTUBE_ARRAY: Array<String> = arrayOf(
-        "youtube", "youtubehein", "youtubepointcom",
-        "youtubepointcomhein"
+        "youtube", "youtubehein", "youtubepointcom", "youtubepointcomhein"
     )
     private val CASTE_SUPERIEURE: String = "epl"
     private val CASTE_INFERIEURE: Array<String> = arrayOf("comu", "help")
     private val MONSTRE_TERRIFIANT: String = "monstre_terrifiant"
     private val ELIMINATION: String = "elimination"
     // musiques (on stock ça dans un array c'est plus facile
-    private val MUSICS_NAMES: Array<String> = arrayOf("heartbreaking_by_kevin_macleod_from_filmmusic_io", "pluie")
+    private val MUSICS_NAMES: Array<String> = arrayOf("heartbreaking_by_kevin_macleod_from_filmmusic_io",
+            "pluie", "ice_flow_by_kevin_macleod_from_filmmusic_io", "too_cool_by_kevin_macleod_from_filmmusic_io.mp3")
     private val BRUITAGES: Array<String> = arrayOf("hacking")
 
     private val all = HashMap<String, Int>()
@@ -209,11 +210,11 @@ class Discotheque(private val context: Context) {
     }
 
     fun playMusiqueTriste(): Int {
-        return playStack(musics[MUSICS_NAMES[0]]!!)
+        return playMusic(0)
     }
 
     fun playPluie(): Int {
-        return playStack(musics[MUSICS_NAMES[1]]!!)
+        return playMusic(1)
     }
 
     // EXTERMINATE button
@@ -228,6 +229,17 @@ class Discotheque(private val context: Context) {
 
     fun playHacking(): Int {
         return play(BRUITAGES[0])
+    }
+
+    // MUSICS BUTTON
+
+    fun getMusicList(): Array<String> {
+        return MUSICS_NAMES
+    }
+
+    fun playMusic(id: Int): Int {
+        if (id < 0 || id >= musics.size ) return -1
+        return playStack(musics[MUSICS_NAMES[id]]!!)
     }
 
     // STOP
