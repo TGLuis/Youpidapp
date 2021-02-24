@@ -92,4 +92,6 @@
     <string name="parameters">Paramètres</string>
     <string name="default_parameters">défaut</string>
     <string name="pitch">Hauteur du son</string>
+
+    <string name="favorites">Favoris</string>
 </resources>

@@ -6,10 +6,11 @@ class Sound(
     val name: String,
     val displayText: String,
     val transcript: String,
+    var isFavourite: Boolean,
 ) {
     companion object {
         fun normalizeString(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replace("\\p{Mn}+".toRegex(), "").toLowerCase()
-        val RANDOM = Sound("random", "Random", "Random text")
+        val RANDOM = Sound("random", "Random", "Random text", false)
     }
 
     override fun equals(other: Any?): Boolean {

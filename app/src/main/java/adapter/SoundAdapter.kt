@@ -1,14 +1,18 @@
 package adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SortedList
 import androidx.recyclerview.widget.SortedListAdapterCallback
+import com.google.android.material.button.MaterialButton
 import data.Sound
 import data.Sound.Companion.normalizeString
+import lufra.youpidapp.Helper
+import lufra.youpidapp.Helper.context
+import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 import kotlin.random.Random
 
@@ -52,7 +56,7 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
 
     class SoundViewHolder(itemView: View, soundClickedListener: SoundClickedListener) : RecyclerView.ViewHolder(itemView) {
 
-        val button: Button = itemView.findViewById(R.id.sound_button_id)
+        val button: MaterialButton = itemView.findViewById(R.id.sound_button_id)
         var sound: Sound? = null
         var cleanupAnimationListener: CleanupAnimationListener? = null
 
@@ -60,11 +64,27 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
             button.setOnClickListener {
                 soundClickedListener.onSoundClicked(this)
             }
+            button.setOnLongClickListener {
+                if (sound != null) {
+                    if (sound!!.isFavourite) {
+                        button.setIconResource(R.drawable.ic_baseline_star_border_24)
+                        Helper.removeSoundFavorite(sound!!)
+                    } else {
+                        button.setIconResource(R.drawable.ic_baseline_star_24)
+                        Helper.addSoundFavourite(sound!!)
+                    }
+                }
+                true
+            }
         }
 
         fun bind(sound: Sound, adapter: SoundAdapter) {
             this.sound = sound
             button.text = sound.displayText
+            if (sound.isFavourite)
+                button.setIconResource(R.drawable.ic_baseline_star_24)
+            else
+                button.setIconResource(R.drawable.ic_baseline_star_border_24)
             adapter.activeViewHolderForSound[sound] = this
         }
 
