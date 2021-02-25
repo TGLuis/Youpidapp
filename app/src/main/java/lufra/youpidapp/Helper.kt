@@ -27,6 +27,7 @@ object Helper {
     private lateinit var preferredSounds: ArrayList<String>
     private lateinit var sharedPref: SharedPreferences
 
+    
     fun init(c: Activity) {
         context = c
         sharedPref = context.getSharedPreferences("Youpidapp_preferences", Context.MODE_PRIVATE)
