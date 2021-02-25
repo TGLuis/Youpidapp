@@ -92,6 +92,7 @@
     <string name="parameters">Paramètres</string>
     <string name="default_parameters">défaut</string>
     <string name="pitch">Hauteur du son</string>
+    <string name="open_app_on_favorites">Ouvrir l\'app sur les favoris</string>
 
     <string name="favorites">Favoris</string>
 </resources>
