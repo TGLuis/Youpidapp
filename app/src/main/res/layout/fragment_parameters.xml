@@ -38,13 +38,35 @@
             android:id="@+id/type_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_btn_margin_ver_normal"
+            android:layout_margin="@dimen/margin_ver_normal"
             android:entries="@array/types"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/type_of_reading"
+            app:layout_constraintBottom_toTopOf="@id/open_app_on_favorites"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/open_app_on_favorites"
+            android:text="@string/open_app_on_favorites"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/type_spinner"
             app:layout_constraintBottom_toTopOf="@id/pitch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_open_on_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBaseline_toBaselineOf="@id/open_app_on_favorites"
+            app:layout_constraintStart_toEndOf="@id/open_app_on_favorites"/>
+
 
         <TextView
             android:id="@+id/pitch"
@@ -54,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_ver_normal"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/type_spinner"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_open_on_favorites"
             app:layout_constraintBottom_toTopOf="@id/pitch_seekBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
