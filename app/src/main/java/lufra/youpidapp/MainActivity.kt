@@ -56,7 +56,10 @@ class MainActivity : AppCompatActivity() {
         // Fragments
         frags = Stack()
         lesFragments = HashMap()
-        openFragment(MainFragment::class.java.name)
+        if (Helper.shouldOpenOnFavorites())
+            openFragment(FavoritesFragment::class.java.name)
+        else
+            openFragment(MainFragment::class.java.name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

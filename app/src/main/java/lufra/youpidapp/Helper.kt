@@ -18,6 +18,7 @@ object Helper {
     private const val fileName = "config.properties"
     private const val PLAYTYPE = "PlayType"
     private const val PITCH = "Pitch"
+    private const val OPEN_ON_FAVORITES = "OpenOnFavorites"
     lateinit var context: Activity
     private lateinit var f: File
     private lateinit var youpiDB: MyDatabase
@@ -27,6 +28,7 @@ object Helper {
     private lateinit var preferredSounds: ArrayList<String>
     private lateinit var sharedPref: SharedPreferences
 
+    
     fun init(c: Activity) {
         context = c
         sharedPref = context.getSharedPreferences("Youpidapp_preferences", Context.MODE_PRIVATE)
@@ -108,5 +110,13 @@ object Helper {
                 isFavouriteSound(name),
             )
         }
+    }
+
+    fun openOnFavorites(openOnFavorites: Boolean) {
+        sharedPref.edit().putBoolean(OPEN_ON_FAVORITES, openOnFavorites).apply()
+    }
+
+    fun shouldOpenOnFavorites(): Boolean {
+        return sharedPref.getBoolean(OPEN_ON_FAVORITES, false)
     }
 }

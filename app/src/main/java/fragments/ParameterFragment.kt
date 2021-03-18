@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.SeekBar
-import android.widget.Spinner
+import android.widget.*
+import lufra.youpidapp.Helper
 import lufra.youpidapp.Discotheque
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.PlayType
@@ -18,6 +16,7 @@ class ParameterFragment: MyFragment() {
     private lateinit var typeSpinner: Spinner
     private lateinit var pitchSeekBar: SeekBar
     private lateinit var setDefaultButton: Button
+    private lateinit var openOnFavoritesCheckBox: CheckBox
     override var TAG: String = "=====BOITEFRAGMENT====="
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -38,6 +37,12 @@ class ParameterFragment: MyFragment() {
                 }
             }
 
+        openOnFavoritesCheckBox = context.findViewById(R.id.checkbox_open_on_favorites)
+        openOnFavoritesCheckBox.isChecked = Helper.shouldOpenOnFavorites()
+        openOnFavoritesCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            Helper.openOnFavorites(isChecked)
+        }
+
         pitchSeekBar = context.findViewById(R.id.pitch_seekBar)
         pitchSeekBar.progress = ((context.discotheque.getPitch() - 0.5f) * 20f).toInt()
         pitchSeekBar.setOnSeekBarChangeListener(MyListener(context.discotheque))
@@ -45,7 +50,6 @@ class ParameterFragment: MyFragment() {
         setDefaultButton = context.findViewById(R.id.default_settings_button)
         setDefaultButton.setOnClickListener {
             pitchSeekBar.progress =  ((context.discotheque.getDefaultPitch() - 0.5f) * 20f).toInt()
-            typeSpinner.setSelection(0)
         }
 
         context.setTitle(R.string.parameters)
