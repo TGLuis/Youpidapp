@@ -2,7 +2,7 @@ package data
 
 import java.text.Normalizer
 
-class Sound(
+data class Sound(
     val name: String,
     val displayText: String,
     val transcript: String,
@@ -16,10 +16,7 @@ class Sound(
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
-
-        other as Sound
-
-        return name == other.name
+        return name == (other as Sound).name
     }
 
     override fun hashCode(): Int = name.hashCode()
