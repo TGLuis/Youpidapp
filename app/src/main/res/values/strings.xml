@@ -95,4 +95,9 @@
     <string name="open_app_on_favorites">Ouvrir l\'app sur les favoris</string>
 
     <string name="favorites">Favoris</string>
+
+    <!-- contact -->
+    <string name="contact_title">Contact</string>
+    <string name="formulaire">Formulaire</string>
+    <string name="submit_a_sound">Soumettez nous un son via le formulaire ci-dessous.</string>
 </resources>

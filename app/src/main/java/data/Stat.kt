@@ -6,7 +6,7 @@ import lufra.youpidapp.MyDatabase
 class Stat(var name: String, var value: Double, var category: String) {
     companion object LiaisonDB {
         const val ERROR_NOT_FOUND = "Error_stat_not_found"
-        val STATIC_S_D = MyDatabase.Co.Stats_data
+        val STATIC_S_D = MyDatabase.Co.StatsData
 
 
     }
