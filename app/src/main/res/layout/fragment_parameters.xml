@@ -42,30 +42,24 @@
             android:entries="@array/types"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/type_of_reading"
-            app:layout_constraintBottom_toTopOf="@id/open_app_on_favorites"
+            app:layout_constraintBottom_toTopOf="@id/checkbox_open_on_favorites"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
 
-        <TextView
-            android:id="@+id/open_app_on_favorites"
+        <CheckBox
+            android:id="@+id/checkbox_open_on_favorites"
             android:text="@string/open_app_on_favorites"
             android:textSize="@dimen/text_size_normal"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:layoutDirection="rtl"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/type_spinner"
             app:layout_constraintBottom_toTopOf="@id/pitch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
-        <CheckBox
-            android:id="@+id/checkbox_open_on_favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:layout_constraintBaseline_toBaselineOf="@id/open_app_on_favorites"
-            app:layout_constraintStart_toEndOf="@id/open_app_on_favorites"/>
 
 
         <TextView
