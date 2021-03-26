@@ -57,7 +57,6 @@ class Discotheque(private val context: Context) {
 
     fun setType(newType: PlayType) {
         type = newType
-        stopPlayer() // to remove a lot of bugs
     }
 
     fun setPitch(newPitch: Float) {

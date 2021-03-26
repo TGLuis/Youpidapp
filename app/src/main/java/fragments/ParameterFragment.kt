@@ -29,7 +29,7 @@ class ParameterFragment: MyFragment() {
         super.onActivityCreated(savedInstanceState)
 
         typeSpinner = context.findViewById(R.id.type_spinner)
-        typeSpinner.setSelection(context.discotheque.getPlayType().ordinal, false)
+        typeSpinner.setSelection(context.discotheque.getPlayType().ordinal)
         typeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
