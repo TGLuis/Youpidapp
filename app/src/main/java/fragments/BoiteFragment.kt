@@ -217,7 +217,7 @@ class BoiteFragment: MyFragment() {
             var initX: Float, var initY: Float
     ) {
         override fun toString(): String {
-            return view.toString() + ", initX= " + initX + ", initY= " + initY
+            return "$view, initX= $initX, initY= $initY"
         }
 
         fun resetTranslationXY() {

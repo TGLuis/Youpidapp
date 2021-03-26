@@ -17,10 +17,12 @@
         <item>@string/type1</item>
         <item>@string/type2</item>
         <item>@string/type3</item>
+        <item>@string/type4</item>
     </string-array>
     <string name="type1">1 seul à la fois</string>
     <string name="type2">En même temps</string>
     <string name="type3">Un après l\'autre</string>
+    <string name="type4">Boucler le son</string>
 
     <!-- Buttons -->
     <string name="create_widget">Créer le widget</string>

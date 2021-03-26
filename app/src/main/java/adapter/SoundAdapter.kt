@@ -1,6 +1,5 @@
 package adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,6 @@ import com.google.android.material.button.MaterialButton
 import data.Sound
 import data.Sound.Companion.normalizeString
 import lufra.youpidapp.Helper
-import lufra.youpidapp.Helper.context
-import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 import kotlin.random.Random
 

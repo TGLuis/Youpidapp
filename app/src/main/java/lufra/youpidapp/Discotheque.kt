@@ -87,10 +87,11 @@ class Discotheque(private val context: Context) {
 
     fun play(name: String): Int {
         try {
-            when (type) {
-                PlayType.SINGLE -> return playOne(all[name]!!)
-                PlayType.PARALLEL -> return playStack(all[name]!!)
-                PlayType.SEQUENTIAL -> return playList(all[name]!!)
+            return when (type) {
+                PlayType.SINGLE -> playOne(all[name]!!)
+                PlayType.PARALLEL -> playStack(all[name]!!)
+                PlayType.SEQUENTIAL -> playList(all[name]!!)
+                PlayType.LOOP -> playLoop(all[name]!!)
             }
         } catch (e: java.lang.IllegalStateException) {
             reading.clear()
@@ -162,6 +163,20 @@ class Discotheque(private val context: Context) {
             playlist.add(soundId)
         }
         return 0
+    }
+
+    private fun playLoop(soundId: Int): Int {
+        stopPlayer()
+        val mp = getPlayer(soundId)
+        reading.add(mp) // to be able to stop it one day
+        mp.setOnCompletionListener {
+            mp.stop()
+            mp.prepare()
+            mp.start()
+        }
+        mp.playbackParams.pitch = params.pitch
+        mp.start()
+        return mp.duration
     }
 
     private fun changeSongAndStart(mp: MediaPlayer, id: Int): Int {
@@ -247,15 +262,20 @@ class Discotheque(private val context: Context) {
     private fun stopIt(player: MediaPlayer) {
         if (player.isPlaying)
             player.stop()
+        player.release()
     }
 
-    fun stopAll() {
+    private fun stopPlayer() {
         reading.forEach {
             try {
                 stopIt(it)
             } catch (e: java.lang.IllegalStateException) {}
         }
         reading.clear()
+    }
+
+    fun stopAll() {
+        stopPlayer()
         Toast.makeText(context, "Stop", Toast.LENGTH_SHORT).show()
     }
 }

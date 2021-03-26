@@ -33,7 +33,8 @@ class ParameterFragment: MyFragment() {
         typeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    context.discotheque.setType(PlayType.fromInt(p2))
+                    if (context.discotheque.getPlayType().ordinal != p2)
+                        context.discotheque.setType(PlayType.fromInt(p2))
                 }
             }
 
