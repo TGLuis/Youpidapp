@@ -98,6 +98,10 @@
 
     <!-- contact -->
     <string name="contact_title">Contact</string>
-    <string name="formulaire">Formulaire</string>
+    <string name="formulaire_son">Formulaire Son</string>
+    <string name="formulaire_bug">Formulaire Bug</string>
+    <string name="formulaire_feedback">Formulaire Feeback</string>
     <string name="submit_a_sound">Soumettez nous un son via le formulaire ci-dessous.</string>
+    <string name="submit_a_bug">Faites nous part d\'un bug via le formulaire ci-dessous.</string>
+    <string name="submit_a_feedback">Donnez nous un feedback, ou demandez nous une nouvelle feature via le formulaire ci-dessous.</string>
 </resources>

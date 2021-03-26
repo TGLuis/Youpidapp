@@ -28,6 +28,18 @@ class ContactFragment: MyFragment() {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://framaforms.org/youpidapp-soumettez-nous-votre-son-1616104740"))
             startActivity(browserIntent)
         }
+
+        val contactBugForm = context.findViewById<Button>(R.id.submit_bug_button)
+        contactBugForm.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://framaforms.org/youpidapp-rapport-de-bug-1616796324"))
+            startActivity(browserIntent)
+        }
+
+        val contactFeedbackForm = context.findViewById<Button>(R.id.submit_feedback_button)
+        contactFeedbackForm.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://framaforms.org/youpidapp-feedback-1616798295"))
+            startActivity(browserIntent)
+        }
     }
 
     override fun setMenu() {
