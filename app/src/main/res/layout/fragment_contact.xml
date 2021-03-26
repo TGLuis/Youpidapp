@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_title"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_title_small"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_ver_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/submit_sound_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_a_sound"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="@dimen/margin_ver_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"/>
+
+        <Button
+            android:id="@+id/submit_sound_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formulaire_son"
+            android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/submit_sound_text"/>
+
+        <TextView
+            android:id="@+id/submit_bug_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_a_bug"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="@dimen/margin_ver_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/submit_sound_button" />
+
+        <Button
+            android:id="@+id/submit_bug_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formulaire_bug"
+            android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/submit_bug_text"/>
+
+        <TextView
+            android:id="@+id/submit_feedback_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_a_feedback"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_small"
+            android:layout_marginTop="@dimen/margin_ver_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/submit_bug_button" />
+
+        <Button
+            android:id="@+id/submit_feedback_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/formulaire_feedback"
+            android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/submit_feedback_text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

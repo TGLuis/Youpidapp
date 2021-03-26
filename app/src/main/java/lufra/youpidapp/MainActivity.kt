@@ -99,6 +99,13 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
+        navView.menu.add(R.string.contact_title).apply{
+            setOnMenuItemClickListener {
+                context.openFragment(ContactFragment::class.java.name)
+                drawerLayout.closeDrawer(GravityCompat.START, false)
+                true
+            }
+        }
         navView.menu.add(R.string.about_title).apply {
             setOnMenuItemClickListener {
                 context.openFragment(AboutFragment::class.java.name)
