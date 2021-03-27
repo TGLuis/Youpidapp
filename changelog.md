@@ -2,15 +2,20 @@
 ...-
 ...-
 ...-
-Ici radioPidapp. Youpidapp parle à RadioGazou. 
+Ici radioPidapp. Youpidapp parle à RadioGazou. RadioPidapp a entendu RadioGazou. Attendons plans pour tour. G**gleYoupidapp en cours.
+Avons entendu vos demandes, nouvelle version en vue.
 
 Features :
-- 34 nouveaux sons !
-- effets de sons (pitch) !
+- 41 nouveaux sons !
+- effets sonores (hauteur du son) !
 - recherche améliorée ! (on peut rechercher via les mots des répliques elle-mêmes)
+- Les favoris ! On peut favoriser certains sons et les avoir sur un écran séparé ! Il y a également possibilité de démarrer sur l'écran des favoris !
+- Mode de lecture en boucle !
+- Les formulatires de contact ! Si vous avez des sons à proposer, des bug à rapporter ou des suggestions à faire, vous pouvez nous soumettre vos idées via des formulaires (liens dans l'app)
 
 Autres :
 - On a changé le format des sons (wav -> mp3 qualité standard) pour réduire la taille de l'app. On a quasi gagné 10 Mo dans le processus ! (et on voit même pas la différence)
+- On a égalisé le niveau des sons !
 
 # Version 2.1 - YOUPIDOUPIDOU
 Youpidou ! Nouvelle màj de youpidapp ! Pas de nouveaux gros changements mais des corrections de bug et PLEIN PLEIN PLEIN d'oeufs de Pâques (pas si) bien câchés !

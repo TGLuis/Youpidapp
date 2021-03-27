@@ -86,6 +86,11 @@
       "transcript": "les contaminés parlent aux cons, et les cons parlent aux contaminés"
     },
     {
+      "name": "darwin",
+      "displaytext": "Darwin",
+      "transcript": "Tu prends des êtres particulièrement débiles, les virus. Tu les mélanges avec deux virus, tu obtiens des grenouilles. En prenant deux grenouilles, tu les mélanges, tu obtiens des singes. En prenant deux singes, tu les mélanges, tu obtiens pilou-pilou, l'être suprême. Deux hommes ou un homme-femme."
+    },
+    {
       "name": "dernier_episode",
       "displaytext": "Dernier épisode",
       "transcript": "Voilà le dernier épisode"
@@ -161,6 +166,16 @@
       "transcript": "En espérant ne pas vous revoir l'année prochaine"
     },
     {
+      "name": "femme_point_homme",
+      "displaytext": "femme·homme",
+      "transcript": "homme point femme alors on va faire usage d'une version inclusive"
+    },
+    {
+      "name": "fin_fond_vie",
+      "displaytext": "La vrai vie",
+      "transcript": "On va ici toucher le fin fond de la vrai vie"
+    },
+    {
       "name": "fonctionnaires",
       "displaytext": "Fonctionnaires",
       "transcript": "fonctionnaires, c'est comme les profs d'unif, c'est des gens qui foutent rien"
@@ -174,6 +189,11 @@
       "name": "googleyoupidapp",
       "displaytext": "Google Youpidapp",
       "transcript": "si la chaine youtube de méthode numérique arrive au million d'abonnés, mais alors on va commencer à investir dans l'immobilier,  vous allez imaginer le batiment YOUPIDAPP, LA TOUR YOUPIDAPP ? On rachète le campus des chinois qui est vide là,  et on le transforme en GOOGLEYOUPIDAPP"
+    },
+    {
+      "name": "gradation",
+      "displaytext": "Gradation",
+      "transcript": "il est bête, il est con, il est méchant"
     },
     {
       "name": "help",
@@ -194,6 +214,11 @@
       "name": "il_est_mort",
       "displaytext": "Il est mort",
       "transcript": "Voilà, il est mort"
+    },
+    {
+      "name": "il_meurt",
+      "displaytext": "Il meurt",
+      "transcript": "PUIAHH il meurt"
     },
     {
       "name": "il_se_fait_manger",
@@ -331,6 +356,11 @@
       "transcript": "Et et..et et notre gentille première ministre hein pourquoi pas"
     },
     {
+      "name": "probleme_homme",
+      "displaytext": "Problème d'homme",
+      "transcript": "Après 60 ans, tu sais les hommes ils ont des problèmes de prostate, ces machins-là, des trucs un peu bizarre hein"
+    },
+    {
       "name": "prof",
       "displaytext": "Ce prof",
       "transcript": "ce connard de prof, c'est à dire moi"
@@ -349,6 +379,11 @@
       "name": "qui_va_survivre",
       "displaytext": "Qui va survivre ?",
       "transcript": "Qui va survivre dans le monde hostile rempli de contaminations, de zombis pervers, de choses atroces !"
+    },
+    {
+      "name": "quoi_donc_vincent",
+      "displaytext": "Quoi donc Vincent ?",
+      "transcript": "Ça grandit, puis ça diminue"
     },
     {
       "name": "regarder_nouvelles",
