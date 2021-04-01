@@ -1,4 +1,10 @@
 {
+  "tags": [
+    "interjection",
+    "prof",
+    "politique",
+    "long"
+  ],
   "sounds": [
     {
       "name": "a_bientot",
@@ -8,12 +14,18 @@
     {
       "name": "abonnezvous",
       "displaytext": "Abonnez-vous !",
-      "transcript": "vous pouvez vous abonnez, n'oubliez d'abonner votre grand-mère, votre grand-père, toute la famille. Vous pouvez aussi abonner vos amis d'enfance, si t'as une copine, AAAABONNE la, ou un copain, AAAABONNE LA à notre chaine favori"
+      "transcript": "vous pouvez vous abonnez, n'oubliez d'abonner votre grand-mère, votre grand-père, toute la famille. Vous pouvez aussi abonner vos amis d'enfance, si t'as une copine, AAAABONNE la, ou un copain, AAAABONNE LA à notre chaine favori",
+      "tags": [
+        "long"
+      ]
     },
     {
       "name": "aiou",
       "displaytext": "Aïou !",
-      "transcript": "Aïou !"
+      "transcript": "Aïou !",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "allez_zou",
@@ -33,7 +45,10 @@
     {
       "name": "biiiiiiiyoup",
       "displaytext": "Biiiyoup",
-      "transcript": "Biiiiiiiiyoup biyoupiyoupiyoupiyou"
+      "transcript": "Biiiiiiiiyoup biyoupiyoupiyoupiyou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "bonnes_series",
@@ -58,7 +73,10 @@
     {
       "name": "charles_pecheur",
       "displaytext": "Charles Pecheur",
-      "transcript": "Charles Pecheur"
+      "transcript": "Charles Pecheur",
+      "tags": [
+        "prof"
+      ]
     },
     {
       "name": "chef",
@@ -88,7 +106,10 @@
     {
       "name": "darwin",
       "displaytext": "Darwin",
-      "transcript": "Tu prends des êtres particulièrement débiles, les virus. Tu les mélanges avec deux virus, tu obtiens des grenouilles. En prenant deux grenouilles, tu les mélanges, tu obtiens des singes. En prenant deux singes, tu les mélanges, tu obtiens pilou-pilou, l'être suprême. Deux hommes ou un homme-femme."
+      "transcript": "Tu prends des êtres particulièrement débiles, les virus. Tu les mélanges avec deux virus, tu obtiens des grenouilles. En prenant deux grenouilles, tu les mélanges, tu obtiens des singes. En prenant deux singes, tu les mélanges, tu obtiens pilou-pilou, l'être suprême. Deux hommes ou un homme-femme.",
+      "tags": [
+        "long"
+      ]
     },
     {
       "name": "dernier_episode",
@@ -98,7 +119,10 @@
     {
       "name": "donald",
       "displaytext": "Donald",
-      "transcript": "Ouh, il va pas être content Donald"
+      "transcript": "Ouh, il va pas être content Donald",
+      "tags": [
+        "politique"
+      ]
     },
     {
       "name": "do_not_worry",
@@ -113,7 +137,10 @@
     {
       "name": "doyen_verleysen",
       "displaytext": "Doyen Verleysen",
-      "transcript": "Doyen hein, Verleysen hein"
+      "transcript": "Doyen hein, Verleysen hein",
+      "tags": [
+        "prof"
+      ]
     },
     {
       "name": "drainer_la_tablette",
@@ -123,7 +150,11 @@
     {
       "name": "electeurs",
       "displaytext": "Électeurs",
-      "transcript": "Quand Donald Trump perd des votes, Joe Biden les récupère. Quand Joe Biden perd des votes, Donald Trump les récupère. Puis, quand tu perds des électeurs un peu partout, ça c'est les forces dissipatives, on perd des électeurs"
+      "transcript": "Quand Donald Trump perd des votes, Joe Biden les récupère. Quand Joe Biden perd des votes, Donald Trump les récupère. Puis, quand tu perds des électeurs un peu partout, ça c'est les forces dissipatives, on perd des électeurs",
+      "tags": [
+        "long",
+        "politique"
+      ]
     },
     {
       "name": "elimination",
@@ -133,7 +164,10 @@
     {
       "name": "eliodirupo",
       "displaytext": "Elio di Rupo",
-      "transcript": "D'Elio di Rupo hein"
+      "transcript": "D'Elio di Rupo hein",
+      "tags": [
+        "politique"
+      ]
     },
     {
       "name": "embetant",
@@ -188,7 +222,10 @@
     {
       "name": "googleyoupidapp",
       "displaytext": "Google Youpidapp",
-      "transcript": "si la chaine youtube de méthode numérique arrive au million d'abonnés, mais alors on va commencer à investir dans l'immobilier,  vous allez imaginer le batiment YOUPIDAPP, LA TOUR YOUPIDAPP ? On rachète le campus des chinois qui est vide là,  et on le transforme en GOOGLEYOUPIDAPP"
+      "transcript": "si la chaine youtube de méthode numérique arrive au million d'abonnés, mais alors on va commencer à investir dans l'immobilier,  vous allez imaginer le batiment YOUPIDAPP, LA TOUR YOUPIDAPP ? On rachète le campus des chinois qui est vide là,  et on le transforme en GOOGLEYOUPIDAPP",
+      "tags": [
+        "long"
+      ]
     },
     {
       "name": "gradation",
@@ -238,7 +275,10 @@
     {
       "name": "jean_didou",
       "displaytext": "Jean-Didou",
-      "transcript": "Jean-Didou aussi hein"
+      "transcript": "Jean-Didou aussi hein",
+      "tags": [
+        "prof"
+      ]
     },
     {
       "name": "le_plus_important",
@@ -253,12 +293,19 @@
     {
       "name": "mettez_vos_masques",
       "displaytext": "Mettez vos masques",
-      "transcript": "Si vous portez pas votre masque, inévitablement notre gentille première ministre Wilmès sera au courant, et elle verra que vous ne respectez pas bien les condition sanitaires en cours"
+      "transcript": "Si vous portez pas votre masque, inévitablement notre gentille première ministre Wilmès sera au courant, et elle verra que vous ne respectez pas bien les condition sanitaires en cours",
+      "tags": [
+        "long",
+        "politique"
+      ]
     },
     {
       "name": "minipub",
       "displaytext": "Mini-pub",
-      "transcript": "Tu n'oublies pas, tu vas sur la chaine Vincent Legat. Bon là il y a des trucs de mécanique des fluides, mais, tu n'oublies pas, il faut aller les voir hein. Donc, tu regardes, tu t'inscris à la chaine, tu vas voir la chaine, tu vas regarder les podcasts de Vincent Legat. Pasque, si tu regardes suffisamment... Alors je signale aussi que le nombre d'abonnés n'est pas encore suffisant. Si tu n'es pas abonné à la chaine Vincent Legat, YouTube, y'a absolument aucune chance que tu puisses réussir ton examen de fin d'année hein. Pasque c'est un prérequis indispensable de voir tous les podcasts et d'être inscrit à la chaine"
+      "transcript": "Tu n'oublies pas, tu vas sur la chaine Vincent Legat. Bon là il y a des trucs de mécanique des fluides, mais, tu n'oublies pas, il faut aller les voir hein. Donc, tu regardes, tu t'inscris à la chaine, tu vas voir la chaine, tu vas regarder les podcasts de Vincent Legat. Pasque, si tu regardes suffisamment... Alors je signale aussi que le nombre d'abonnés n'est pas encore suffisant. Si tu n'es pas abonné à la chaine Vincent Legat, YouTube, y'a absolument aucune chance que tu puisses réussir ton examen de fin d'année hein. Pasque c'est un prérequis indispensable de voir tous les podcasts et d'être inscrit à la chaine",
+      "tags": [
+        "long"
+      ]
     },
     {
       "name": "monstre_terrifiant",
@@ -273,17 +320,26 @@
     {
       "name": "objectif2021",
       "displaytext": "Objectif de 2021",
-      "transcript": "L'objectif pour cette année-ci, c'est d'atteindre 2000, question quand même que je batte la chaine youtube de UCLOUVAIN dans laquelle il n'y a que de la propagande débile sans aucun intérêt"
+      "transcript": "L'objectif pour cette année-ci, c'est d'atteindre 2000, question quand même que je batte la chaine youtube de UCLOUVAIN dans laquelle il n'y a que de la propagande débile sans aucun intérêt",
+      "tags": [
+        "long"
+      ]
     },
     {
       "name": "oestges",
       "displaytext": "Oestges",
-      "transcript": "OESTGES CLAUDE OESTGES un truc comme ça"
+      "transcript": "OESTGES CLAUDE OESTGES un truc comme ça",
+      "tags": [
+        "prof"
+      ]
     },
     {
       "name": "ohoui",
       "displaytext": "Oh oui",
-      "transcript": "Oh oui"
+      "transcript": "Oh oui",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "on_aime_pas_bis",
@@ -318,27 +374,42 @@
     {
       "name": "pilou_calme",
       "displaytext": "Pilou (calme)",
-      "transcript": "Pilou pilou pilou"
+      "transcript": "Pilou pilou pilou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "pilou_grandiloquent",
       "displaytext": "Pilou (fort)",
-      "transcript": "PILOU PILOU PILOU PILOU PILOU"
+      "transcript": "PILOU PILOU PILOU PILOU PILOU",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "piou_piou",
       "displaytext": "Piou piou",
-      "transcript": "Piou piou"
+      "transcript": "Piou piou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "piou_piou_triste",
       "displaytext": "Piou piou (triste)",
-      "transcript": "Piou piou piou piou"
+      "transcript": "Piou piou piou piou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "pirlou",
       "displaytext": "Pirlou",
-      "transcript": "Pirlou pirlou pirlou"
+      "transcript": "Pirlou pirlou pirlou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "plein_plein_plein",
@@ -348,12 +419,18 @@
     {
       "name": "podcast",
       "displaytext": "Podcast",
-      "transcript": "Donc ici, tu as un podcast, qui est l'enregistrement d'un autre podcast ! T'imagines maintenant que tu es en train de visualiser ce podcast dans un podcast que tu es en train de faire ! Ca c'est dingue à mort hein ! T'y as vi ?"
+      "transcript": "Donc ici, tu as un podcast, qui est l'enregistrement d'un autre podcast ! T'imagines maintenant que tu es en train de visualiser ce podcast dans un podcast que tu es en train de faire ! Ca c'est dingue à mort hein ! T'y as vi ?",
+      "tags":[
+        "long"
+      ]
     },
     {
       "name": "premiere_ministre",
       "displaytext": "Première ministre",
-      "transcript": "Et et..et et notre gentille première ministre hein pourquoi pas"
+      "transcript": "Et et..et et notre gentille première ministre hein pourquoi pas",
+      "tags": [
+        "politique"
+      ]
     },
     {
       "name": "probleme_homme",
@@ -368,7 +445,10 @@
     {
       "name": "puree",
       "displaytext": "Purée",
-      "transcript": "Purée !"
+      "transcript": "Purée !",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "quelque_chose_pas_bien_passe",
@@ -393,7 +473,10 @@
     {
       "name": "roland_keunings",
       "displaytext": "Roland Keunings",
-      "transcript": "Roland Keunings"
+      "transcript": "Roland Keunings",
+      "tags": [
+        "prof"
+      ]
     },
     {
       "name": "sale_mec",
@@ -403,7 +486,10 @@
     {
       "name": "singular_matrix",
       "displaytext": "Singular matrix",
-      "transcript": "BHA ! GLAA ! PBRUT ! Ouh ça ça a l'air chaud ! TRACEBACK MOST RECENT CALL LAST ! My nice program laïni-cromcrum ! Krich kroush brash wram ! RHAAAHH SINGULAR MATRIX ! Hhaaa singular matrix ! Ho hum qu'est-ce que c'est singular matrix ?"
+      "transcript": "BHA ! GLAA ! PBRUT ! Ouh ça ça a l'air chaud ! TRACEBACK MOST RECENT CALL LAST ! My nice program laïni-cromcrum ! Krich kroush brash wram ! RHAAAHH SINGULAR MATRIX ! Hhaaa singular matrix ! Ho hum qu'est-ce que c'est singular matrix ?",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "sprouuuuuutch",
@@ -443,7 +529,10 @@
     {
       "name": "tintin",
       "displaytext": "Tintin",
-      "transcript": "Tintin"
+      "transcript": "Tintin",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "toujours_merde",
@@ -478,7 +567,10 @@
     {
       "name": "virus2",
       "displaytext": "Virus 2",
-      "transcript": "Vous avez raté Virus 1 ? Vous êtes déçu ? J'ai une bonne nouvelle pour vous. On vient de sortir Virus DEUX ! Encore mieux, encore plus grand, encore plus effrayant, encore PLUS GRAND ! Virus 2, la nouvelle super-production de l'Ecole Polytechnique de Louvain ! Et vous savez quoi ? J'ai même entendu parler qu'on était en train de préparer Virus 3 pour octobre, non ! mars 2021. Les bonnes séries, on n'les arrête pas si vite."
+      "transcript": "Vous avez raté Virus 1 ? Vous êtes déçu ? J'ai une bonne nouvelle pour vous. On vient de sortir Virus DEUX ! Encore mieux, encore plus grand, encore plus effrayant, encore PLUS GRAND ! Virus 2, la nouvelle super-production de l'Ecole Polytechnique de Louvain ! Et vous savez quoi ? J'ai même entendu parler qu'on était en train de préparer Virus 3 pour octobre, non ! mars 2021. Les bonnes séries, on n'les arrête pas si vite.",
+      "tags": [
+        "long"
+      ]
     },
     {
       "name": "voila_voila",
@@ -498,12 +590,18 @@
     {
       "name": "youpidou",
       "displaytext": "Youpidou",
-      "transcript": "Youpidou-pidou-pidou"
+      "transcript": "Youpidou-pidou-pidou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "youpidou_calme",
       "displaytext": "Youpidou (calme)",
-      "transcript": "Youpidoupidou"
+      "transcript": "Youpidoupidou",
+      "tags": [
+        "interjection"
+      ]
     },
     {
       "name": "youtube",
