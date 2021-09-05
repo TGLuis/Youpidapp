@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import lufra.youpidapp.Helper
+import lufra.youpidapp.DataPersistenceHelper
 import lufra.youpidapp.Discotheque
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.PlayType
@@ -39,9 +39,9 @@ class ParameterFragment: MyFragment() {
             }
 
         openOnFavoritesCheckBox = context.findViewById(R.id.checkbox_open_on_favorites)
-        openOnFavoritesCheckBox.isChecked = Helper.shouldOpenOnFavorites()
+        openOnFavoritesCheckBox.isChecked = DataPersistenceHelper.shouldOpenOnFavorites()
         openOnFavoritesCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            Helper.openOnFavorites(isChecked)
+            DataPersistenceHelper.openOnFavorites(isChecked)
         }
 
         pitchSeekBar = context.findViewById(R.id.pitch_seekBar)

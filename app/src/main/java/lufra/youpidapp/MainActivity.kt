@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity() {
         toolbar.setTitle(R.string.app_name)
 
         // Helper
-        Helper.init(this)
+        DataPersistenceHelper.init(this)
         discotheque = Discotheque(this)
-        discotheque.setType(Helper.getPreferredPlayType())
-        discotheque.setPitch(Helper.getPreferredPitch())
+        discotheque.setType(DataPersistenceHelper.getPreferredPlayType())
+        discotheque.setPitch(DataPersistenceHelper.getPreferredPitch())
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         // Fragments
         frags = Stack()
         lesFragments = HashMap()
-        if (Helper.shouldOpenOnFavorites())
+        if (DataPersistenceHelper.shouldOpenOnFavorites())
             openFragment(FavoritesFragment::class.java.name)
         else
             openFragment(MainFragment::class.java.name)
@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveState() {
-        Helper.setPreferredPitch(discotheque.getPitch())
-        Helper.setPreferredPlayType(discotheque.getPlayType())
+        DataPersistenceHelper.setPreferredPitch(discotheque.getPitch())
+        DataPersistenceHelper.setPreferredPlayType(discotheque.getPlayType())
     }
 }

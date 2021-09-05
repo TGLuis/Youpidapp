@@ -26,15 +26,10 @@ class PlayRandomWidget : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.sample_widget)
 
         // Construct an Intent which is pointing this class.
-        val intentOne = Intent(context, BackgroundSoundService::class.java)
-        intentOne.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        val pendingIntentOne = PendingIntent.getService(context, appWidgetId, intentOne, 0)
-        views.setOnClickPendingIntent(R.id.widget_button, pendingIntentOne)
-
-        val intentTwo = Intent(context, ConfigActivity::class.java)
-        intentTwo.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        val pendingIntentTwo = PendingIntent.getActivity(context, appWidgetId, intentTwo, PendingIntent.FLAG_UPDATE_CURRENT)
-        views.setOnClickPendingIntent(R.id.name_sound, pendingIntentTwo)
+        IntentHelper.createWidgetIntent(context, BackgroundSoundService::class.java, appWidgetId,
+            true, 0, views, R.id.widget_button)
+        IntentHelper.createWidgetIntent(context,ConfigActivity::class.java, appWidgetId,
+            false, PendingIntent.FLAG_UPDATE_CURRENT, views, R.id.name_sound)
 
         val soundIdAndDisplay = ConfigActivity.loadSound(context, appWidgetId)
         Log.e("PLAY WIDGET", soundIdAndDisplay.toString())
@@ -42,6 +37,14 @@ class PlayRandomWidget : AppWidgetProvider() {
 
         // Instruct the widget manager to update the widget
         appWidgetManager.partiallyUpdateAppWidget(appWidgetId, views)
+    }
+
+    private fun createIntent(context: Context, cls: Class<*>, appWidgetId: Int, flag: Int,
+                             isService: Boolean, views: RemoteViews, viewId: Int) {
+        val intent = Intent(context, cls)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+        val pendingIntent = if (isService) PendingIntent.getService(context, appWidgetId, intent, flag) else PendingIntent.getActivity(context, appWidgetId, intent, flag)
+        views.setOnClickPendingIntent(viewId, pendingIntent)
     }
 }
 

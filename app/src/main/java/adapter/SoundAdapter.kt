@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.SortedListAdapterCallback
 import com.google.android.material.button.MaterialButton
 import data.Sound
 import data.Sound.Companion.normalizeString
-import lufra.youpidapp.Helper
+import lufra.youpidapp.DataPersistenceHelper
 import lufra.youpidapp.R
 import kotlin.random.Random
 
@@ -65,10 +65,10 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
                 if (sound != null) {
                     if (sound!!.isFavourite) {
                         button.setIconResource(R.drawable.ic_baseline_star_border_24)
-                        Helper.removeSoundFavorite(sound!!)
+                        DataPersistenceHelper.removeSoundFavorite(sound!!)
                     } else {
                         button.setIconResource(R.drawable.ic_baseline_star_24)
-                        Helper.addSoundFavourite(sound!!)
+                        DataPersistenceHelper.addSoundFavourite(sound!!)
                     }
                 }
                 true

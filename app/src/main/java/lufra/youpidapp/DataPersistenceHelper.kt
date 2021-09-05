@@ -13,13 +13,12 @@ import java.io.FileReader
 import java.io.IOException
 import java.util.Properties
 
-object Helper {
+object DataPersistenceHelper {
     private const val TAG = "==== HELPER ===="
     private const val fileName = "config.properties"
     private const val PLAYTYPE = "PlayType"
     private const val PITCH = "Pitch"
     private const val OPEN_ON_FAVORITES = "OpenOnFavorites"
-    lateinit var context: Activity
     private lateinit var f: File
     private lateinit var youpiDB: MyDatabase
 
@@ -28,9 +27,12 @@ object Helper {
     private lateinit var preferredSounds: ArrayList<String>
     private lateinit var sharedPref: SharedPreferences
 
-    
-    fun init(c: Activity) {
-        context = c
+    /**
+     * Initialize the data persistence helper: Load the sharedPreferences file in memory,
+     * load the SQLite database into memory and load the favorites sounds
+     * @param context an Activity
+     */
+    fun init(context: Activity) {
         sharedPref = context.getSharedPreferences("Youpidapp_preferences", Context.MODE_PRIVATE)
         try {
             f = File(context.filesDir.path + "/" + fileName)
@@ -52,21 +54,24 @@ object Helper {
         } catch (e: IOException) {
             Log.e(TAG, "Failed to open config file. " + e.message)
         }
-        youpiDB = MyDatabase()
+        youpiDB = MyDatabase(context)
         preferredSounds = youpiDB.getFavorites()
-        initSoundDB()
+        initSoundDB(context)
     }
 
-    fun setPreferredPitch(preferredPitch: Float) {
-        sharedPref.edit().putFloat(PITCH, preferredPitch).apply()
+    private fun initSoundDB(context: Activity) {
+        jsonStr = context.resources.openRawResource(R.raw.aaaadb).bufferedReader().use { it.readText() }
+        jsonObj = JSONObject(jsonStr)
     }
+
+    // Properties get/set
 
     fun getPreferredPitch(): Float {
         return sharedPref.getFloat(PITCH, 1.0f)
     }
 
-    fun setPreferredPlayType(preferredPlayType: PlayType) {
-        sharedPref.edit().putString(PLAYTYPE, preferredPlayType.name).apply()
+    fun setPreferredPitch(preferredPitch: Float) {
+        sharedPref.edit().putFloat(PITCH, preferredPitch).apply()
     }
 
     fun getPreferredPlayType(): PlayType {
@@ -74,9 +79,8 @@ object Helper {
         return PlayType.valueOf(type)
     }
 
-    private fun initSoundDB() {
-        jsonStr = context.resources.openRawResource(R.raw.aaaadb).bufferedReader().use { it.readText() }
-        jsonObj = JSONObject(jsonStr)
+    fun setPreferredPlayType(preferredPlayType: PlayType) {
+        sharedPref.edit().putString(PLAYTYPE, preferredPlayType.name).apply()
     }
 
     private fun isFavouriteSound(sound_name: String): Boolean {
@@ -99,6 +103,14 @@ object Helper {
         youpiDB.delFavorites(sound.name)
     }
 
+    fun shouldOpenOnFavorites(): Boolean {
+        return sharedPref.getBoolean(OPEN_ON_FAVORITES, false)
+    }
+
+    fun openOnFavorites(openOnFavorites: Boolean) {
+        sharedPref.edit().putBoolean(OPEN_ON_FAVORITES, openOnFavorites).apply()
+    }
+
     fun getSounds(): List<Sound> {
         val jsonSoundsArray = jsonObj.getJSONArray("sounds")
         return (0 until jsonSoundsArray.length()).map { jsonSoundsArray[it] as JSONObject }.map {
@@ -110,13 +122,5 @@ object Helper {
                 isFavouriteSound(name),
             )
         }
-    }
-
-    fun openOnFavorites(openOnFavorites: Boolean) {
-        sharedPref.edit().putBoolean(OPEN_ON_FAVORITES, openOnFavorites).apply()
-    }
-
-    fun shouldOpenOnFavorites(): Boolean {
-        return sharedPref.getBoolean(OPEN_ON_FAVORITES, false)
     }
 }

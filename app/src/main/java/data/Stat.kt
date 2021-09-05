@@ -3,6 +3,7 @@ package data
 import android.content.ContentValues
 import lufra.youpidapp.MyDatabase
 
+
 class Stat(var name: String, var value: Double, var category: String) {
     companion object LiaisonDB {
         const val ERROR_NOT_FOUND = "Error_stat_not_found"

@@ -1,13 +1,13 @@
 package lufra.youpidapp
 
 import android.content.ContentValues
+import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
 import data.Stat
-import lufra.youpidapp.Helper.context
 
-class MyDatabase : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
+class MyDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
 
     companion object Co {
         private const val DATABASE_NAME = "youpidb.sqlite"
@@ -64,6 +64,9 @@ class MyDatabase : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSIO
 
     // FAVORITES
 
+    /**
+     * @return an ArrayList<String> of column names in the Favorites table
+     */
     fun getFavorites(): ArrayList<String> {
         val db = this.readableDatabase
         val query = "SELECT ${Favorites.COLUMN_NAME_FAVORITE_NAME} FROM '${Favorites.TABLE_NAME}';"
@@ -96,6 +99,11 @@ class MyDatabase : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSIO
 
     // STATS_DATA
 
+    /**
+     * Retrieve information from the table StatData whith the entry name {@code searchedName}
+     * @param db: reference to the SQLite database
+     * @param searchedName: the value entry to be searched
+     */
     fun getInfo(db: MyDatabase, searchedName: String) : Stat {
         val rdb = db.readableDatabase
         val cursor = rdb.query(StatsData.TABLE_NAME, StatsData.ALL_COLUMNS,

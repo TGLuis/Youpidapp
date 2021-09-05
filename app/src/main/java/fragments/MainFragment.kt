@@ -9,13 +9,12 @@ import data.Sound
 import adapter.SoundAdapter
 import android.animation.*
 import android.content.res.Configuration
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import lufra.youpidapp.Helper
+import lufra.youpidapp.DataPersistenceHelper
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
 
@@ -54,7 +53,7 @@ open class MainFragment: MyFragment() {
     }
 
     open fun getSounds(): List<Sound> {
-        return Helper.getSounds()
+        return DataPersistenceHelper.getSounds()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

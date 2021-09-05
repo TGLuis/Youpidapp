@@ -37,9 +37,9 @@ class ConfigActivity : Activity() {
             return
         }
 
-        Helper.init(this)
+        DataPersistenceHelper.init(this)
 
-        sounds = Helper.getSounds().sortedWith(SoundAdapter.mComparator).toMutableList()
+        sounds = DataPersistenceHelper.getSounds().sortedWith(SoundAdapter.mComparator).toMutableList()
         sounds.add(0, Sound.RANDOM)
 
         makeSpinnerSound()
@@ -81,17 +81,10 @@ class ConfigActivity : Activity() {
         val views = RemoteViews(packageName, R.layout.sample_widget)
 
         // Construct an Intent which is pointing this class.
-        val intentOne = Intent(this, BackgroundSoundService::class.java)
-        intentOne.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        val pendingIntentOne = PendingIntent.getService(this, appWidgetId, intentOne, 0)
-        views.setOnClickPendingIntent(R.id.widget_button, pendingIntentOne)
-
-        val intentTwo = Intent(this, ConfigActivity::class.java)
-        intentTwo.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        val pendingIntentTwo = PendingIntent.getActivity(
-            this, appWidgetId, intentTwo, PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        views.setOnClickPendingIntent(R.id.name_sound, pendingIntentTwo)
+        IntentHelper.createWidgetIntent(this, BackgroundSoundService::class.java, appWidgetId,
+            true, 0, views, R.id.widget_button)
+        IntentHelper.createWidgetIntent(this, ConfigActivity::class.java, appWidgetId,
+        false, PendingIntent.FLAG_UPDATE_CURRENT, views, R.id.name_sound)
 
         views.setTextViewText(R.id.name_sound, selectedDisplay)
 
