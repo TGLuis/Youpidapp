@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("tgl.templateapp", appContext.packageName)
+        assertEquals("lufra.youpidapp", appContext.packageName)
     }
 }

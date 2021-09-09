@@ -24,7 +24,6 @@ class ActionBarButtons(activity: MainActivity) {
             actionView = SearchView(context)
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
             (actionView as SearchView).maxWidth = Integer.MAX_VALUE
-
         }
     }
 
@@ -37,6 +36,7 @@ class ActionBarButtons(activity: MainActivity) {
                 context.frags.peek().stopAll()
                 true
             }
+//            actionView.tag = "btn_stop"
         }
     }
 

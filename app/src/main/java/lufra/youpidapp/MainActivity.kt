@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     private fun setDrawer() {
         val context = this
         navView.menu.clear()
-        navView.menu.add(R.string.home).apply {
+        navView.menu.add(Menu.NONE, 0, Menu.NONE, R.string.home).apply {
             setOnMenuItemClickListener {
                 context.openFragment(MainFragment::class.java.name)
                 drawerLayout.closeDrawer(GravityCompat.START, false)
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
-        navView.menu.add(R.string.parameters).apply {
+        navView.menu.add(Menu.NONE, 3, Menu.NONE, R.string.parameters).apply {
             setOnMenuItemClickListener {
                 context.openFragment(ParameterFragment::class.java.name)
                 drawerLayout.closeDrawer(GravityCompat.START, false)

@@ -30,6 +30,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/app_widget_play" />
         </receiver>
+        <uses-library android:name="android.test.runner"
+            android:required="false"/>
     </application>
 
 </manifest>
