@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
-        navView.menu.add(R.string.favorites).apply {
+        navView.menu.add(Menu.NONE, 1, Menu.NONE, R.string.favorites).apply {
             setOnMenuItemClickListener {
                 context.openFragment(FavoritesFragment::class.java.name)
                 drawerLayout.closeDrawer(GravityCompat.START, false)
                 true
             }
         }
-        navView.menu.add(R.string.boite_title).apply {
+        navView.menu.add(Menu.NONE, 2, Menu.NONE, R.string.boite_title).apply {
             setOnMenuItemClickListener {
                 context.openFragment(BoiteFragment::class.java.name)
                 drawerLayout.closeDrawer(GravityCompat.START, false)
@@ -99,14 +99,14 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
-        navView.menu.add(R.string.contact_title).apply{
+        navView.menu.add(Menu.NONE, 4, Menu.NONE, R.string.contact_title).apply{
             setOnMenuItemClickListener {
                 context.openFragment(ContactFragment::class.java.name)
                 drawerLayout.closeDrawer(GravityCompat.START, false)
                 true
             }
         }
-        navView.menu.add(R.string.about_title).apply {
+        navView.menu.add(Menu.NONE, 5, Menu.NONE, R.string.about_title).apply {
             setOnMenuItemClickListener {
                 context.openFragment(AboutFragment::class.java.name)
                 drawerLayout.closeDrawer(GravityCompat.START, false)
