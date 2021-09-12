@@ -150,7 +150,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/chattriste"
-            android:contentDescription="@string/covid" />
+            android:contentDescription="@string/content_descr_covid" />
 
         <ImageView
             android:id="@+id/aviondepapier"
@@ -162,7 +162,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/aviondepapier"
-            android:contentDescription="@string/covid" />
+            android:contentDescription="@string/content_descr_covid" />
         <ImageView
             android:id="@+id/aviondepapier2"
             android:visibility="invisible"
@@ -173,7 +173,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/aviondepapier"
-            android:contentDescription="@string/covid" />
+            android:contentDescription="@string/content_descr_covid" />
         <ImageView
             android:id="@+id/aviondepapier3"
             android:visibility="invisible"
@@ -184,7 +184,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/aviondepapier"
-            android:contentDescription="@string/covid" />
+            android:contentDescription="@string/content_descr_covid" />
         <ImageView
             android:id="@+id/aviondepapier4"
             android:visibility="invisible"
@@ -195,7 +195,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/aviondepapier"
-            android:contentDescription="@string/covid" />
+            android:contentDescription="@string/content_descr_covid" />
         <ImageView
             android:id="@+id/aviondepapier5"
             android:visibility="invisible"
@@ -206,7 +206,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/aviondepapier"
-            android:contentDescription="@string/covid" />
+            android:contentDescription="@string/content_descr_covid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

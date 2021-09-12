@@ -20,7 +20,6 @@ class PlayRandomWidget : AppWidgetProvider() {
         }
     }
 
-
     private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
         // Construct the RemoteViews object
         val views = RemoteViews(context.packageName, R.layout.sample_widget)
@@ -37,14 +36,6 @@ class PlayRandomWidget : AppWidgetProvider() {
 
         // Instruct the widget manager to update the widget
         appWidgetManager.partiallyUpdateAppWidget(appWidgetId, views)
-    }
-
-    private fun createIntent(context: Context, cls: Class<*>, appWidgetId: Int, flag: Int,
-                             isService: Boolean, views: RemoteViews, viewId: Int) {
-        val intent = Intent(context, cls)
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-        val pendingIntent = if (isService) PendingIntent.getService(context, appWidgetId, intent, flag) else PendingIntent.getActivity(context, appWidgetId, intent, flag)
-        views.setOnClickPendingIntent(viewId, pendingIntent)
     }
 }
 

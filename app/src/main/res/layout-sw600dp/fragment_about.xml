@@ -94,6 +94,7 @@
             android:layout_margin="@dimen/margin_fab_normal"
             android:clickable="true"
             android:focusable="true"
+            android:contentDescription="@string/content_descr_github_fab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_github_icon" />
@@ -106,6 +107,7 @@
             android:layout_margin="@dimen/margin_fab_normal"
             android:clickable="true"
             android:focusable="true"
+            android:contentDescription="@string/content_descr_youtube_fab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/github_link"
             app:srcCompat="@drawable/ic_baseline_play_circle_outline_24" />
@@ -115,7 +117,7 @@
             android:layout_width="@dimen/covid_size_big"
             android:layout_height="@dimen/covid_size_big"
             android:layout_margin="@dimen/margin_fab_normal"
-            android:contentDescription="@string/covid"
+            android:contentDescription="@string/content_descr_covid"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/covid" />

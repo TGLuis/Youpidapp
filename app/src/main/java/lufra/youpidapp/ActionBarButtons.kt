@@ -19,7 +19,7 @@ class ActionBarButtons(activity: MainActivity) {
     private var context: MainActivity = activity
 
     fun addResearch(menu: Menu): MenuItem {
-        return menu.add(R.string.search).apply {
+        return menu.add(Menu.NONE, 0, Menu.NONE, R.string.search).apply {
             icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_search_24)
             actionView = SearchView(context)
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
@@ -28,7 +28,7 @@ class ActionBarButtons(activity: MainActivity) {
     }
 
     fun addStop(menu: Menu): MenuItem {
-        return menu.add(R.string.stop).apply {
+        return menu.add(Menu.NONE, 1, Menu.NONE, R.string.stop).apply {
             icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
             setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
             setOnMenuItemClickListener {
@@ -38,10 +38,11 @@ class ActionBarButtons(activity: MainActivity) {
             }
 //            actionView.tag = "btn_stop"
         }
+
     }
 
     fun addParameters(menu: Menu): MenuItem {
-        return menu.add(R.string.parameters).apply {
+        return menu.add(Menu.NONE, 2, Menu.NONE, R.string.parameters).apply {
             icon =ContextCompat.getDrawable(context, R.drawable.ic_baseline_settings_24)
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             setOnMenuItemClickListener {

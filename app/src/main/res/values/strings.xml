@@ -79,7 +79,9 @@
         Link: https://incompetech.filmmusic.io/song/3863-heartbreaking
         License: https://filmmusic.io/standard-license
     </string>
-    <string name="covid">covid</string>
+    <string name="content_descr_github_fab">bouton github</string>
+    <string name="content_descr_youtube_fab">bouton youtube</string>
+    <string name="content_descr_covid">petit covid</string>
 
     <!-- Boitefragment -->
     <string name="boite_title">Buzzers</string>

@@ -30,8 +30,8 @@ public class DrawableMatcher extends BoundedMatcher<View, ImageView> {
         if (expectedId < 0) {   // has no drawable
             return target.getDrawable() == null;
         }
-        Resources resources = target.getContext().getResources();
-        Drawable expectedDrawable = resources.getDrawable(expectedId);
+
+        Drawable expectedDrawable = target.getContext().getDrawable(expectedId);
         if (expectedDrawable == null) {
             return false;
         }
