@@ -20,6 +20,7 @@
     <Button
         android:id="@+id/button_random"
         style="@style/Widget.MaterialComponents.Button.Icon"
+        android:backgroundTint="@color/colorPrimaryDarkMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"

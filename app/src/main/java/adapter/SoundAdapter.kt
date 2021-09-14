@@ -3,6 +3,8 @@ package adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SortedList
 import androidx.recyclerview.widget.SortedListAdapterCallback
@@ -65,6 +67,7 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
                 if (sound != null) {
                     if (sound!!.isFavourite) {
                         button.setIconResource(R.drawable.ic_baseline_star_border_24)
+                        button.setIconTintResource(R.color.black)
                         DataPersistenceHelper.removeSoundFavorite(sound!!)
                     } else {
                         button.setIconResource(R.drawable.ic_baseline_star_24)

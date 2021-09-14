@@ -11,6 +11,7 @@ import android.animation.*
 import android.content.res.Configuration
 import android.view.MenuItem
 import android.widget.Button
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,7 +39,12 @@ open class MainFragment: MyFragment() {
     }
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
-            soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            val nightMode = AppCompatDelegate.getDefaultNightMode()
+            if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDarkMode))
+            } else {
+                soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            }
         }
     }
     private val soundFilterListener = object : SearchView.OnQueryTextListener {

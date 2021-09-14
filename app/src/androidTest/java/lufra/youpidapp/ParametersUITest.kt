@@ -16,6 +16,7 @@ import androidx.test.filters.MediumTest
 import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.Matchers
 import org.hamcrest.Matchers.not
+import org.junit.AfterClass
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -40,6 +41,11 @@ class ParametersUITest {
             .perform(click())
         onData(Matchers.anything()).atPosition(PLAYMODE_DEFAULT).perform(click())
         onView(withId(R.id.checkbox_open_on_favorites)).perform(CustomViewActions.setChecked(false))
+        onView(withId(R.id.theme_spinner))
+            .perform(click())
+        onData(Matchers.anything()).atPosition(PLAYMODE_DEFAULT).perform(click())
+        // activity restarted, we come back to the parameterFragment
+        UIInstrumentedTestSuite.changeOfFragmentFromDrawer(3)
     }
 
     @Test
@@ -97,7 +103,6 @@ class ParametersUITest {
         onView(withId(R.id.type_spinner))
             .check(matches(isDisplayed()))
             .check(matches(isClickable()))
-            //.check(matches(withSpinnerText(containsString(type2))))  depends des prefs
             .check(isCompletelyBelow(withId(R.id.title)))
             .perform(click())
 
@@ -187,6 +192,8 @@ class ParametersUITest {
         val tc = InstrumentationRegistry.getInstrumentation().targetContext
         val type1 = tc.getString(R.string.type1)
         val type2 = tc.getString(R.string.type2)
+        val themeMode1 = tc.getString(R.string.day_mode)
+        val themeMode2 = tc.getString(R.string.night_mode)
 
         // change the values
         onView(withId(R.id.pitch_seekBar))
@@ -202,6 +209,14 @@ class ParametersUITest {
         onData(Matchers.anything()).atPosition(1).perform(click())
         onView(withId(R.id.type_spinner))
             .check(matches(withSpinnerText(Matchers.containsString(type2))))
+        onView(withId(R.id.theme_spinner))
+            .check(matches(withSpinnerText(Matchers.containsString(themeMode1))))
+            .perform(click())
+        onData(Matchers.anything()).atPosition(1).perform(click())
+        // activity restarted, we come back to the parameterFragment
+        UIInstrumentedTestSuite.changeOfFragmentFromDrawer(3)
+        onView(withId(R.id.theme_spinner))
+            .check(matches(withSpinnerText(Matchers.containsString(themeMode2))))
 
         // press the default button
         onView(withId(R.id.default_settings_button)).perform(click())
@@ -212,5 +227,39 @@ class ParametersUITest {
         onView(withId(R.id.checkbox_open_on_favorites)).check(matches(isChecked()))
         onView(withId(R.id.type_spinner))
             .check(matches(withSpinnerText(Matchers.containsString(type2))))
+        // activity restarted, we come back to the parameterFragment
+        UIInstrumentedTestSuite.changeOfFragmentFromDrawer(3)
+        onView(withId(R.id.theme_spinner))
+            .check(matches(withSpinnerText(Matchers.containsString(themeMode2))))
+    }
+
+    @Test
+    fun themeChooserTest() {
+        val tc = InstrumentationRegistry.getInstrumentation().targetContext
+
+        val themeMode1 = tc.getString(R.string.day_mode)
+        val themeMode2 = tc.getString(R.string.night_mode)
+
+        onView(withId(R.id.theme_spinner))
+            .check(matches(isDisplayed()))
+            .check(matches(isClickable()))
+            .check(matches(isFocusable()))
+            .check(isCompletelyBelow(withId(R.id.title)))
+            .check(matches(withSpinnerText(Matchers.containsString(themeMode1))))
+            .perform(click())
+        onData(Matchers.anything()).atPosition(1).perform(click())
+        // activity restarted, we come back to the parameterFragment
+        UIInstrumentedTestSuite.changeOfFragmentFromDrawer(3)
+        onView(withId(R.id.theme_spinner))
+            .check(matches(withSpinnerText(Matchers.containsString(themeMode2))))
+
+        // Check the parametersFragment nightMode
+        val whiteCol = R.color.white
+        onView(withId(R.id.title))
+            .check(matches(hasTextColor(whiteCol)))
+        onView(withId(R.id.type_of_reading))
+            .check(matches(hasTextColor(whiteCol)))
+        onView(withId(R.id.pitch))
+            .check(matches(hasTextColor(whiteCol)))
     }
 }

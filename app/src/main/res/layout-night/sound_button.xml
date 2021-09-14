@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!-- TODO: change the default string to something else -->
+    <Button
+        android:id="@+id/sound_button_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
+        android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/colorPrimaryDarkMode"
+        app:icon="@drawable/ic_baseline_star_border_24"
+        app:iconTint="@color/black"
+        app:iconGravity="end"
+        />
+</LinearLayout>

@@ -13,7 +13,10 @@
             android:layout_marginHorizontal="@dimen/margin_btn_margin_hor_normal"
             android:layout_marginVertical="@dimen/margin_btn_margin_ver_normal"
             style="@style/Widget.MaterialComponents.Button.Icon"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/colorPrimary"
             app:icon="@drawable/ic_baseline_star_border_24"
+            app:iconTint="@color/black"
             app:iconGravity="end"
         />
 </LinearLayout>
