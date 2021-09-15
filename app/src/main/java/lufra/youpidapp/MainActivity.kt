@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
+
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         toolbar.setTitle(R.string.app_name)
@@ -48,6 +50,12 @@ class MainActivity : AppCompatActivity() {
         discotheque = Discotheque(this)
         discotheque.setType(DataPersistenceHelper.getPreferredPlayType())
         discotheque.setPitch(DataPersistenceHelper.getPreferredPitch())
+
+        val isNightModeActivated = DataPersistenceHelper.isNightModeActivated()
+        if (isNightModeActivated) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            // TODO à voir si il faut recreate l'activity ici
+        }
 
         //NavigationView
         navView = this.findViewById(R.id.nav_view)

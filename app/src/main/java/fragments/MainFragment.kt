@@ -1,19 +1,23 @@
 package fragments
 
+import adapter.SoundAdapter
+import android.animation.Animator
+import android.animation.AnimatorInflater
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import data.Sound
-import adapter.SoundAdapter
-import android.animation.*
-import android.content.res.Configuration
-import android.view.MenuItem
 import android.widget.Button
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import data.Sound
 import lufra.youpidapp.DataPersistenceHelper
 import lufra.youpidapp.MainActivity
 import lufra.youpidapp.R
@@ -38,7 +42,12 @@ open class MainFragment: MyFragment() {
     }
     private val animCleanup = object: SoundAdapter.CleanupAnimationListener {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
-            soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            val nightMode = AppCompatDelegate.getDefaultNightMode()
+            if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
+            } else {
+                soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            }
         }
     }
     private val soundFilterListener = object : SearchView.OnQueryTextListener {

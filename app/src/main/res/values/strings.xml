@@ -108,4 +108,12 @@
     <string name="submit_a_sound">Soumettez nous un son via le formulaire ci-dessous.</string>
     <string name="submit_a_bug">Faites nous part d\'un bug via le formulaire ci-dessous.</string>
     <string name="submit_a_feedback">Donnez nous un feedback, ou demandez nous une nouvelle feature via le formulaire ci-dessous.</string>
+
+    <!-- Themas -->
+    <string-array name="theme_modes">
+        <item>@string/day_mode</item>
+        <item>@string/night_mode</item>
+    </string-array>
+    <string name="night_mode">Thème sombre</string>
+    <string name="day_mode">Thème clair</string>
 </resources>

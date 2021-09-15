@@ -97,6 +97,7 @@
             android:contentDescription="@string/content_descr_github_fab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@color/colorSecondaryLight"
             app:srcCompat="@drawable/ic_github_icon" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -110,6 +111,7 @@
             android:contentDescription="@string/content_descr_youtube_fab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/github_link"
+            app:backgroundTint="@color/colorSecondaryLight"
             app:srcCompat="@drawable/ic_baseline_play_circle_outline_24" />
 
         <ImageView

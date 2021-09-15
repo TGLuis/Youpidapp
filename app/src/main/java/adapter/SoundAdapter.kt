@@ -65,6 +65,7 @@ class SoundAdapter(_soundsList: List<Sound>, private val soundClickedListener: S
                 if (sound != null) {
                     if (sound!!.isFavourite) {
                         button.setIconResource(R.drawable.ic_baseline_star_border_24)
+                        button.setIconTintResource(R.color.black)
                         DataPersistenceHelper.removeSoundFavorite(sound!!)
                     } else {
                         button.setIconResource(R.drawable.ic_baseline_star_24)

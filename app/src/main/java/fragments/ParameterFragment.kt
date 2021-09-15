@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import lufra.youpidapp.DataPersistenceHelper
-import lufra.youpidapp.Discotheque
-import lufra.youpidapp.MainActivity
-import lufra.youpidapp.PlayType
-import lufra.youpidapp.R
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat.recreate
+import lufra.youpidapp.*
 
 class ParameterFragment: MyFragment() {
     private lateinit var context: MainActivity
@@ -17,6 +15,7 @@ class ParameterFragment: MyFragment() {
     private lateinit var pitchSeekBar: SeekBar
     private lateinit var setDefaultButton: Button
     private lateinit var openOnFavoritesCheckBox: CheckBox
+    private lateinit var themeSpinner: Spinner
     override var TAG: String = "=====BOITEFRAGMENT====="
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -51,6 +50,36 @@ class ParameterFragment: MyFragment() {
         setDefaultButton = context.findViewById(R.id.default_settings_button)
         setDefaultButton.setOnClickListener {
             pitchSeekBar.progress =  ((context.discotheque.getDefaultPitch() - 0.5f) * 20f).toInt()
+        }
+
+        themeSpinner = context.findViewById(R.id.theme_spinner)
+        val nightModeActivated = DataPersistenceHelper.isNightModeActivated()
+        val theme_spinner_position: Int
+        if (nightModeActivated) {
+            themeSpinner.setSelection(1)
+            theme_spinner_position = 1
+        } else {
+            themeSpinner.setSelection(0)
+            theme_spinner_position = 0
+        }
+        val nightMode = AppCompatDelegate.getDefaultNightMode()
+
+        //themeSpinner.setSelection()
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        themeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                if (p2 != theme_spinner_position) {
+                    if (p2 == 0) {  // DayMode
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        DataPersistenceHelper.deactivateNightMode()
+                    } else {        // NightMode
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        DataPersistenceHelper.activateNightMode()
+                    }
+                    recreate(context);
+                }
+            }
         }
 
         context.setTitle(R.string.parameters)

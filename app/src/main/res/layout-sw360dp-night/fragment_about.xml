@@ -16,11 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/about_title"
-            android:textColor="@color/black"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="@dimen/text_size_title_big"
             android:textStyle="bold"
+            android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_corps_1"
                 android:textAlignment="center"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="@dimen/text_size_normal" />
 
             <TextView
                 android:id="@+id/corps_2"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_corps_2"
                 android:textAlignment="center"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="@dimen/text_size_normal" />
 
             <TextView
                 android:id="@+id/corps_3"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_corps_3"
                 android:textAlignment="center"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="@dimen/text_size_normal" />
 
             <TextView
                 android:id="@+id/corps_4"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_corps_4"
                 android:textAlignment="center"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="@dimen/text_size_normal" />
 
             <TextView
                 android:id="@+id/corps_5"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_corps_5"
                 android:textAlignment="center"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="@dimen/text_size_normal" />
 
             <TextView
                 android:id="@+id/corps_6"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about_corps_6"
                 android:textAlignment="center"
-                android:textSize="@dimen/text_size_big" />
+                android:textSize="@dimen/text_size_normal" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -95,9 +95,10 @@
             android:clickable="true"
             android:focusable="true"
             android:contentDescription="@string/content_descr_github_fab"
+            android:elevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:backgroundTint="@color/colorSecondaryLight"
+            app:backgroundTint="@color/colorSecondaryDarkMode"
             app:srcCompat="@drawable/ic_github_icon" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -109,20 +110,21 @@
             android:clickable="true"
             android:focusable="true"
             android:contentDescription="@string/content_descr_youtube_fab"
+            android:elevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/github_link"
-            app:backgroundTint="@color/colorSecondaryLight"
+            app:backgroundTint="@color/colorSecondaryDarkMode"
             app:srcCompat="@drawable/ic_baseline_play_circle_outline_24" />
 
         <ImageView
             android:id="@+id/covid"
-            android:layout_width="@dimen/covid_size_big"
-            android:layout_height="@dimen/covid_size_big"
+            android:layout_width="@dimen/covid_size_normal"
+            android:layout_height="@dimen/covid_size_normal"
             android:layout_margin="@dimen/margin_fab_normal"
-            android:contentDescription="@string/content_descr_covid"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/covid" />
+            app:srcCompat="@drawable/covid_neg"
+            android:contentDescription="@string/content_descr_covid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -5,13 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.util.Log
-import android.widget.Toast
 import data.Sound
 import org.json.JSONObject
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
-import java.util.Properties
+import java.util.*
 
 object DataPersistenceHelper {
     private const val TAG = "==== HELPER ===="
@@ -19,6 +18,7 @@ object DataPersistenceHelper {
     private const val PLAYTYPE = "PlayType"
     private const val PITCH = "Pitch"
     private const val OPEN_ON_FAVORITES = "OpenOnFavorites"
+    private const val NIGHTMODE_ACTIVATED = "NightModeActivated"
     private lateinit var f: File
     private lateinit var youpiDB: MyDatabase
 
@@ -109,6 +109,18 @@ object DataPersistenceHelper {
 
     fun openOnFavorites(openOnFavorites: Boolean) {
         sharedPref.edit().putBoolean(OPEN_ON_FAVORITES, openOnFavorites).apply()
+    }
+
+    fun activateNightMode() {
+        sharedPref.edit().putBoolean(NIGHTMODE_ACTIVATED, true).apply()
+    }
+
+    fun deactivateNightMode() {
+        sharedPref.edit().putBoolean(NIGHTMODE_ACTIVATED, false).apply()
+    }
+
+    fun isNightModeActivated() : Boolean {
+        return sharedPref.getBoolean(NIGHTMODE_ACTIVATED, false)
     }
 
     fun getSounds(): List<Sound> {

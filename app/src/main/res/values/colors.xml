@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EFA800</color>
-    <color name="colorPrimaryDark">#71530D</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
+    <!-- https://material.io/resources/color/#!/?view.left=0&view.right=0&secondary.color=8E24AA&primary.color=EFA800   -->
+    <color name="colorPrimary">#EFA800</color>              <!-- text in black -->
+    <color name="colorPrimaryDark">#b77900</color>          <!-- text in black -->
+    <color name="colorPrimaryLight">#ffd949</color>         <!-- text in black -->
+    <color name="colorPrimaryDarkMode">#f7d97f</color>      <!-- text in black -->
+    <color name="colorSecondary">#8e24aa</color>            <!-- text in white -->
+    <color name="colorSecondaryDark">#5c007a</color>        <!-- text in white -->
+    <color name="colorSecondaryLight">#c158dc</color>       <!-- text in black -->
+    <color name="colorSecondaryDarkMode">#cd93d8</color>    <!-- text in black -->
     <color name="black">#000000</color>
+    <color name="grey">#262626</color>
     <color name="white">#FFFFFF</color>
     <color name="trans">#00000000</color>
 </resources>
