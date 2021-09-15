@@ -57,15 +57,17 @@ class ParameterFragment: MyFragment() {
         }
 
         themeSpinner = context.findViewById(R.id.theme_spinner)
-        val nightMode = AppCompatDelegate.getDefaultNightMode()
+        val nightModeActivated = DataPersistenceHelper.isNightModeActivated()
         val theme_spinner_position: Int
-        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+        if (nightModeActivated) {
             themeSpinner.setSelection(1)
             theme_spinner_position = 1
         } else {
             themeSpinner.setSelection(0)
             theme_spinner_position = 0
         }
+        val nightMode = AppCompatDelegate.getDefaultNightMode()
+
         //themeSpinner.setSelection()
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         themeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -74,8 +76,10 @@ class ParameterFragment: MyFragment() {
                 if (p2 != theme_spinner_position) {
                     if (p2 == 0) {  // DayMode
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        DataPersistenceHelper.deactivateNightMode()
                     } else {        // NightMode
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        DataPersistenceHelper.activateNightMode()
                     }
                     recreate(context);
                 }
