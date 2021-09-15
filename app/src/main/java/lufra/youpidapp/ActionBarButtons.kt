@@ -1,5 +1,6 @@
 package lufra.youpidapp
 
+import android.graphics.ColorFilter
 import android.view.Menu
 import android.view.MenuItem
 import android.view.LayoutInflater
@@ -19,8 +20,11 @@ class ActionBarButtons(activity: MainActivity) {
     private var context: MainActivity = activity
 
     fun addResearch(menu: Menu): MenuItem {
+        val iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_search_24)
+        val col = ContextCompat.getColor(context, R.color.black)
+        iconDrawable?.setTint(col)
         return menu.add(Menu.NONE, 0, Menu.NONE, R.string.search).apply {
-            icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_search_24)
+            icon = iconDrawable
             actionView = SearchView(context)
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM or MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
             (actionView as SearchView).maxWidth = Integer.MAX_VALUE
@@ -28,8 +32,11 @@ class ActionBarButtons(activity: MainActivity) {
     }
 
     fun addStop(menu: Menu): MenuItem {
+        val iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
+        val col = ContextCompat.getColor(context, R.color.black)
+        iconDrawable?.setTint(col)
         return menu.add(Menu.NONE, 1, Menu.NONE, R.string.stop).apply {
-            icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_stop_24)
+            icon = iconDrawable
             setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)
             setOnMenuItemClickListener {
                 context.discotheque.stopAll()
@@ -42,8 +49,11 @@ class ActionBarButtons(activity: MainActivity) {
     }
 
     fun addParameters(menu: Menu): MenuItem {
+        val iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_settings_24)
+        val col = ContextCompat.getColor(context, R.color.black)
+        iconDrawable?.setTint(col)
         return menu.add(Menu.NONE, 2, Menu.NONE, R.string.parameters).apply {
-            icon =ContextCompat.getDrawable(context, R.drawable.ic_baseline_settings_24)
+            icon = iconDrawable
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             setOnMenuItemClickListener {
                 context.openFragment(ParameterFragment::class.java.name)
@@ -53,8 +63,11 @@ class ActionBarButtons(activity: MainActivity) {
     }
 
     fun addTypeLecture(menu: Menu): MenuItem {
+        val iconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
+        val col = ContextCompat.getColor(context, R.color.black)
+        iconDrawable?.setTint(col)
         return menu.add(R.string.type).apply {
-            icon = ContextCompat.getDrawable(context, R.drawable.ic_baseline_playlist_play_24)
+            icon = iconDrawable
             setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             setOnMenuItemClickListener {
                 dialogAndSetType()

@@ -96,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_ver_normal"
             android:text="@string/default_parameters"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/pitch_seekBar"
             app:layout_constraintBottom_toTopOf="@id/theme_spinner"
             app:layout_constraintEnd_toEndOf="parent"

@@ -3,6 +3,6 @@
     android:propertyName="backgroundColor"
     android:duration="1000"
     android:valueFrom="@color/colorPrimaryDark"
-    android:valueTo="@color/colorPrimaryDarkMode"
+    android:valueTo="@color/grey"
     android:startOffset="0"
     android:repeatCount="0" />

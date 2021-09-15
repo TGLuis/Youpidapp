@@ -11,6 +11,7 @@
     <color name="colorSecondaryLight">#c158dc</color>       <!-- text in black -->
     <color name="colorSecondaryDarkMode">#cd93d8</color>    <!-- text in black -->
     <color name="black">#000000</color>
+    <color name="grey">#262626</color>
     <color name="white">#FFFFFF</color>
     <color name="trans">#00000000</color>
 </resources>

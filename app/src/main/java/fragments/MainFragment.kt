@@ -41,7 +41,7 @@ open class MainFragment: MyFragment() {
         override fun onUnbind(soundViewHolder: SoundAdapter.SoundViewHolder) {
             val nightMode = AppCompatDelegate.getDefaultNightMode()
             if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-                soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDarkMode))
+                soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
             } else {
                 soundViewHolder.button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
             }

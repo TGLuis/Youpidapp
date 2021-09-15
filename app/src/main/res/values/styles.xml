@@ -12,6 +12,9 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/black</item>
+    </style>
 
 
     <style name="AlertDialogPositiveBtnFilled" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
