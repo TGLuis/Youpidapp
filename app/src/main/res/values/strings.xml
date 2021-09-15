@@ -114,6 +114,6 @@
         <item>@string/day_mode</item>
         <item>@string/night_mode</item>
     </string-array>
-    <string name="night_mode">Night Mode</string>
-    <string name="day_mode">Day Mode</string>
+    <string name="night_mode">Thème sombre</string>
+    <string name="day_mode">Thème clair</string>
 </resources>

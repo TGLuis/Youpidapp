@@ -7,11 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat.recreate
-import lufra.youpidapp.DataPersistenceHelper
-import lufra.youpidapp.Discotheque
-import lufra.youpidapp.MainActivity
-import lufra.youpidapp.PlayType
-import lufra.youpidapp.R
+import lufra.youpidapp.*
 
 class ParameterFragment: MyFragment() {
     private lateinit var context: MainActivity

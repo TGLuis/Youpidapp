@@ -5,7 +5,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <!-- TODO: change the default string to something else -->
     <Button
             android:id="@+id/sound_button_id"
             android:layout_width="match_parent"

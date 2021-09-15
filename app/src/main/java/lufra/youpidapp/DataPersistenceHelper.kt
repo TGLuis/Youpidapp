@@ -5,13 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.util.Log
-import android.widget.Toast
 import data.Sound
 import org.json.JSONObject
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
-import java.util.Properties
+import java.util.*
 
 object DataPersistenceHelper {
     private const val TAG = "==== HELPER ===="
